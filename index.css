@@ -1,65 +1,76 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
+* {
   margin: 0;
+  padding: 0;
+
 }
 
-.navbar {
-  overflow: hidden;
-  background-color: rgb(12, 11, 11); 
+nav {
+  width: 100%;
+  height: 60px;
+  background-color: #333333;
 }
-
-.navbar a {
-  float: right;
-  font-size: 16px;
+nav p {
+  font-family: Arial;
   color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: left;
+  font-size: 10px;
+  line-height: 0px;
+  float: left;
+  padding: 10px 20px;
 }
 
-.subnav {
+/* Right float for navigation options without switching order */
+ul {
   float: right;
-  overflow: hidden;
+  padding-right: 50px;
+
 }
 
-
-.subnav .subnavbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+ul li {
+  float: left;
+  list-style: none;
+  position: relative;
+  
   
 }
-
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: rgb(12, 11, 11);
+/* Navigation text formats */
+nav ul li a {
+  display: block;
+  font-family: Arial;
+  color: white;
+  font-size: 14px;
+  padding: 22px 14px;
+  text-decoration: none;
+  
 }
+nav ul li a:hover {
+ background-color: #12cb67;;
 
-.subnav-content {
+}
+ 
+ul li ul {
   display: none;
   position: absolute;
-  right: 0;
-  background-color: rgb(12, 11, 11);
-  width: 100%;
-  z-index: 1;
+  background-color: #333333;
+  border-radius: 0px 0px 4px 4px;
+  width: 100px;
+  margin-right: 10px;
+}
+nav ul li:hover ul {
+  display: block;
+
 }
 
-.subnav-content a {
-  float: right;
-  text-align: right;
-  color: white;
-  
+nav ul li ul li {
+  padding: 8px 14px;
+  width: 180px;
+  border-radius: 4px;
 }
 
-.subnav-content a:hover {
-  background-color: rgb(110, 212, 161);
-  color: rgb(0, 0, 0);
+nav ul li ul li a {
+  padding: 8px 14px;
 }
 
-.subnav:hover .subnav-content {
-  display: list-item;
+nav ul li ul li a:hover {
+  background-color: #12cb67;
+  display: inline-block;
 }
