@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# extra Mac image file #
+.DS_Store
