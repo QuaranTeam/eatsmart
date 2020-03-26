@@ -16,8 +16,9 @@
     <div class="container">
         <div class="meals">
             <h1>Recipes</h1>
+
+            <!--need to add fields that user can add ingredient name, amount, and what recipe they are in-->
             <ul class="recipe-cards"> <!--maybe display these like cards that can expand to show details-->
-                <!--based on Courses-topics-textbook demo where these were "topics" or "topicsModel"-->
                 <li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li>
                 <li th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
                     <input class="ingredientId" name="id" type="hidden" th:value="${ingredient.id}"/> <!--need partials?-->
@@ -25,7 +26,42 @@
                     <button class="x">&times;</button>
                 </li>
             </ul>
-            <button type="button" name="button">Add Recipe</button> 
+
+            <form method="POST">
+	
+                <!--Match Controller-->
+                    <div>
+                        <label> Enter a Recipe Name: </label>
+                        <input type="text" name="recipeName" />
+                    </div>
+                
+                    <div>
+                        <label> Enter a Recipe Description: </label>
+                        <input type="text" name="recipeDescription" />
+                    </div>
+                
+                    <div>
+                        <label> Enter Ingredient Name: </label>
+                        <input type="text" name="ingredientName" />
+                    </div>
+                    
+                    
+                    <div>
+                        <label> Enter Ingredient Amount: </label>
+                        <input type="text" name="ingredientAmount" />
+                    </div>
+                                           
+                    <div>
+                    <button th:formaction="@{add-course}">Create Recipe</button>
+                    </div>
+                    
+                </form>
+            
+                
+            
+            </form>
+
+            <!-- <button type="button" name="button">Add Recipe</button>     ?? Bring back this button and create a modal where user adds a recipe?  -->
             <button type="button" name="button">Go to Meals</button>
           </div>
     </div>

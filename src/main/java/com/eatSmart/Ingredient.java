@@ -20,8 +20,11 @@ public class Ingredient {
 	@ManyToOne // one ingredient can go into many recipes?
 	private Recipe recipe;
 
-	public String getName() {
+	public String getIngredientName() {
 		return name;
+	}
+	public int getIngredientAmount() {
+		return amount;
 	}
 
 	public Ingredient() {

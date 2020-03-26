@@ -32,7 +32,7 @@ public class Recipe {
 	public String getRecipeName() {
 		return name;
 	}
-	public String getDescription() {
+	public String getRecipeDescription() {
 		return description;
 	}
 	
