@@ -20,8 +20,8 @@
                 <!--based on Courses-topics-textbook demo where these were "topics" or "topicsModel"-->
                 <li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li>
                 <li th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
-                    <input class="recipeId" name="id" type="hidden" th:value="${recipe.id}"/> <!--need partials?-->
-                    <a th:href="|/recipe/${recipe.id}|" th:text="${recipe.name}"></a> <!--getRecipeName-->
+                    <input class="ingredientId" name="id" type="hidden" th:value="${ingredient.id}"/> <!--need partials?-->
+                    <a th:href="|/ingredient/${ingredient.id}|" th:text="${ingredient.name}"></a> <!--getIngredientName?-->
                     <button class="x">&times;</button>
                 </li>
             </ul>
