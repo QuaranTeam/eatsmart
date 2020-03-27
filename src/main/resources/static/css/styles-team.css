@@ -10,3 +10,75 @@ body {
     background: #CAEDDA;
     font-family: 'Sen', sans-serif;
 }
+.about{
+    margin-top: 5%;
+}
+
+.about h1{
+    /* font-family: 'Alegreya', serif; */
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.about h2{
+    /* font-family: 'Alegreya', serif; */
+    font-size: 36px;
+    margin-bottom: 125px;
+    text-align: center;
+}
+
+.team{
+    display: flex;
+    text-align: center;
+    width: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: space-between;
+}
+
+.team .team_member{
+    background: white;
+    margin: 5px;
+    margin-bottom: 125px;
+    width: 300px;
+    padding: 20px;
+    line-height: 20px;
+    color: #333333;
+    position: relative;
+}
+
+.team .team_member h3{
+    color: #12CB67;
+    font-size: 26px;
+    margin-top: 100px;
+}
+
+.team .team_member p.role{
+    color: #333333;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 12px 0px;
+}
+
+.team .team_member .team_image{
+    width: 200px;
+    height: 200px;
+    border: 50%;  /* if round --> border-radius: 50%; */
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+}
+
+.team .team_member .team_image img{
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+}
+
+
+
+footer{
+    text-align: center;
+}
