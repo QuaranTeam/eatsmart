@@ -10,18 +10,17 @@ body {
     background: #CAEDDA;
     font-family: 'Sen', sans-serif;
 }
+
 .about{
     margin-top: 5%;
 }
 
 .about h1{
-    /* font-family: 'Alegreya', serif; */
     font-size: 48px;
     margin-bottom: 10px;
     text-align: center;
 }
 .about h2{
-    /* font-family: 'Alegreya', serif; */
     font-size: 36px;
     margin-bottom: 125px;
     text-align: center;
