@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eatSmart Meals</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="active" href="#home">Logo Goes Here</a>
+        <a href="#">Recipes</a>
+        <a href="#">Meals</a>
+        <a href="#">Calendar</a>
+        <a href="#">About</a>
+    </nav>
+    <div class="container">
+        <div class="meals">
+            <h1>Meals</h1>
+            <ul class="meal-cards"> <!--maybe display these like cards that can expand to show details-->
+                <!--based on Courses-topics-textbook demo where these were "topics" or "topicsModel"-->
+                <li th:if="${recipesModel.size() ==0}">No meals to show...Add one</li>
+                <li th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
+                    <input class="recipeId" name="id" type="hidden" th:value="${recipe.id}"/> <!--need partials?-->
+                    <a th:href="|/recipe/${recipe.id}|" th:text="${recipe.name}"></a> <!--getRecipeName-->
+                    <button class="x">&times;</button>
+                </li>
+            </ul>
+            <button type="button" name="button">Add Meal</button> <button type="button" name="button">Grocery List</button>
+          </div>
+    </div>
+    <footer>
+        &copy2020 WeCanCodeIt - <a href="#">Contact Us</a>
+      </footer>
+</body>
+</html>
