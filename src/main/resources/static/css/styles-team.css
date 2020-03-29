@@ -1,6 +1,6 @@
 .container {
     content: ' ';
-    background: url(../images/seven-30.jpg) no-repeat center center fixed;
+    background: url(../images/thirteen.jpg) no-repeat center center fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -65,7 +65,7 @@
 .team .team_member .team_image {
     width: 200px;
     height: 200px;
-    border: 50%;
+    border: 100%;
     /* if round --> border-radius: 50%; */
     position: absolute;
     top: -100px;
