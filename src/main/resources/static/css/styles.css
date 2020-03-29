@@ -4,3 +4,18 @@ body {
     background: #CAEDDA;
     font-family: 'Sen', sans-serif;
 }
+/* ****  FOOTER  **** */
+
+footer {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    background: #CAEDDA;
+    color: #333;
+    padding: 1em 0;
+    text-align: center;
+    position:absolute;
+    width:100%;
+    bottom:0px;
+
+  }
+  

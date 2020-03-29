@@ -1,17 +1,17 @@
 .about{
     margin-top: 5%;
-}
+ }
 
 .about h1{
     font-size: 48px;
-    margin-bottom: 10px;
+    margin-bottom: 140px;
     text-align: center;
 }
-.about h2{
+/* .about h2{
     font-size: 36px;
     margin-bottom: 125px;
     text-align: center;
-}
+} */
 
 .team{
     display: flex;
@@ -27,6 +27,7 @@
     margin: 5px;
     margin-bottom: 125px;
     width: 300px;
+    height: 300px;
     padding: 20px;
     line-height: 20px;
     color: #333333;
@@ -60,7 +61,7 @@
 .team .team_member .team_image img{
     width: 200px;
     height: 200px;
-    padding: 5px;
+    padding: 0px;
 }
 
 
