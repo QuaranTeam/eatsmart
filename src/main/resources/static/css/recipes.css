@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
 
 body {
-    background-image: url('nine-30.jpg');
+    background: url(../images/nine-30.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover; 
-    /* background: #CAEDDA; */
-    font-family: 'Sen', sans-serif;
+    background-size: cover;
 }
-h1{
-    text-align: center;
-    position: relative;
-    padding
+
+h1 {
+    position: center;
+
+    
+    
 }
 
 
