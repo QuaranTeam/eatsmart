@@ -16,3 +16,14 @@ footer {
     width: 100%;
     bottom: 0px;
 }
+
+footer a{
+    text-decoration: none;   
+    color: #333;
+}
+
+
+footer a:hover {
+    font-weight: bolder;
+    color: coral;
+}

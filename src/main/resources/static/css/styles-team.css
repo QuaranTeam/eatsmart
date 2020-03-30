@@ -8,9 +8,9 @@ body {
 }
 
 .about h1 {
-    margin-top: 7%;
+    margin-top: 4%;
     font-size: 48px;
-    margin-bottom: 140px;
+    margin-bottom: 150px;
     text-align: center;
 }
 
@@ -54,6 +54,24 @@ body {
     font-size: 12px;
     text-transform: uppercase;
     margin: 12px 0px;
+}
+.contact_info {
+    color: #12CB67;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+a.contact_info:hover {
+    font-weight: bolder;
+    color: coral;
+}
+
+a.contact_info a.active {
+    font-weight: bold;
+    color: blueviolet;
 }
 
 .team .team_member .team_image {
