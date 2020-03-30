@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
 
 body {
-    background: #CAEDDA;
+    background-image: url('nine.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+    /* background: #CAEDDA; */
     font-family: 'Sen', sans-serif;
 }
+
+
 /* ****  FOOTER  **** */
 
 /* ****  FOOTER  **** */
