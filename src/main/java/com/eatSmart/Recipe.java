@@ -2,10 +2,12 @@ package com.eatSmart;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,6 +25,8 @@ public class Recipe {
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
 	private Collection<Meal> meals;
 	
+	
+	@OneToMany
 	private Collection<Ingredient> ingredients;
 		
 	//getters
@@ -49,15 +53,12 @@ public class Recipe {
 		this.description = description;
 		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
-		result = prime * result + ((meals == null) ? 0 : meals.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 	@Override
@@ -69,29 +70,13 @@ public class Recipe {
 		if (getClass() != obj.getClass())
 			return false;
 		Recipe other = (Recipe) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
 		if (id != other.id)
 			return false;
-		if (ingredients == null) {
-			if (other.ingredients != null)
-				return false;
-		} else if (!ingredients.equals(other.ingredients))
-			return false;
-		if (meals == null) {
-			if (other.meals != null)
-				return false;
-		} else if (!meals.equals(other.meals))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		return true;
+	}
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 	
 	
