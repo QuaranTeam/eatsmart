@@ -44,7 +44,7 @@
             <h1>Recipes</h1>
 
             <!--need to add fields that user can add ingredient name, amount, and what recipe they are in-->
-            <ul class="recipe-cards"> <!--maybe display these like cards that can expand to show details-->
+            <ul class="recipeCard"> <!--maybe display these like cards that can expand to show details-->
                 <li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li>
                 <li th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
                     <input class="ingredientId" name="id" type="hidden" th:value="${ingredient.id}"/> <!--need partials?-->
@@ -91,8 +91,18 @@
             <button type="button" name="button">Go to Meals</button>
           </div>
     </div>
+    <script src="../static/JavaScript/recipes.js"></script>
+    <button class="recipe-cards">Recipe Name</button>
+    <div class= "recipeDescription">
+        <p>
+            Scoop, measure, add, stir, bake, eat.
+        </p>
+        
+    </div>
+    
     <footer>
         &copy2020 WeCanCodeIt - <a href="#">Contact Us</a>
       </footer>
 </body>
+
 </html>

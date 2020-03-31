@@ -7,14 +7,47 @@ body {
 }
 
 h1 {
-    position: center;
+    margin-top: 4%;
+    font-size: 48px;
+    margin-bottom: 150px;
+    text-align: center;    
+}
 
-    
-    
+.recipe-cards {
+    background-color: #12cb67;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+}
+.active, .recipe-cards:hover {
+    background-color: #12cb67;
+}
+.recipe-cards:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+}
+.active:hover{
+    content: "\2212"
+}
+
+.recipeDescription {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #CAEDDA;
 }
 
 
-/* ****  FOOTER  **** */
+
 
 /* ****  FOOTER  **** */
 footer {
