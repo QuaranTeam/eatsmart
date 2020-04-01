@@ -67,7 +67,7 @@ public class EatSmartController {
 	
 	
 	
-	@RequestMapping("homepage.html")
+	@RequestMapping("/homepage")
 	public String showHomePage(){
 		return "homepage";	
 	}
