@@ -44,10 +44,16 @@
             <!--need to add fields that user can add ingredient name, amount, and what recipe they are in-->
             <ul class="recipe-cards"> <!--maybe display these like cards that can expand to show details-->
                 <li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li>
-                <li th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
-                    <input class="ingredientId" name="id" type="hidden" th:value="${ingredient.id}"/> <!--need partials?-->
-                    <a th:href="|/ingredient/${ingredient.id}|" th:text="${ingredient.name}"></a> <!--getIngredientName?-->
-                    <button class="x">&times;</button>
+                  <div th:each="recipe: ${recipesModel}">
+        			<ul>
+            		<li >
+            			<a th:href="@{/recipe(id=${recipe.id})}" th:text="${recipe.name}"></a>
+             		</li>
+        		</ul>
+    			</div>
+        		 <!-- <input class="ingredientId" name="id" type="hidden" th:value="${ingredient.id}"/>
+                 <a th:href="|/ingredient/${ingredient.id}|" th:text="${ingredient.name}"></a>
+                 <button class="x">&times;</button> -->
                 </li>
             </ul>
 
@@ -64,16 +70,6 @@
                         <input type="text" name="recipeDescription" />
                     </div>
 
-                    <div>
-                        <label> Enter Ingredient Name: </label>
-                        <input type="text" name="ingredientName" />
-                    </div>
-
-
-                    <div>
-                        <label> Enter Ingredient Amount: </label>
-                        <input type="text" name="ingredientAmount" />
-                    </div>
 
                     <div>
                     <button th:formaction="@{/add-recipe}">Create Recipe</button>
@@ -94,4 +90,3 @@
       </footer>
 </body>
 </html>
-0

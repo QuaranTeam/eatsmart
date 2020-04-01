@@ -25,9 +25,9 @@ public class Recipe {
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
 	private Collection<Meal> meals;
 	
-	
-	@OneToMany
-	private Collection<Ingredient> ingredients;
+//	
+//	@OneToMany
+//	private Collection<Ingredient> ingredients;
 		
 	//getters
 	public long getId() {
@@ -40,18 +40,18 @@ public class Recipe {
 		return description;
 	}
 	
-	public Collection<Ingredient> getIngredients(){
-		return ingredients;
-	}
+//	public Collection<Ingredient> getIngredients(){
+//		return ingredients;
+//	}
 	
 	//default constructor
 	public Recipe() {
 	}
 	
-	public Recipe(String name, String description, Ingredient... ingredients) {
+	public Recipe(String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
+//		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
 	}
 
 	@Override

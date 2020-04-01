@@ -42,17 +42,60 @@
               <ul class="meal-cards"> <!--maybe display these like cards that can expand to show details-->
                   <!--based on Courses-topics-textbook demo where these were "topics" or "topicsModel"-->
                   <li th:if="${mealsModel.size() ==0}">No meals to show...Add one</li>
-                  <li th:if="${mealsModel.size()!=0}" th:each="recipe: ${mealsModel}">
-                      <input class="mealId" name="id" type="hidden" th:value="${meal.id}"/> <!--need partials?-->
-                      <a th:href="|/recipe/${meal.id}|" th:text="${meal.name}"></a>
-                      <button class="x">&times;</button>
-                  </li>
-              </ul>
-              <button type="button" name="button">Add Meal</button> <button type="button" name="button">Grocery List</button>
-            </div>
+                  <div th:each="meal: ${mealsModel}">
+                    <ul>
+                      <li >
+                        <a th:href="@{/meal(id=${meal.id})}" th:text="${meal.name}"></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                </li>
       </div>
+
+      <form method="POST">
+
+          <!--Match Controller-->
+              <div>
+                  <label> Enter a Meal Name: </label>
+                  <input type="text" name="mealName" />
+              </div>
+
+              <div>
+                  <label> Enter a Meal Description: </label>
+                  <input type="text" name="mealDescription" />
+              </div>
+
+
+
+              <div>
+              <button th:formaction="@{/add-meal}">Create Meal</button>
+              </div>
+
+          </form>
+
+
+
+      </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <footer>
           &copy2020 WeCanCodeIt - <a href="team-page.html">Contact Us</a>
         </footer>
+
+
+
   </body>
   </html>

@@ -35,7 +35,7 @@ public class JPAMappingTest {
 	private MealRepository mealRepo;
 	
 	
-	@Resource IngredientRepository ingredientRepo;
+//	@Resource IngredientRepository ingredientRepo;
 	
 	
 
