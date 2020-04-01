@@ -20,50 +20,8 @@
         </ul>
     </nav>
 
-      <div class="container">
-          <div class="meals">
-              <h1>Meals</h1>
-              <ul class="meal-cards"> 
-
-
-                  <li th:if="${mealsModel.size() ==0}">No meals to show...Add one</li>
-                  <div th:each="meal: ${mealsModel}">
-                    <ul>
-                      <li >
-                        <a th:href="@{/meal(id=${meal.id})}" th:text="${meal.name}"></a>
-                      </li>
-                    </ul>
-                  </div>
-
-                </li>
-      </div>
-
-      <form method="POST">
-
-          <!--Match Controller-->
-              <div>
-                  <label> Enter a Meal Name: </label>
-                  <input type="text" name="mealName" />
-              </div>
-
-              <div>
-                  <label> Enter a Meal Description: </label>
-                  <input type="text" name="mealDescription" />
-              </div>
-
-
-
-              <div>
-              <button th:formaction="@{/add-meal}">Create Meal</button>
-              </div>
-
-          </form>
-
-
-
-
             <!-- Kelli's code below -->
-                <!-- <div class="container">
+ 	<div class="container">
                     <div class="meals">
 
                         <h1>Meals</h1>
@@ -99,8 +57,50 @@
                         </div>
                     </div>
 
-                </div> -->
+                </div> 
 
+
+
+
+<!--      <div class="container">
+          <div class="meals">
+              <h1>Meals</h1>
+              <ul class="meal-cards"> 
+
+
+                  <li th:if="${mealsModel.size() ==0}">No meals to show...Add one</li>
+                  <div th:each="meal: ${mealsModel}">
+                    <ul>
+                      <li >
+                        <a th:href="@{/meal(id=${meal.id})}" th:text="${meal.name}"></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                </li>
+      </div>
+
+      <form method="POST">-->
+
+          <!--Match Controller-->
+         <!--     <div>
+                  <label> Enter a Meal Name: </label>
+                  <input type="text" name="mealName" />
+              </div>
+
+              <div>
+                  <label> Enter a Meal Description: </label>
+                  <input type="text" name="mealDescription" />
+              </div>
+
+
+
+              <div>
+              <button th:formaction="@{/add-meal}">Create Meal</button>
+              </div>
+
+          </form>
+-->
 
       <footer>
           &copy2020 WeCanCodeIt - <a href="team-page.html">Contact Us</a>
