@@ -97,6 +97,68 @@ public class EatSmartControllerTest {
 	}
 	
 	
+	@Test
+	public void shouldAddAdditionalMealToModel() {
+		String recipeName = "recipe name";
+		String recipeDescription = "recipe description";
+		Recipe newRecipe = recipeRepo.findByName(recipeName);
+		String mealName = "new meal";
+		String mealDescription = "new meal description";
+		
+		underTest.addMeal(mealName,mealDescription,recipeName,recipeDescription);
+		
+		Meal newMeal = new Meal(mealName,mealDescription,newRecipe);
+		when(mealRepo.save(newMeal)).thenReturn(newMeal);
+		
+		
+	}
+	
+	
+	
+	@Test
+	public void shouldRemoveMealFromModelByName() {
+		String mealName = mealOne.getName();
+		when(mealRepo.findByName(mealName)).thenReturn(mealOne);
+		underTest.deleteMealByName(mealName);
+		verify(mealRepo).delete(mealOne);
+	
+		
+		
+	}
+	
+	
+	
+	@Test
+	public void shouldAddAdditionalRecipeToModel() {
+		String recipeName = "recipe name";
+		String recipeDescription = "recipe description";
+		Recipe newRecipe = recipeRepo.findByName(recipeName);
+		
+		underTest.addRecipe(recipeName,recipeDescription);
+		
+		when(recipeRepo.save(newRecipe)).thenReturn(newRecipe);
+		
+		
+	}
+	
+	
+	@Test
+	public void shouldRemoveRecipeFromModelByName() {
+		String recipeName = recipeOne.getName();
+		when(recipeRepo.findByName(recipeName)).thenReturn(recipeOne);
+		underTest.deleteRecipeByName(recipeName);
+		verify(recipeRepo).delete(recipeOne);
+	
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

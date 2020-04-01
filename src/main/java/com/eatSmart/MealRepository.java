@@ -10,4 +10,8 @@ public interface MealRepository extends CrudRepository<Meal, Long> {
 
 	Collection<Meal> findByRecipesId(long recipeId);
 
+	Meal findByName(String mealName);
+
+	Meal findAllByOrderByNameAsc();
+
 }

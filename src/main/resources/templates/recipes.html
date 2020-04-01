@@ -8,34 +8,33 @@
     <title>eatSmart Recipes</title>
 </head>
 <body>
-  <nav>
-    <p><a href= "homepage.html"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
+    <nav>
+       <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
 
 
-      <ul>
-          <li><a href="recipes.html">My Recipes</a>
-              <!-- <ul>
-                  <li><a href="#">Add Recipes</a></li>
-                  <li><a href="#">View Recipes</a></li>
-              </ul> -->
-          </li>
-          <li><a href="meals.html">My Meals</a>
-              <!-- <ul>
-                  <li><a href="#">Add Meal</a></li>
-                  <li><a href="#">View Meals</a></li>
-              </ul> -->
-          </li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="team-page.html">About Us</a></li>
-          <li><a href="login.html">Login</a>
-              <!-- <ul>
-                  <li><a href="#">Sign In</a></li>
-                  <li><a href="#">My Account</a></li>
-              </ul> -->
-          </li>
-      </ul>
-  </nav>
-
+        <ul>
+            <li><a href="/recipes">My Recipes</a>
+                <!-- <ul>
+                    <li><a href="#">Add Recipes</a></li>
+                    <li><a href="#">View Recipes</a></li>
+                </ul> -->
+            </li>
+            <li><a href="/meals">My Meals</a>
+                <!-- <ul>
+                    <li><a href="#">Add Meal</a></li>
+                    <li><a href="#">View Meals</a></li>
+                </ul> -->
+            </li>
+            <li><a href="/calendar">Calendar</a></li>
+            <li><a href="/team-page">About Us</a></li>
+            <li><a href="/login">Login</a>
+                <!-- <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul> -->
+            </li>
+        </ul>
+    </nav>
 
 
     <div class="container">
@@ -77,7 +76,7 @@
                     </div>
 
                     <div>
-                    <button th:formaction="@{add-course}">Create Recipe</button>
+                    <button th:formaction="@{/add-recipe}">Create Recipe</button>
                     </div>
 
                 </form>
@@ -95,3 +94,4 @@
       </footer>
 </body>
 </html>
+0

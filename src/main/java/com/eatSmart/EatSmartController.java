@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 public class EatSmartController {
 
@@ -36,7 +37,7 @@ public class EatSmartController {
 		
 	}
 	
-	@RequestMapping("recipes.html")
+	@RequestMapping("/recipes")
 	public String findAllRecipes(Model model) {
 		model.addAttribute("recipesModel", recipeRepo.findAll());
 		return("recipes");
@@ -58,38 +59,113 @@ public class EatSmartController {
 	}
 	
 	
-	@RequestMapping("meals.html")
+	@RequestMapping("/meals")
 	public String findAllMeals(Model model) {
 		model.addAttribute("mealsModel", mealRepo.findAll());
 		return("meals");
 	}
 	
 	
-	@RequestMapping("team-page.html")
+	
+	@RequestMapping("homepage.html")
+	public String showHomePage(){
+		return "homepage";	
+	}
+	
+	
+	@RequestMapping("/team-page")
 	public String showTeamPage(){
 		return "team-page";	
 	}
 	
 	
-	@RequestMapping("login.html")
+	@RequestMapping("/login")
 	public String showLogIn(){
 		return "login";	
 	}
 	
 	
-	@RequestMapping("calendar.html")
+	@RequestMapping("/calendar")
 	public String showCalendar(){
 		return "calendar";	
 	}
 	
 	
-	@RequestMapping("myaccount.html")
-	public String showMyAccount(){
+	@RequestMapping("myaccount")
+	public String showMyAccount(Model model){
 		return "myaccount";	
 	}
 	
 	
 	
+	
+	@RequestMapping("/add-meal")
+		public String addMeal(String mealName, String mealDescription, String recipeName, String recipeDescription) {
+		Recipe recipe = recipeRepo.findByName(recipeName);
+		if(recipe==null) {
+			recipe = new Recipe(recipeName, recipeDescription);
+			recipe = recipeRepo.save(recipe);
+		}
+		Meal newMeal = mealRepo.findByName(mealName);
+		
+		
+		if(newMeal==null) {
+														 //Object		
+			newMeal = new Meal(mealName, mealDescription,recipe);
+			mealRepo.save(newMeal);
+		}
+		
+			//page refresh, no spaces
+		return"redirect:/meals";
+		
+	}
+
+	
+	@RequestMapping("/delete-meal")
+	public String deleteMealByName(String mealName) {
+		if(mealRepo.findByName(mealName) != null) {
+			Meal deletedMeal = mealRepo.findByName(mealName);
+			mealRepo.delete(deletedMeal);
+		}
+		
+				//page refresh, no spaces
+				return"redirect:/meals";
+		
+		
+	}
+	
+	
+	@RequestMapping("/add-recipe")
+	public String addRecipe(String recipeName, String recipeDescription) {
+		Recipe recipe = recipeRepo.findByName(recipeName);
+		if(recipe==null) {
+			recipe = new Recipe(recipeName, recipeDescription);
+			recipe = recipeRepo.save(recipe);
+		}
+	
+		return"redirect:/recipes";
+		
+	}
+
+	public String deleteRecipeByName(String recipeName) {
+		if(recipeRepo.findByName(recipeName) != null) {
+			Recipe deletedRecipe = recipeRepo.findByName(recipeName);
+			recipeRepo.delete(deletedRecipe);
+		}
+		
+				//page refresh, no spaces
+				return"redirect:/recipes";
+		
+	}
+	
+	
+	@RequestMapping("/sorted-meals")
+	public String sortCourses(Model model ) {
+		model.addAttribute("meals", mealRepo.findAllByOrderByNameAsc());
+		return "meals"; // returning temp instead of endpoint
+		
+		
+	}
 	
 	
 	
