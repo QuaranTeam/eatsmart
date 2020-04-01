@@ -105,4 +105,9 @@ body {
         align-content: center;
         justify-content: center;
     }
+
+    .button-row button {
+        margin: 10px auto;
+     
+   }
 }
