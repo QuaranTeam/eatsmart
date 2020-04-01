@@ -6,6 +6,7 @@
       <title>eatSmart Meals</title>
       <link rel="stylesheet" href="/css/navBar.css">
       <link rel="stylesheet" href="/css/styles.css">
+      <link rel="stylesheet" href="/css/meals.css">
   </head>
   <body>
    <nav>
@@ -76,7 +77,55 @@
 
 
 
-      </form>
+
+            <!-- Kelli's code below -->
+                <!-- <div class="container">
+                    <div class="meals">
+
+                        <h1>Meals</h1>
+
+                        <ul>
+
+                            <li class="collapsible" th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
+                                <input class="recipeId" name="id" type="hidden" th:value="${recipe.id}" />
+
+                                <a th:href="|/recipe/${recipe.id}|" th:text="${recipe.name}">Meal name here</a>
+                                <span class="close">x</span>
+                            </li>
+                            <div class="meal-content">
+                                <p>Meal content here...</p>
+                            </div>
+
+                            <li class="collapsible">This is a dummy meal<span class="close">x</span>
+                            </li>
+                            <div class="meal-content">
+                                <p>Meal content here...</p>
+                            </div>
+
+                            <li class="collapsible">This is another dummy meal<span class="close">x</span>
+                            </li>
+                            <div class="meal-content">
+                                <p>Meal content here...</p>
+                            </div>
+                        </ul>
+
+                        <div class="button-row">
+                            <button type="button" name="button">Add Meal</button>
+                            <button type="button" name="button">Grocery List</button>
+                        </div>
+                    </div>
+
+                </div> -->
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +143,7 @@
       <footer>
           &copy2020 WeCanCodeIt - <a href="team-page.html">Contact Us</a>
         </footer>
-
+        <script src="/JavaScript/meals.js"></script>
 
 
   </body>

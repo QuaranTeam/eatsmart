@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
+
+body {
+    background: url(../images/nine-30.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    margin-top: 4%;
+    font-size: 48px;
+    margin-bottom: 50px;
+    text-align: center;    
+}
+.recipe-cards div {
+ margin: auto;
+}
+
+.recipe-cards {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border-style: solid;
+    border-bottom: 50px;
+    text-align: center;
+    font-size: 15px;
+    
+    
+}
+.active, .recipe-cards:hover {
+    background-color: #CAEDDA;
+}
+.recipe-cards:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+}
+.active:hover{
+    content: "\2212"
+}
+
+.recipeDescription {
+    padding: 0 18px;
+    max-height: 0;
+    max-width: 47.4%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #CAEDDA;
+}
+
+
+/* ****  FOOTER  **** */
+footer {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    background: #CAEDDA;
+    color: #333;
+    padding-top: 0.5em;
+    height: 30px;
+    text-align: center;
+    position:fixed;
+    width:100%;
+    bottom:0px;
+
+  }
+  footer a {
+      text-decoration: none;
+      color: #333;
+
+  }
+
+footer a:hover {
+    font-weight: bolder;
+    color: #ff9966;
+}
+
