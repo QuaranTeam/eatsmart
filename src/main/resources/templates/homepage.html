@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eatSmart Home</title>
-  <!-- <link rel="stylesheet" href="../static/css/navBar.css">
+  <link rel="stylesheet" href="../static/css/navBar.css">
   <link rel="stylesheet" href="../static/css/styles.css">
-  <link rel="stylesheet" href="../static/css/homepage.css"> -->
-  <link rel="stylesheet" href="/css/navBar.css">
+  <link rel="stylesheet" href="../static/css/homepage.css">
+  <!-- <link rel="stylesheet" href="/css/navBar.css">
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/homepage.css">
-<!--change back to "/css/styles.css" for committing-->
+  <link rel="stylesheet" href="/css/homepage.css"> -->
+  <!--change back to "/css/styles.css" for committing-->
 
 </head>
 
@@ -44,8 +44,6 @@
     </ul>
   </nav>
 
-
-
   <div class="container">
 
 
@@ -54,22 +52,24 @@
       <p>Create daily meal plans, recipes, and shopping lists easily with eatSmart. Our user-friendly app allows you to
         stay healthy and get creative in the kitchen, while reducing food waste and environmental impact. Get started by
         adding your own recipes and start planning meals quickly and easily today!</p>
-      <button type="button" name="button">Add a Recipe</button> <button type="button" name="button">Plan Meals</button>
-
+      <div class="button-row">
+        <button type="button" name="button">Add a Recipe</button>
+        <button type="button" name="button">Plan Meals</button>
+      </div>
     </div>
 
 
-    <div class="upcomingMeals">
+    <section class="feature">
       <!-- subject to change once integrated with spring -->
       <h2>Upcoming Meals</h2>
       <h3>Date</h3>
       <h3>Breakfast:</h3>
       <h3>Lunch:</h3>
       <h3>Dinner:</h3>
-    </div>
+    </section>
 
 
-    <div class="calendar">
+    <section class="feature">
       <!-- Place holder. subject to change once integrated with CSS and JavaScript -->
       <h2>Calendar</h2>
       <strong>March <span>more</span></strong>
@@ -126,7 +126,7 @@
         </tr>
       </table>
 
-    </div>
+    </section>
 
   </div>
   <br>
@@ -136,9 +136,5 @@
   </footer>
 
 </body>
-
-
-
-
 
 </html>

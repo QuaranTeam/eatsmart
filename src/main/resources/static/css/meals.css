@@ -104,5 +104,12 @@ body {
         flex-wrap: wrap;
         align-content: center;
         justify-content: center;
+        margin-top: 20px;
     }
+
+    .button-row {
+        align-content: center;
+        justify-content: center;
+    }
+
 }
