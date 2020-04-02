@@ -16,6 +16,10 @@ h1 {
     text-align: center;
 }
 
+.welcome {
+    text-align: center;
+}
+
 .container {
     list-style-type: none;
     padding: 0;
@@ -23,7 +27,7 @@ h1 {
     align-content: center;
     justify-content: center;
     width: 50%;
-    cursor: pointer;
+   
 }
 
 /* Buttons */
@@ -50,36 +54,56 @@ h1 {
 
 /* Feature sections */
 
-.lower-half {
-    background-color: #CAEDDA;
+/* .lower-half {
+    background-color: ;
+} */
+
+
+/* Feature Boxes */
+
+.feature-boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: space-between;
 }
 
-section {
-    margin: 30px auto;
-
-}
-
-.feature{
+.feature-boxes .feature {
     background: #CAEDDA;
-    margin: 5px;
+    margin: auto;
     margin-bottom: 125px;
-    width: 250px;
-    height: 250px;
+    width: 40%;
+    height: 300px;
     padding: 20px;
     line-height: 20px;
     color: #333333;
     position: relative;
 }
 
-.feature h2{
+
+/* text */
+
+.feature h2 {
     text-align: center;
     padding: 10px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.feature h3 {
+    color: #333;
+    font-size: 16px;
+    
 }
 
 .feature span {
     float: right;
+    color: #12CB67;
 }
-
+.feature span:hover {
+    font-weight: bolder;
+    color: #FF9966;
+}
 
 
 /* Responsive */
