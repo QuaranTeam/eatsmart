@@ -26,7 +26,6 @@ h1 {
     cursor: pointer;
 }
 
-
 /* Buttons */
 
 .container button {
@@ -45,21 +44,47 @@ h1 {
     background: #12CB67;
 }
 
-
 .button-row {
     margin: 30px auto;
 }
 
 /* Feature sections */
 
-section {
-    display:
+.lower-half {
+    background-color: #CAEDDA;
 }
+
+section {
+    margin: 30px auto;
+
+}
+
+.feature{
+    background: #CAEDDA;
+    margin: 5px;
+    margin-bottom: 125px;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    line-height: 20px;
+    color: #333333;
+    position: relative;
+}
+
+.feature h2{
+    text-align: center;
+    padding: 10px;
+}
+
+.feature span {
+    float: right;
+}
+
 
 
 /* Responsive */
 @media only screen and (max-width: 735px) {
-    .container{
+    .container {
         width: 80%;
     }
 
@@ -70,4 +95,9 @@ section {
         justify-content: center;
         margin-top: 20px;
     }
+
+    section {
+        width: 100%;
+    }
+
 }
