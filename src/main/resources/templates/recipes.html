@@ -7,6 +7,10 @@
       <link rel="stylesheet" href="/css/styles.css">
       <link rel="stylesheet" href="/css/recipes.css">
 
+      <!-- <link rel="stylesheet" href="../static/css/navBar.css">
+      <link rel="stylesheet" href="../static/css/styles.css">
+      <link rel="stylesheet" href="../static/css/recipes.css"> -->
+
 
 </head>
 <body>
@@ -40,17 +44,18 @@
 
 
     <div class="container">
+        <div class="recipes">
 
             <h1>Recipes</h1>
 
-    <button class="collapsible">Recipe One</button>
+    <li class="collapsible">Recipe One</li>
     <div class= "content">
         <p>
             Scoop, measure, add, stir, bake, eat.
         </p>
 
     </div>
-    <button class="collapsible">Recipe Two</button>
+    <li class="collapsible">Recipe Two</li>
     <div class= "content">
         <p>
             Scoop, measure, add, stir, bake, eat.
@@ -58,19 +63,19 @@
 
     </div>
 
-    <button class="collapsible">Recipe Three</button>
+    <li class="collapsible">Recipe Three</li>
     <div class= "content">
         <p>
             Scoop, measure, add, stir, bake, eat.
         </p>
-
-    </div>
+        </div>
+    
     <div class= "button-row">
     <button type="button">Create a Recipe</button>
     <button type="button">Go to Meals</button>
     </div>
+</div>
 
-    
     <!-- modal -->
 
 
@@ -107,16 +112,19 @@
 
 </body>
 <script src="JavaScript/recipes.js"></script>
+<!-- <script src="/src/main/resources/static/JavaScript/recipes.js"></script> -->
 </html>
 
-<!--
-        <div>
-                <button th:formaction="@{/add-recipe}">Create Recipe</button>
-                </div>
-                <button type="button" name="button">Add Recipe</button>   -->
- <!-- need to add fields that user can add ingredient name, amount, and what recipe they are in
-            <ul class="recipe-cards">
-                maybe display these like cards that can expand to show details
-                <!<li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li> -->
 
-<!-- <button class="x">&times;</button> -->
+
+// <!--
+//         <div>
+//                 <button th:formaction="@{/add-recipe}">Create Recipe</button>
+//                 </div>
+//                 <button type="button" name="button">Add Recipe</button>   -->
+//  <!-- need to add fields that user can add ingredient name, amount, and what recipe they are in
+//             <ul class="recipe-cards">
+//                 maybe display these like cards that can expand to show details
+//                 <!<li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li> -->
+
+// <!-- <button class="x">&times;</button> -->
