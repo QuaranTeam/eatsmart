@@ -73,13 +73,13 @@ h1 {
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
     width: 50%; /* Full width */
     height: 50%; /* Full height */
-    overflow: scroll; /* Enable scroll if needed */
+    overflow: none; /* Enable scroll if needed */
     background-color: #CAEDDA; /* Fallback color */
     background-color: white; /* Black w/ opacity */
   }
@@ -109,7 +109,7 @@ h1 {
   }
 
 
-  #recipeBtn{
+  .modal button {
       background-color: #333333;
       border: none;
       color: white;
@@ -121,12 +121,25 @@ h1 {
 
   }
 
-  #recipeBtn:hover {
+  .modal button:hover {
       background: #12CB67;
   }
 
+div.button-row {
+  background-color: #333333;
+    border: none;
+    color: white;
+    padding: 18px;
+    font-size: 15px;
+    width: 49%;
+    cursor: pointer;
+    font-family: 'Sen', sans-serif;
 
+}
+div.button-row:hover {
+  background: #12CB67;
 
+}
 
 /* ****  FOOTER  **** */
 footer {

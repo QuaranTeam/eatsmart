@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<link rel="stylesheet" href="/css/navBar.css">
+  	<link rel="stylesheet" href= "/css/navBar.css">
       <link rel="stylesheet" href="/css/styles.css">
       <link rel="stylesheet" href="/css/recipes.css">
 
@@ -11,25 +11,25 @@
 </head>
 <body>
     <nav>
-       <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt= "eatSmart-Home" width="190" height="42"></a></p>
+       <p><a href="homepage.html"><img src="/images/eatSmart-logo-03.png" alt= "eatSmart-Home" width="190" height="42"></a></p>
 
 
         <ul>
-            <li><a href="/recipes">My Recipes</a>
+            <li><a href="recipes.html">My Recipes</a>
                 <!-- <ul>
                     <li><a href="#">Add Recipes</a></li>
                     <li><a href="#">View Recipes</a></li>
                 </ul> -->
             </li>
-            <li><a href="/meals">My Meals</a>
+            <li><a href="meals.html">My Meals</a>
                 <!-- <ul>
                     <li><a href="#">Add Meal</a></li>
                     <li><a href="#">View Meals</a></li>
                 </ul> -->
             </li>
-            <li><a href="/calendar">Calendar</a></li>
-            <li><a href="/team-page">About Us</a></li>
-            <li><a href="/login">Login</a>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="team-page.html">About Us</a></li>
+            <li><a href="login.html">Login</a>
                 <ul>
                     <li><a href="#">Sign In</a></li>
                     <li><a href="#">My Account</a></li>
@@ -65,10 +65,15 @@
         </p>
 
     </div>
+    <div class= "button-row">
+    <button type="button">Create a Recipe</button>
+    <button type="button">Go to Meals</button>
+    </div>
 
-
+    
     <!-- modal -->
-    <button id="myBtn">Create a Recipe</button>
+
+
     <div id="myModal" class="modal">
         <form method="POST"></form>
         <!--Match Controller-->
@@ -76,19 +81,16 @@
                 <span class="close">&times;</span>
                 <label> Enter a Recipe Name: </label>
                 <input type="text" name="recipeName" />
-            </div>
-
-            <div>
                 <label> Enter a Recipe Description: </label>
                 <input type="text" name="recipeDescription" />
             </div>
-            <button id="recipBtn" type="button" name="button">Add Recipe</button>
+            <button type="button" type="button" name="button">Add Recipe</button>
 
         </form>
     </form>
 </div>
 
-<button id="recipBtn"  type="button" name="button">Go to Meals</button>
+
 </div>
 
                   <div th:each="recipe: ${recipesModel}">
@@ -104,7 +106,7 @@
       </footer>
 
 </body>
-<script src="/JavaScript/recipes.js"></script>
+<script src="JavaScript/recipes.js"></script>
 </html>
 
 <!--
