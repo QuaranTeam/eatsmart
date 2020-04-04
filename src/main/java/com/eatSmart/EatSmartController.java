@@ -136,7 +136,7 @@ public class EatSmartController {
 	
 	
 	@RequestMapping("/add-recipe")
-	public String addRecipe(String recipeName, String recipeDescription, String ingredient) {
+	public String addRecipe(String recipeName, String recipeDescription, String ingredientName) {
 		Recipe recipe = recipeRepo.findByName(recipeName);
 		if(recipe==null) {
 			recipe = new Recipe(recipeName, recipeDescription);
