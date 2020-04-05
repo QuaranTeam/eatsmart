@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
+
+.modal textarea {
+    min-width: 50%;
+    min-height: 50%;
+    overflow: scroll;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    text-align: center;
+    padding: 16px;
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 50%;
+    /* Full width */
+    height: 50%;
+    /* Full height */
+    background-color: #CAEDDA;
+    /* Fallback color */
+    overflow: scroll;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    list-style-type: none;
+    align-content: center;
+    justify-content: left;
+    width: 50%;
+    cursor: pointer;
+    overflow: scroll;
+    background-color: white;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: transparent;
+}
+
+
+
+
+
+
+/* The Close Button */
+.close {
+    color: #333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #CAEDDA;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal button {
+    background-color: #333333;
+    border: none;
+    color: white;
+    padding: 18px;
+    font-size: 15px;
+    width: 49%;
+    cursor: pointer;
+    font-family: 'Sen', sans-serif;
+    float: center;
+}
+
+.modal button:hover {
+    background: #12CB67;
+}
+
+/* 
+if we have more buttons */
+/* .button-row {
+    align-content: center;
+     } */
