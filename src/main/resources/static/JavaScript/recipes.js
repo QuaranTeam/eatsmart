@@ -1,3 +1,4 @@
+//collapsible stuff
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -13,11 +14,12 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("myRecipe");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
