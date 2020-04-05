@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<link rel="stylesheet" href="/css/navBar.css">
-      <link rel="stylesheet" href="/css/styles.css">
-      <link rel="stylesheet" href="/css/recipes.css">
-
-      <!-- <link rel="stylesheet" href="../static/css/navBar.css">
-      <link rel="stylesheet" href="../static/css/styles.css">
-      <link rel="stylesheet" href="../static/css/recipes.css"> -->
+    <link rel="stylesheet" href="/css/navBar.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/recipes.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <!-- for styling
+    <link rel="stylesheet" href="../static/css/navBar.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/recipes.css">
+    <link rel="stylesheet" href="../static/css/modal.css"> -->
 
 
 </head>
+
 <body>
     <nav>
-       <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt= "eatSmart-Home" width="190" height="42"></a></p>
+        <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a>
+        </p>
 
 
         <ul>
@@ -48,83 +53,81 @@
 
             <h1>Recipes</h1>
 
-    <li class="collapsible">Recipe One</li>
-    <div class= "content">
-        <p>
-            Scoop, measure, add, stir, bake, eat.
-        </p>
+            <li class="collapsible">Recipe One</li>
+            <div class="content">
+                <p>
+                    Scoop, measure, add, stir, bake, eat.
+                </p>
 
-    </div>
-    <li class="collapsible">Recipe Two</li>
-    <div class= "content">
-        <p>
-            Scoop, measure, add, stir, bake, eat.
-        </p>
+            </div>
+            <li class="collapsible">Recipe Two</li>
+            <div class="content">
+                <p>
+                    Scoop, measure, add, stir, bake, eat.
+                </p>
 
-    </div>
+            </div>
 
-    <li class="collapsible">Recipe Three</li>
-    <div class= "content">
-        <p>
-            Scoop, measure, add, stir, bake, eat.
-        </p>
+            <li class="collapsible">Recipe Three</li>
+            <div class="content">
+                <p>
+                    Scoop, measure, add, stir, bake, eat.
+                </p>
+            </div>
+
+            <div class="button-row">
+                <button id="myRecipe" type="button">Create a Recipe</button>
+                <a href="/meals">
+                    <button type="button" name="button">Go to meals</button>
+                </a>
+            </div>
         </div>
 
-    <div class= "button-row">
-    <button type="button">Create a Recipe</button>
-    <a href="/meals">
-      <button type="button" name="button">Go to meals</button>
-    </a>
-    </div>
-</div>
-
-    <!-- modal -->
+        <!-- modal -->
 
 
-    <div id="myModal" class="modal">
-        <form method="POST"></form>
-        <!--Match Controller-->
+        <div id="myModal" class="modal">
+
+            <form method="POST"></form>
             <div class="modal-content">
                 <span class="close">&times;</span>
+                <h2>Create a Recipe</h2>
+                <br>
                 <label> Enter a Recipe Name: </label>
                 <input type="text" name="recipeName" />
+                <br>
+                <label> Enter a Ingredient: </label>
+                <input type="text" name="ingredient" />
+                <br>
+                <label> Enter an Amount: </label>
+                <input type="text" name="ingredientAmount" />
+                <br>
+                <ul>
+                    <li>Ingredients will pop into here</li>
+                </ul>
+                <br>
                 <label> Enter a Recipe Description: </label>
-                <input type="text" name="recipeDescription" />
+                <br>
+              <textarea type="text" name="description" placeholder="write a description..."></textarea>
+         
+ </div>
+            <div class="save-button">
+                <button type="button" name="button">Save Recipe</button>
             </div>
-            <button type="button" name="button">Add Recipe</button>
 
-        </form>
-</div>
-
+            </form>
+        </div>
 
 
-                  <div th:each="recipe: ${recipesModel}">
-        			<ul>
-            		<li >
-            			<a th:href="@{/recipe(id=${recipe.id})}" th:text="${recipe.name}"></a>
-             		</li>
-        		</ul>
-
-
-    <footer>
-        &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
-      </footer>
+        <footer>
+            &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
+        </footer>
 
 </body>
-<script src="JavaScript/recipes.js"></script>
-<!-- <script src="/src/main/resources/static/JavaScript/recipes.js"></script> -->
+<script src="/JavaScript/recipes.js"></script>
+<script src="/JavaScript/modal.js"></script>
+<!-- for styling 
+    <script src="../static/JavaScript/recipes.js"></script>
+<script src="../static/JavaScript/modal.js"></script> -->
+
 </html>
-
-
-
-// <!--
-//         <div>
-//                 <button th:formaction="@{/add-recipe}">Create Recipe</button>
-//                 </div>
-//                 <button type="button" name="button">Add Recipe</button>   -->
-//  <!-- need to add fields that user can add ingredient name, amount, and what recipe they are in
-//             <ul class="recipe-cards">
-//                 maybe display these like cards that can expand to show details
-//                 <!<li th:if="${recipesModel.size() ==0}">No recipes to show...Add one</li> -->
-
-// <!-- <button class="x">&times;</button> -->
