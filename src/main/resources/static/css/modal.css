@@ -6,11 +6,14 @@
     overflow: scroll;
 }
 
+.modal h2 {
+    text-align: center;
+}
 
 
 /* The Modal (background) */
 .modal {
-    text-align: center;
+    text-align: left;
     padding: 16px;
     display: none;
     /* Hidden by default */
@@ -34,20 +37,15 @@
     list-style-type: none;
     align-content: center;
     justify-content: left;
-    width: 50%;
+    width: 80%;
+    height: 50%;
     cursor: pointer;
     overflow: scroll;
     background-color: white;
-    margin: 15% auto;
-    /* 15% from the top and centered */
+    margin: 10% auto;
     padding: 20px;
     border: transparent;
 }
-
-
-
-
-
 
 /* The Close Button */
 .close {
@@ -59,11 +57,10 @@
 
 .close:hover,
 .close:focus {
-    color: #CAEDDA;
+    color: #12CB67;
     text-decoration: none;
     cursor: pointer;
 }
-
 
 .modal button {
     background-color: #333333;
@@ -71,10 +68,12 @@
     color: white;
     padding: 18px;
     font-size: 15px;
-    width: 49%;
+    width: 100%;
     cursor: pointer;
     font-family: 'Sen', sans-serif;
     float: center;
+    text-align: center;
+    align-content: center;
 }
 
 .modal button:hover {
