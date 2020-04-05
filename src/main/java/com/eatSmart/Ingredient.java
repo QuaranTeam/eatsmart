@@ -1,6 +1,8 @@
 package com.eatSmart;
 
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ public class Ingredient {
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "ingredients")
-	private Recipe recipe;
+	private Collection <Recipe> recipe;
 
 	public String getIngredientName() {
 		return name;
