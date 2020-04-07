@@ -28,7 +28,7 @@
     /* Full width */
     height: 50%;
     /* Full height */
-    background-color: #333333;
+    background-color: #CAEDDA;
     /* Fallback color */
     overflow: scroll;
     /* positioning of modal box */
@@ -74,9 +74,9 @@
 }
 
 .modal button {
-    background-color: #CAEDDA;
+    background-color: #333333;
     border: none;
-    color: black;
+    color: white;
     padding: 18px;
     font-size: 15px;
     width: 95%;
