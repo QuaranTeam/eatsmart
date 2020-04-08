@@ -1,4 +1,11 @@
-
+body {
+  background: url(../images/thirteen-70.jpg) no-repeat center center fixed;
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
 
 input[type=text], input[type=password] {
   width: 40%;
@@ -28,8 +35,8 @@ button:hover {
   margin: 24px 0 12px 0;
 }
 
-img.avatar {
-  width: 40%;
+.avatar {
+  width: 30%;  
   border-radius: 50%;
 }
 
