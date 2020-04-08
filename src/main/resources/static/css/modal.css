@@ -14,7 +14,8 @@
 /* The Modal (background) */
 .modal {
     text-align: left;
-    padding: 16px;
+    padding-top: 2%;
+    padding-left: 3%;
     display: none;
     /* Hidden by default */
     position: absolute;
@@ -30,6 +31,15 @@
     background-color: #CAEDDA;
     /* Fallback color */
     overflow: scroll;
+    /* positioning of modal box */
+    margin-top: 5%;
+    margin-left: 25%;
+    /* modal box size */
+    width: 50%;
+    height: 80%;
+    border: center;
+    
+
 }
 
 /* Modal Content/Box */
@@ -38,13 +48,14 @@
     align-content: center;
     justify-content: left;
     width: 80%;
-    height: 50%;
+    height: 70%;
     cursor: pointer;
     overflow: scroll;
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
+    background-color:#CAEDDA;
+    margin: 5%;
+    padding: 10px;
     border: transparent;
+
 }
 
 /* The Close Button */
@@ -68,7 +79,7 @@
     color: white;
     padding: 18px;
     font-size: 15px;
-    width: 100%;
+    width: 95%;
     cursor: pointer;
     font-family: 'Sen', sans-serif;
     float: center;
