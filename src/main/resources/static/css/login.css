@@ -1,5 +1,5 @@
 body {
-  background: url(../images/thirteen-70.jpg) no-repeat center center fixed;
+  background: url(../images/one-30.jpg) no-repeat center center fixed;
   height: 100%; 
   background-position: center;
   background-repeat: no-repeat;
@@ -16,17 +16,20 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #333333;
+  font-family: 'Sen', sans-serif;
+  font-size: 15px;
   color: white;
-  padding: 14px 20px;
+  padding: 18px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 40%;
 }
 
+
 button:hover {
-  opacity: 0.8;
+  background: #12CB67;
 }
 
 
@@ -36,7 +39,7 @@ button:hover {
 }
 
 .avatar {
-  width: 30%;  
+  width: 25%;  
   border-radius: 50%;
 }
 
@@ -45,14 +48,18 @@ button:hover {
   padding: 16px;
 }
 
+.container a{
+  text-decoration: none;   
+  color: #333;
+}
+
+.container a:hover {
+  font-weight: bolder;
+  color: #FF9966;
+}
+
 span.psw {
   padding-top: 16px;
 }
 
-footer{
-  position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
-}
+
