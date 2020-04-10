@@ -13,8 +13,17 @@ h1 {
     text-align: center;
 }
 
-.container .recipes{
+.container .recipes  {
   list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  align-content: center;
+  justify-content: center;
+  width: 50%;
+  cursor: pointer;
+}
+#recipe-form {
+    list-style-type: none;
   padding: 0;
   margin: 0 auto;
   align-content: center;
@@ -24,7 +33,7 @@ h1 {
 }
 
   
-  .container button {
+.container button {
     background-color: #333333;
     border: none;
     color: white;
@@ -34,11 +43,35 @@ h1 {
     cursor: pointer;
     font-family: 'Sen', sans-serif;
 }
+
+.btn {
+    background-color: #333333;
+    border: none;
+    color: white;
+    padding: 18px;
+    font-size: 15px;
+    width: 49%;
+    cursor: pointer;
+    font-family: 'Sen', sans-serif;
+}
+
 .container button:hover {
     background: #12CB67;
 }
+.btn:hover{
+    background: #12CB67;
+}
+
 .button-row {
     margin: 30px auto;
+}
+.table-striped {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
 }
 
 
