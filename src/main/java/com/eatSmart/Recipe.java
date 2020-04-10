@@ -27,6 +27,10 @@ public class Recipe {
 	private Collection<Meal> meals;
 	
 	
+	@OneToMany(mappedBy = "recipes")
+	private User user;
+	
+	
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
 		
