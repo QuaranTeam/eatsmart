@@ -50,7 +50,6 @@ public class EatSmartController {
 		
 		if(meal.isPresent()) {
 			model.addAttribute("mealModel",meal.get());
-		
 			return "meal";
 		}
 		
@@ -79,11 +78,7 @@ public class EatSmartController {
 	}
 	
 	
-	@RequestMapping("/login")
-	public String showLogIn(){
-		return "login";	
-	}
-	
+
 	
 	@RequestMapping("/calendar")
 	public String showCalendar(){

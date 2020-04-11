@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 @Entity
 public class Meal {
 	@Id
@@ -20,7 +20,7 @@ public class Meal {
 	private Collection<Recipe> recipes;
 	
 	
-	@OneToMany(mappedBy = "meals")
+	@ManyToOne
 	private User user;
 	
 	//getters

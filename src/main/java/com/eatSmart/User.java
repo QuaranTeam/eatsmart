@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -19,10 +19,9 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    @ManyToOne
+    @OneToMany
 	private Collection<Meal> meals;
-    @ManyToOne
-	private Collection<Recipe> recipes;
+    
     public Long getId() {
     	return id;
     }
@@ -56,17 +55,14 @@ public class User {
     public Collection<Meal> getMeals(){
 		return meals;
 	}
-    public Collection<Recipe> getRecipes(){
-		return recipes;
-	}
+    
     public User() {}
-    public User(String firstName, String lastName, String username, String password, Recipe[] recipes, Meal[] meals) {
+    public User(String firstName, String lastName, String username, String password,Meal...meals) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.meals = new HashSet<>(Arrays.asList(meals));
-        this.recipes = new HashSet<>(Arrays.asList(recipes));
     }
    
     @Override

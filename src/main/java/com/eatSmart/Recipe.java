@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,11 +23,7 @@ public class Recipe {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
 	private Collection<Meal> meals;
-	
-	
-	@OneToMany(mappedBy = "recipes")
-	private User user;
-	
+
 	
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
