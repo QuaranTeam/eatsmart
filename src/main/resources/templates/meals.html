@@ -37,8 +37,8 @@
 
             <h1>Meals</h1>
 
-            <form id="recipe-form"> <!--change to "meal-form"-->
-                <div id="recipes-group">
+            <form id="meal-form"> <!--change to "meal-form"-->
+                <div id="rmeals-group">
                     <div class="form-group">
                         <label for="title">Meal Name</label>
                         <input type="text" id="title" class="form-control" />
@@ -53,10 +53,10 @@
 
             <ul>
 
-                <li class="collapsible" th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
-                    <input class="recipeId" name="id" type="hidden" th:value="${recipe.id}" />
+                <li class="collapsible" th:if="${mealsModel.size()!=0}" th:each="meal: ${mealsModel}">
+                    <input class="mealId" name="id" type="hidden" th:value="${meal.id}" />
 
-                    <a th:href="|/recipe/${recipe.id}|" th:text="${recipe.name}">Meal name here</a>
+                    <a th:href="|/meal/${meal.id}|" th:text="${meal.name}">Meal name here</a>
                     <span class="close">&times;</span>
                 </li>
                 <div class="meal-content">

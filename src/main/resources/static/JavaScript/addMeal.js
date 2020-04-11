@@ -38,18 +38,18 @@
         ingredientCol.appendChild(ingredientButton);
 */
         }
-        static addIngredientToList(ingredient, recipeNode) {
-            console.log("Ingredent to list");
+        static addRecipeToList(recipe, mealNode) { //was ingredient
+            console.log("Recipe added to meal list");
 
             const listEl = document.createElement("li");
 
-            listEl.innerText = ingredient;
+            listEl.innerText = recipe;
             //targetNode.nextSibling.appendChild(listEl);
-            const ingredientsContainer = recipeNode.querySelector("#ingredientsContainer");
-            ingredientsContainer.appendChild(listEl);
+            const mealsContainer = mealNode.querySelector("#recipesContainer");
+            recipesContainer.appendChild(listEl);
         }
 
-        static deleteRecipe(el) {
+        static deleteMeal(el) {  // wass recipe
             if (el.classList.contains("delete")) {
                 el.parentElement.parentElement.remove();
             }
@@ -61,7 +61,7 @@
             1;
             div.appendChild(document.createTextNode(message));
             const container = document.querySelector(".container");
-            const form = document.querySelector("#recipe-form");
+            const form = document.querySelector("#meal-form");
             container.insertBefore(div, form);
 
             // Vanish in 3 seconds
@@ -74,196 +74,190 @@
             document.querySelector("#ingredientItem").value = "";
         }
 
-        // static hideIngredients() {
-        //     document.getElementById("ingredients-group").style.display = "none";
-        // }
-
-        // static showIngredients(row) {
-        //     document.getElementById("ingredients-group").style.display = "block";
-        // }
-
-        static hideRecipes() {
-            document.getElementById("recipes-group").style.display = "none";
+        
+        static hideMeals() {
+            document.getElementById("meals-group").style.display = "none";
         }
-
-        static showRecipes() {
-            document.getElementById("recipes-group").style.display = "block";
+        
+        static showMeals() {
+            document.getElementById("meals-group").style.display = "block";
         }
-
-        static swapRecipesAndIngredients() {
-            if (document.getElementById("recipes-group").style.display != "none") {
-                UI.hideRecipes();
-                UI.showIngredients();
-            } else {
+        
+        static swapMealsAndRecipes() {
+            if (document.getElementById("meals-group").style.display != "none") {
+                UI.hideMeals();
                 UI.showRecipes();
-                UI.hideIngredients();
+            } else {
+                UI.showMeals();
+                UI.hideRecipes();
             }
         }
-
-        static showIngredientsHideRecipes() {
-            UI.hideRecipes();
-            UI.showIngredients();
-        }
-
-        static showRecipesHideIngredients() {
+        
+        static showRecipesHideMeals() {
+            UI.hideMeals();
             UI.showRecipes();
-            UI.hideIngredients();
         }
-
-        //HELPER function - getRecipeID
-        static getRecipeID() {
-            const recipeID = document.getElementById("recipeID").value;
-            return recipeID;
+        
+        static showMealsHideRecipes() {
+            UI.showMeals();
+            UI.hideRecipes();
         }
-
-        static getRecipeNodeFromID(recipeID) {
-            //traverse "recipe-list" -> children in a loop. look for text contents of 1st child
-
-            const recipeList = document.getElementById("recipe-list").childNodes;
+        
+        //HELPER function - getMealID
+        static getMealID() {
+            const mealID = document.getElementById("mealID").value;
+            return mealID;
+        }
+        
+        static getMealNodeFromID(mealID) {
+            //traverse "meal-list" -> children in a loop. look for text contents of 1st child
+        
+            const mealList = document.getElementById("meal-list").childNodes;
             var matchedNode;
-            for (var i = 0; i < recipeList.length; i++) {
-
-                if (recipeList[i].firstChild.nextSibling.textContent == recipeID) {
-                    console.log("Match found!  " + recipeID);
-                    matchedNode = recipeList[i];
+            for (var i = 0; i < mealList.length; i++) {
+        
+                if (mealList[i].firstChild.nextSibling.textContent == mealID) {
+                    console.log("Match found!  " + mealID);
+                    matchedNode = mealList[i];
                     break;
                 }
             }
-
+        
             return matchedNode;
         }
-    }
-
-    // Store Class: Handles Storage
-    class Store {
-        static getRecipes() {
+        }
+        
+        // Store Class: Handles Storage
+        class Store {
+        static getMeals() {
             //TODO: add ajax instad of local storage
-            let recipes;
-            if (localStorage.getItem("recipes") === null) {
-                recipes = [];
+            let meals;
+            if (localStorage.getItem("meals") === null) {
+                meals = [];
             } else {
-                recipes = JSON.parse(localStorage.getItem("recipes"));
+                meals = JSON.parse(localStorage.getItem("meals"));
             }
-
-            return recipes;
+        
+            return meals;
         }
-
-        static addRecipe(recipe) {
+        
+        static addMeal(meal) {
             //TODO: add ajax instad of local storage
-            const recipes = Store.getRecipes();
-            recipes.push(recipe);
-            localStorage.setItem("recipes", JSON.stringify(recipes));
+            const meals = Store.getMeals();
+            meals.push(meal);
+            localStorage.setItem("meals", JSON.stringify(meals));
         }
-
-        static removeRecipe(item) {
+        
+        static removeMeal(item) {
             //TODO: add ajax instad of local storage
-            const recipes = Store.getRecipes();
-
-            recipes.forEach((recipe, index) => {
-                if (recipe.title === item) {
-                    recipes.splice(index, 1); //starting position and then delete count
+            const meals = Store.getMeals();
+        
+            meals.forEach((meal, index) => {
+                if (meal.title === item) {
+                    meals.splice(index, 1); //starting position and then delete count
                 }
             });
-
-            localStorage.setItem("recipes", JSON.stringify(recipes));
+        
+            localStorage.setItem("meals", JSON.stringify(meals));
         }
-
-        static addIngredient(ingredient, recipe) {
-            //TODO. AJAX call to controller - add the ingredient to recipe
-
+        
+        static addRecipe(recipe, meal) {
+            //TODO. AJAX call to controller - add the recipe to meal
+        
         }
-
-
-        static removeIngredient(ingredient, recipe) {
-            //TODO. AJAX call to controller - remove the ingredient from recipe
-
+        
+        
+        static removeRecipe(recipe, meal) {
+            //TODO. AJAX call to controller - remove the recipe from meal
+        
         }
-
-
-        static getIngredients(recipe) {
-            //TODO. AJAX call to controller - get the ingredient stored for recipe
-
+        
+        
+        static getRecipes(meal) {
+            //TODO. AJAX call to controller - get the recipe stored for meal
+        
         }
-
-    }
-    // Event: Display Recipes
-    document.addEventListener("DOMContentLoaded", UI.displayRecipes);
-
-
-    //Event: Back to Recipes (from ingredients)
-    document
-        .querySelector("#show-recipes-button")
-        .addEventListener("click", UI.showRecipesHideIngredients);
-
-    // Event: Add an Ingredient
-    document.querySelector("#addIngredient").addEventListener("click", (e) => {
-        const ingredientItem = document.querySelector("#ingredientItem").value;
-        const recipeID = UI.getRecipeID();
-        const recipeNode = UI.getRecipeNodeFromID(recipeID);
-
-        // Add Ingredient to UI
-        UI.addIngredientToList(ingredientItem, recipeNode);
-
-        // Add Ingredient to store
-        Store.addIngredient(ingredientItem);
-
+        
+        }
+        // Event: Display Meals
+        document.addEventListener("DOMContentLoaded", UI.displayMeals);
+        
+        
+        //Event: Back to Meals (from recipes)
+        document
+        .querySelector("#show-meals-button")
+        .addEventListener("click", UI.showMealsHideRecipes);
+        
+        // Event: Add an Recipe
+        document.querySelector("#addRecipe").addEventListener("click", (e) => {
+        const recipeItem = document.querySelector("#recipeItem").value;
+        const mealID = UI.getMealID();
+        const mealNode = UI.getMealNodeFromID(mealID);
+        
+        // Add Recipe to UI
+        UI.addRecipeToList(recipeItem, mealNode);
+        
+        // Add Recipe to store
+        Store.addRecipe(recipeItem);
+        
         // Show success message
-        UI.showAlert("Ingredient Added", "success");
-
+        UI.showAlert("Recipe Added", "success");
+        
         // Clear fields
         UI.clearFields();
-    });
-
-    // Event: Add a Recipe
-    document.querySelector("#next").addEventListener("click", (e) => {
+        });
+        
+        // Event: Add a Meal
+        document.querySelector("#next").addEventListener("click", (e) => {
         // Prevent actual submit
-
+        
         e.preventDefault();
         // Get form values
         const title = document.querySelector("#title").value;
         const description = document.querySelector("#description").value;
-
+        
         // Validate
         if (title === "" || description === "") {
             UI.showAlert("Please fill in all fields", "danger");
         } else {
-            // Instatiate recipe
-            const recipe = new Recipe(title, description);
-            // Add Recipe to UI
-            UI.addRecipeToList(recipe);
-
-            // Add Recipe to store
-            Store.addRecipe(recipe);
-
+            // Instatiate meal
+            const meal = new Meal(title, description);
+            // Add Meal to UI
+            UI.addMealToList(meal);
+        
+            // Add Meal to store
+            Store.addMeal(meal);
+        
             // Show success message
-            UI.showAlert("Recipe Added", "success");
-
+            UI.showAlert("Meal Added", "success");
+        
             // Clear fields
             UI.clearFields();
         }
-    });
-
-    // Event: Remove a Recipe OR add Ingredients to Recipe
-    document.querySelector("#recipe-list").addEventListener("click", (e) => {
+        });
+        
+        // Event: Remove a Meal OR add Recipes to Meal
+        document.querySelector("#meal-list").addEventListener("click", (e) => {
         row = e.target.parentElement.parentElement;
         titleFromRow = row.getElementsByTagName("td")[0].textContent;
-
-        if (e.target.id == "killRecipe") {
-            // Remove Recipe from UI
-            UI.deleteRecipe(e.target);
-
-            // Remove Recipe from store
-
-            Store.removeRecipe(titleFromRow);
-            //TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
-
+        
+        if (e.target.id == "killMeal") {
+            // Remove Meal from UI
+            UI.deleteMeal(e.target);
+        
+            // Remove Meal from store
+        
+            Store.removeMeal(titleFromRow);
+            //TODO make sure removeMeal also removes the recipes and the join between meals and recipes
+        
             // Show success message
-            UI.showAlert("Recipe Removed", "success");
+            UI.showAlert("Meal Removed", "success");
         } else {
-            //add ingredients
-            UI.showIngredientsHideRecipes();
+            //add recipes
+            UI.showRecipesHideMeals();
             //update the form's hidden field so we know which row was passed in...
-            document.getElementById("recipeID").value = titleFromRow;
-
+            document.getElementById("mealID").value = titleFromRow;
+        
         }
-    });
+        });
+        
