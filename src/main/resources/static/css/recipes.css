@@ -102,12 +102,10 @@ textarea {
     background: #12CB67;
 }
 
-#addIngredients.btn:hover {
+#addIngredients.btn:hover, #killRecipe.btn:hover {
     background: #12CB67;
 }
-#killRecipe.btn:hover {
-background: #12CB67;
-}
+
 .button-row {
     margin: 30px auto;
 }

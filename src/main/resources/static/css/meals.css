@@ -102,11 +102,8 @@ textarea {
     background: #12CB67;
 }
 
-#addRecipes.btn:hover {
+#addRecipes.btn:hover, #killMeal.btn:hover {
     background: #12CB67;
-}
-#killMeal.btn:hover {
-background: #12CB67;
 }
 
 .button-row {
@@ -142,6 +139,7 @@ background: #12CB67;
     width: 100%;
 
 }
+
 
 
 .collapsible div {
