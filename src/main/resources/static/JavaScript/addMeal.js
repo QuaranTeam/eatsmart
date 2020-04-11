@@ -1,33 +1,33 @@
 
-// Book Class: Represents a Recipe
-    class Recipe {
+// Meal Class: Represents a Meal instead of Recipe
+    class Meal {
         constructor(title, description) {
             this.title = title;
             this.description = description;
             //need ingredient collection here
-            this.ingredients = [];
+            this.recipes = [];  //instead of ingredients
         }
     }
 
     // UI Class: Handle UI Tasks
     class UI {
-        static displayRecipes() {
-            UI.hideIngredients();
-            const recipes = Store.getRecipes();
+        static displayMeals() {
+            UI.hideRecipes();
+            const meals = Store.getMealss();
 
-            recipes.forEach((recipe) => UI.addRecipeToList(recipe));
+            meals.forEach((meal) => UI.addMealToList(meal));
         }
 
-        static addRecipeToList(recipe) {
-            const list = document.querySelector("#recipe-list");
+        static addMealToList(meal) {
+            const list = document.querySelector("#meal-list");
 
             const row = document.createElement("tr");
 
             row.innerHTML = `
-      <td>${recipe.title}</td>
-      <td>${recipe.description}</td>
-      <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></button><ul id="ingredientsContainer"></ul></td>
-      <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
+      <td>${meal.title}</td>
+      <td>${meal.description}</td>
+      <td><input type="button" id="addRecipes" class="btn btn-success btn-block" value="Add Recipes"></button><ul id="recipesContainer"></ul></td>
+      <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
     `;
             list.appendChild(row);
             /*
