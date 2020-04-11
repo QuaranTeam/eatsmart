@@ -102,6 +102,12 @@ textarea {
     background: #12CB67;
 }
 
+#addIngredients.btn:hover {
+    background: #12CB67;
+}
+#killRecipe.btn:hover {
+background: #12CB67;
+}
 .button-row {
     margin: 30px auto;
 }
@@ -128,7 +134,6 @@ textarea {
     background-color: #ff9966;
     text-decoration: none;
     padding: 12px;
-
 }
 
 #recipeID {

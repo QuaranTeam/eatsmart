@@ -102,6 +102,13 @@ textarea {
     background: #12CB67;
 }
 
+#addRecipes.btn:hover {
+    background: #12CB67;
+}
+#killMeal.btn:hover {
+background: #12CB67;
+}
+
 .button-row {
     margin: 30px auto;
 }
@@ -128,8 +135,8 @@ textarea {
     background-color: #ff9966;
     text-decoration: none;
     padding: 12px;
-
 }
+
 
 #mealID {
     width: 100%;
