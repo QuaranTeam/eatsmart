@@ -45,11 +45,12 @@
 
             listEl.innerText = recipe;
             //targetNode.nextSibling.appendChild(listEl);
-            const mealsContainer = mealNode.querySelector("#recipesContainer");
+            const recipesContainer = mealNode.querySelector("#recipesContainer");
             recipesContainer.appendChild(listEl);
         }
 
-        static deleteMeal(el) {  // wass recipe
+        
+        static deleteMeal(el) {
             if (el.classList.contains("delete")) {
                 el.parentElement.parentElement.remove();
             }
@@ -71,18 +72,25 @@
         static clearFields() {
             document.querySelector("#title").value = "";
             document.querySelector("#description").value = "";
-            document.querySelector("#ingredientItem").value = "";
+            document.querySelector("#recipeItem").value = "";
         }
 
-        
+        static hideRecipes() {
+            document.getElementById("recipes-group").style.display = "none";
+        }
+
+        static showRecipes(row) {
+            document.getElementById("recipes-group").style.display = "block";
+        }
+
         static hideMeals() {
             document.getElementById("meals-group").style.display = "none";
         }
-        
+
         static showMeals() {
             document.getElementById("meals-group").style.display = "block";
         }
-        
+
         static swapMealsAndRecipes() {
             if (document.getElementById("meals-group").style.display != "none") {
                 UI.hideMeals();
@@ -92,43 +100,43 @@
                 UI.hideRecipes();
             }
         }
-        
+
         static showRecipesHideMeals() {
             UI.hideMeals();
             UI.showRecipes();
         }
-        
+
         static showMealsHideRecipes() {
             UI.showMeals();
             UI.hideRecipes();
         }
-        
+
         //HELPER function - getMealID
         static getMealID() {
             const mealID = document.getElementById("mealID").value;
             return mealID;
         }
-        
+
         static getMealNodeFromID(mealID) {
             //traverse "meal-list" -> children in a loop. look for text contents of 1st child
-        
+
             const mealList = document.getElementById("meal-list").childNodes;
             var matchedNode;
             for (var i = 0; i < mealList.length; i++) {
-        
+
                 if (mealList[i].firstChild.nextSibling.textContent == mealID) {
                     console.log("Match found!  " + mealID);
                     matchedNode = mealList[i];
                     break;
                 }
             }
-        
+
             return matchedNode;
         }
-        }
-        
-        // Store Class: Handles Storage
-        class Store {
+    }
+
+    // Store Class: Handles Storage
+    class Store {
         static getMeals() {
             //TODO: add ajax instad of local storage
             let meals;
@@ -137,85 +145,85 @@
             } else {
                 meals = JSON.parse(localStorage.getItem("meals"));
             }
-        
+
             return meals;
         }
-        
+
         static addMeal(meal) {
             //TODO: add ajax instad of local storage
             const meals = Store.getMeals();
             meals.push(meal);
             localStorage.setItem("meals", JSON.stringify(meals));
         }
-        
+
         static removeMeal(item) {
             //TODO: add ajax instad of local storage
             const meals = Store.getMeals();
-        
+
             meals.forEach((meal, index) => {
                 if (meal.title === item) {
                     meals.splice(index, 1); //starting position and then delete count
                 }
             });
-        
+
             localStorage.setItem("meals", JSON.stringify(meals));
         }
-        
+
         static addRecipe(recipe, meal) {
             //TODO. AJAX call to controller - add the recipe to meal
-        
+
         }
-        
-        
+
+
         static removeRecipe(recipe, meal) {
             //TODO. AJAX call to controller - remove the recipe from meal
-        
+
         }
-        
-        
+
+
         static getRecipes(meal) {
             //TODO. AJAX call to controller - get the recipe stored for meal
-        
+
         }
-        
-        }
-        // Event: Display Meals
-        document.addEventListener("DOMContentLoaded", UI.displayMeals);
-        
-        
-        //Event: Back to Meals (from recipes)
-        document
+
+    }
+    // Event: Display Meals
+    document.addEventListener("DOMContentLoaded", UI.displayMeals);
+
+
+    //Event: Back to Meals (from recipes)
+    document
         .querySelector("#show-meals-button")
         .addEventListener("click", UI.showMealsHideRecipes);
-        
-        // Event: Add an Recipe
-        document.querySelector("#addRecipe").addEventListener("click", (e) => {
+
+    // Event: Add an Recipe
+    document.querySelector("#addRecipe").addEventListener("click", (e) => {
         const recipeItem = document.querySelector("#recipeItem").value;
         const mealID = UI.getMealID();
         const mealNode = UI.getMealNodeFromID(mealID);
-        
+
         // Add Recipe to UI
         UI.addRecipeToList(recipeItem, mealNode);
-        
+
         // Add Recipe to store
         Store.addRecipe(recipeItem);
-        
+
         // Show success message
         UI.showAlert("Recipe Added", "success");
-        
+
         // Clear fields
         UI.clearFields();
-        });
-        
-        // Event: Add a Meal
-        document.querySelector("#next").addEventListener("click", (e) => {
+    });
+
+    // Event: Add a Meal
+    document.querySelector("#next").addEventListener("click", (e) => {
         // Prevent actual submit
-        
+
         e.preventDefault();
         // Get form values
         const title = document.querySelector("#title").value;
         const description = document.querySelector("#description").value;
-        
+
         // Validate
         if (title === "" || description === "") {
             UI.showAlert("Please fill in all fields", "danger");
@@ -224,32 +232,32 @@
             const meal = new Meal(title, description);
             // Add Meal to UI
             UI.addMealToList(meal);
-        
+
             // Add Meal to store
             Store.addMeal(meal);
-        
+
             // Show success message
             UI.showAlert("Meal Added", "success");
-        
+
             // Clear fields
             UI.clearFields();
         }
-        });
-        
-        // Event: Remove a Meal OR add Recipes to Meal
-        document.querySelector("#meal-list").addEventListener("click", (e) => {
+    });
+
+    // Event: Remove a Meal OR add Recipes to Meal
+    document.querySelector("#meal-list").addEventListener("click", (e) => {
         row = e.target.parentElement.parentElement;
         titleFromRow = row.getElementsByTagName("td")[0].textContent;
-        
+
         if (e.target.id == "killMeal") {
             // Remove Meal from UI
             UI.deleteMeal(e.target);
-        
+
             // Remove Meal from store
-        
+
             Store.removeMeal(titleFromRow);
             //TODO make sure removeMeal also removes the recipes and the join between meals and recipes
-        
+
             // Show success message
             UI.showAlert("Meal Removed", "success");
         } else {
@@ -257,7 +265,6 @@
             UI.showRecipesHideMeals();
             //update the form's hidden field so we know which row was passed in...
             document.getElementById("mealID").value = titleFromRow;
-        
+
         }
-        });
-        
+    });
