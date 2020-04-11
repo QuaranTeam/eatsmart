@@ -13,7 +13,7 @@
     class UI {
         static displayMeals() {
             UI.hideRecipes();
-            const meals = Store.getMealss();
+            const meals = Store.getMeals();
 
             meals.forEach((meal) => UI.addMealToList(meal));
         }
