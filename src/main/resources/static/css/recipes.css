@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
 
 body {
-    background: url(../images/nine-30.jpg);
+    background: url(../images/nine-30-flip.jpg)no-repeat center center fixed;
+    height: 100%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: -1;
     overflow: scroll;
 }
 
@@ -14,26 +17,27 @@ h1 {
     text-align: center;
 }
 
-.container .recipes  {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  align-content: center;
-  justify-content: center;
-  width: 50%;
-  cursor: pointer;
-}
-#recipe-form {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  align-content: center;
-  justify-content: center;
-  width: 50%;
-  cursor: pointer;
+.container .recipes {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    cursor: pointer;
 }
 
-  
+#recipe-form {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    cursor: pointer;
+}
+
+
 .container button {
     background-color: #333333;
     border: none;
@@ -44,7 +48,8 @@ h1 {
     cursor: pointer;
     font-family: 'Sen', sans-serif;
 }
-.form-control{
+
+.form-control {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -58,12 +63,18 @@ h1 {
     border: 1px solid #ced4da;
     /* border-radius: 0.25rem; */
 }
-button, input {
+
+button,
+input {
     overflow: visible;
 
 }
 
-input, button, select, optgroup, textarea {
+input,
+button,
+select,
+optgroup,
+textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
@@ -80,19 +91,25 @@ input, button, select, optgroup, textarea {
     cursor: pointer;
     font-family: 'Sen', sans-serif;
     margin: 30px auto;
-   
+
 }
 
 .container button:hover {
     background: #12CB67;
 }
-.btn:hover{
+
+.btn:hover {
+    background: #12CB67;
+}
+
+#addIngredients.btn:hover, #killRecipe.btn:hover {
     background: #12CB67;
 }
 
 .button-row {
     margin: 30px auto;
 }
+
 .table-striped {
     list-style-type: none;
     padding: 0;
@@ -101,7 +118,8 @@ input, button, select, optgroup, textarea {
     justify-content: center;
     width: 50%;
 }
-#addIngredients{
+
+#addIngredients {
     background-color: #ff9966;
     text-decoration: none;
     padding: 12px;
@@ -109,12 +127,13 @@ input, button, select, optgroup, textarea {
     width: 100%;
     border: none;
 }
+
 #killRecipe {
     background-color: #ff9966;
     text-decoration: none;
     padding: 12px;
-
 }
+
 #recipeID {
     width: 100%;
 
@@ -122,7 +141,7 @@ input, button, select, optgroup, textarea {
 
 
 .collapsible div {
- margin: auto;
+    margin: auto;
 }
 
 .collapsible {
@@ -142,9 +161,11 @@ input, button, select, optgroup, textarea {
 
 
 }
+
 .active .collapsible:hover {
     background-color: #CAEDDA;
 }
+
 .collapsible:after {
     content: '\002B';
     color: white;
@@ -152,7 +173,8 @@ input, button, select, optgroup, textarea {
     float: right;
     margin-right: 5px;
 }
-.active:hover{
+
+.active:hover {
     content: "\2212"
 }
 
@@ -167,13 +189,14 @@ input, button, select, optgroup, textarea {
 
 
 .button-row {
-  align-content: center;
-  justify-content: center;
-  
+    align-content: center;
+    justify-content: center;
+
 
 }
+
 .button:hover {
-  background: #12CB67;
+    background: #12CB67;
 
 }
 
@@ -186,16 +209,17 @@ footer {
     padding-top: 0.5em;
     height: 30px;
     text-align: center;
-    position:fixed;
-    width:100%;
-    bottom:0px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 
-  }
-  footer a {
-      text-decoration: none;
-      color: #333;
+}
 
-  }
+footer a {
+    text-decoration: none;
+    color: #333;
+
+}
 
 footer a:hover {
     font-weight: bolder;

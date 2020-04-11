@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eatSmart Meals</title>
+    
+    <!--for production-->
     <link rel="stylesheet" href="/css/navBar.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/meals.css">
     <link rel="stylesheet" href="/css/modal.css">
+
+    <!--for styling-->
+    <!-- <link rel="stylesheet" href="../static/css/navBar.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/meals.css">
+    <link rel="stylesheet" href="../static/css/modal.css"> -->
+
 </head>
 
 <body>
@@ -20,22 +29,49 @@
             <li><a href="/meals">My Meals</a></li>
             <li><a href="/calendar">Calendar</a></li>
             <li><a href="/team-page">About Us</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/login">Login</a>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
-    <!-- Kelli's code below -->
-    <div class="container">
-        <div class="meals">
-
+    <div class="container">        
             <h1>Meals</h1>
 
-            <ul>
+            <form id="meal-form"> <!--change to "meal-form"-->
+                <div id="meals-group">
+                    <div class="form-group">
+                        <label for="title">Meal Name</label>
+                        <input type="text" id="title" class="form-control" autocomplete="off"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" class="form-control" />
+                    </div>
+                    <input type="button" id="next" value="Add Meal" class="btn btn-primary btn-block"/>
+                    <input type="button" id="grocery-button" value="Grocery List" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group" id="recipes-group">
+                    <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
+                    <br />
+                    <label for="recipeItem">Recipes</label>
+                    <input type="text" list="items" id="recipeItem" class="form-control" />
+    
+                    <input type="hidden" id="mealID" value="" />
+                    <br /><input type="button" id="addRecipe" value="Add Recipe"
+                        class="btn btn-primary btn-block" />
+                </div>
 
-                <li class="collapsible" th:if="${recipesModel.size()!=0}" th:each="recipe: ${recipesModel}">
-                    <input class="recipeId" name="id" type="hidden" th:value="${recipe.id}" />
 
-                    <a th:href="|/recipe/${recipe.id}|" th:text="${recipe.name}">Meal name here</a>
+            <!-- <ul>
+
+                <li class="collapsible" th:if="${mealsModel.size()!=0}" th:each="meal: ${mealsModel}">
+                    <input class="mealId" name="id" type="hidden" th:value="${meal.id}" />
+
+                    <a th:href="|/meal/${meal.id}|" th:text="${meal.name}">Meal name here</a>
                     <span class="close">&times;</span>
                 </li>
                 <div class="meal-content">
@@ -53,6 +89,7 @@
                 </li>
                 <div class="meal-content">
                     <p>Meal content here...</p>
+                    <p>Meal content here...</p>
                 </div>
 
                 <li class="collapsible">This is another dummy meal<span class="close">&times;</span>
@@ -60,15 +97,28 @@
                 <div class="meal-content">
                     <p>Meal content here...</p>
                 </div>
-            </ul>
+            </ul> -->
 
-            <div class="button-row">
+            <!-- <div class="button-row">
                 <button id="mealModalButton" type="button" name="button">Add Meal</button>
                 <button id="groceryModalButton" type="button" name="button">Grocery List</button>
-            </div>
-        </div>
+            </div> -->
+       
+    
+    </form>
 
-    </div>
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Meal Name</th>
+                <th>Description</th>
+                <th>Recipes</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="meal-list"></tbody>
+    </table>
+
 
     <!--mealModal-->
     <div id="myMealModal" class="modal">
@@ -150,12 +200,19 @@
               </div>
           </form>
 -->
-
+</div>
     <footer>
         &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
     </footer>
 
 </body>
-<script src="/JavaScript/meals.js"></script>
+
+<!--for production-->
+<script src="/JavaScript/meals.js"></script> -->
+<script src="/JavaScript/addMeal.js"></script>
+
+<!--for styling-->
+<!-- <script src="../static/JavaScript/meals.js"></script>
+<script src="../static/JavaScript/addMeal.js"></script> -->
 
 </html>

@@ -7,16 +7,17 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
+    overflow: scroll;
 }
 
-.meals h1 {
-    margin-top: 1em;
+h1 {
+    margin-top: 4%;
     font-size: 48px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
-.meals {
+.container .meals {
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
@@ -25,6 +26,126 @@ body {
     width: 50%;
     cursor: pointer;
 }
+
+#meal-form {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    cursor: pointer;
+}
+
+
+.container button {
+    background-color: #333333;
+    border: none;
+    color: white;
+    padding: 18px;
+    font-size: 15px;
+    width: 49%;
+    cursor: pointer;
+    font-family: 'Sen', sans-serif;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    /* border-radius: 0.25rem; */
+}
+
+button,
+input {
+    overflow: visible;
+
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.btn {
+    background-color: #333333;
+    border: none;
+    color: white;
+    padding: 18px;
+    font-size: 15px;
+    width: 104.9%;
+    cursor: pointer;
+    font-family: 'Sen', sans-serif;
+    margin: 30px auto;
+
+}
+
+.container button:hover {
+    background: #12CB67;
+}
+
+.btn:hover {
+    background: #12CB67;
+}
+
+#addRecipes.btn:hover, #killMeal.btn:hover {
+    background: #12CB67;
+}
+
+.button-row {
+    margin: 30px auto;
+}
+
+.table-striped {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+}
+
+#addRecipes {
+    background-color: #ff9966;
+    text-decoration: none;
+    padding: 12px;
+    margin-right: 10px;
+    width: 100%;
+    border: none;
+}
+
+#killMeal {
+    background-color: #ff9966;
+    text-decoration: none;
+    padding: 12px;
+}
+
+
+#mealID {
+    width: 100%;
+
+}
+
+
+
+.collapsible div {
+    margin: auto;
+}
+
 
 /* collapsible meal items  */
 .collapsible {
