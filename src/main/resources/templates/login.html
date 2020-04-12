@@ -32,15 +32,17 @@
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <br>
-    <p th:if="${loginError}" class="error">Wrong userame or password</p>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <div class="error">
+          <p th:if="${loginError}">Wrong userame or password</p>
+    </div>
+    <input type="text" placeholder="Enter Username" name="username" required>
     <br>
     <span class="register"><a href="/register">New to site? Register here!</a></span>
     <br>
     <br>
     <label for="psw"><b>Password</b></label>
     <br>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
     <br>
     <span class="psw"><a href="#">Forgot password?</a></span>
     <br>

@@ -1,5 +1,8 @@
 package com.eatSmart.Controllers;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,8 @@ public class LoginRegisterController {
 	@Resource
 	private UserRepository userRepo;
 	
+	
+	
 	@RequestMapping("/login")
 	public String showLogin(){
 		return "login";	
@@ -28,18 +33,35 @@ public class LoginRegisterController {
 	    model.addAttribute("loginError", true);
 	    return "login";
 	 }
+	 
+	 
+	 @GetMapping("/user-home")
+	 public String loginSucessful(Model model) {
+		    model.addAttribute("loginSucess", true);
+		    return "homepage";
+		 }
+	 
+
+	 public void loggedIn(Model model) {
+		Iterable<User> user = userRepo.findAll();
+		if(user==null) {
+			model.addAttribute("userModel", true);
+		}
+		
+	 }
 	
 	
 
 	@RequestMapping("/login-user")
 	public String loginUser(String username, String password) {
 		User user = userRepo.findByUsername(username);
+		User userPassword = userRepo.findByPassword(password);
 		
-		if(user==null) {
+		if(user==null || userPassword==null) {
 			return"redirect:login-error";
 		}
 		
-		return "redirect:/";
+		return "redirect:/user-home";
 	}
 	
 	

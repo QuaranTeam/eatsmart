@@ -62,6 +62,10 @@ span.psw {
   padding-top: 16px;
 }
 
+div p{
+    color: red;
+}
+
 .error{
   color: red;
 }
