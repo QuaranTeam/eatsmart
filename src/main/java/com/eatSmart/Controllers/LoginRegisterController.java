@@ -44,6 +44,7 @@ public class LoginRegisterController {
 
 	 public void loggedIn(Model model) {
 		Iterable<User> user = userRepo.findAll();
+	
 		if(user==null) {
 			model.addAttribute("userModel", true);
 		}

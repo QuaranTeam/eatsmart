@@ -26,8 +26,6 @@ public class EatSmartController {
 
 		if(recipe.isPresent()) {
 			model.addAttribute("recipeModel",recipe.get());
-
-
 			return "recipe";
 		}
 
