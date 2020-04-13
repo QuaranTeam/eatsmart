@@ -10,11 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-<<<<<<< HEAD
-=======
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
->>>>>>> dev
+
 
 
 @Entity
