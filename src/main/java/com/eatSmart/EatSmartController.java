@@ -1,274 +1,130 @@
 package com.eatSmart;
 
-
-
 import java.util.Optional;
-
-
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
 
 @Controller
 
 public class EatSmartController {
 
-
-
 	@Resource
 
 	private RecipeRepository recipeRepo;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev
 	@Resource
 
 	private MealRepository mealRepo;
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> dev
-	@RequestMapping("/recipe")
-
-	public String findOneRecipe(@RequestParam(value="id")long id, Model model) throws RecipeNotFound {
-
-		Optional<Recipe> recipe = recipeRepo.findById(id);
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev
-		if(recipe.isPresent()) {
-
-			model.addAttribute("recipeModel",recipe.get());
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
-			return "recipe";
-
-		}
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev
-	 	throw new RecipeNotFound();
-
-
-
-<<<<<<< HEAD
-
-
-
-
-	}
-
-
 
 	@RequestMapping("/show-recipes")
 
-=======
-	}
-
-	@RequestMapping("/recipes")
->>>>>>> dev
 	public String findAllRecipes(Model model) {
 
 		model.addAttribute("recipesModel", recipeRepo.findAll());
 
-		return("recipes");
+		return ("recipes");
 
 	}
 
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
+	
+	@RequestMapping("/show-meals")
+	
+	public String findAllMeals(Model model) {
+		
+		model.addAttribute("mealsModel", mealRepo.findAll());
+		
+		return ("meals");
+		
+	}
+	
+	
+	@RequestMapping("/recipe")
+	
+	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
+		
+		Optional<Recipe> recipe = recipeRepo.findById(id);
+		
+		if (recipe.isPresent()) {
+			
+			model.addAttribute("recipeModel", recipe.get());
+			
+			return "recipe";
+			
+		}
+		
+		throw new RecipeNotFound();
+		
+	}
+	
+	
 	@RequestMapping("/meal")
 
-=======
-	@RequestMapping("/meal")
->>>>>>> dev
-	public String findOneMeal(@RequestParam(value="id")long id, Model model) throws RecipeNotFound {
-
-
+	public String findOneMeal(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
 
 		Optional<Meal> meal = mealRepo.findById(id);
 
-<<<<<<< HEAD
+		if (meal.isPresent()) {
 
+			model.addAttribute("mealModel", meal.get());
 
-=======
->>>>>>> dev
-		if(meal.isPresent()) {
-
-			model.addAttribute("mealModel",meal.get());
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 			return "meal";
 
 		}
 
-<<<<<<< HEAD
-
-
-	 	throw new RecipeNotFound();	
-
-
+		throw new RecipeNotFound();
 
 	}
 
 
 
+	@RequestMapping({ "/homepage", "", "/" })
 
-
-	@RequestMapping("/show-meals")
-
-=======
-	 	throw new RecipeNotFound();	
-
-	}
-
-
-	@RequestMapping("/meals")
->>>>>>> dev
-	public String findAllMeals(Model model) {
-
-		model.addAttribute("mealsModel", mealRepo.findAll());
-
-		return("meals");
-
-	}
-
-
-
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> dev
-	@RequestMapping({"/homepage", "", "/"})
-
-	public String showHomePage(){
-<<<<<<< HEAD
+	public String showHomePage() {
 
 		return "homepage";
 
+
 	}
 
-
-
-
-
-=======
-		return "homepage";
-	}
-
-
->>>>>>> dev
 	@RequestMapping("/team-page")
 
-	public String showTeamPage(){
-<<<<<<< HEAD
+	public String showTeamPage() {
 
 		return "team-page";
 
-=======
-		return "team-page";
->>>>>>> dev
 	}
 
 
-
-
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> dev
 	@RequestMapping("/calendar")
 
-	public String showCalendar(){
-<<<<<<< HEAD
+	public String showCalendar() {
 
 		return "calendar";
 
+
 	}
 
-
-
-
-
-=======
-		return "calendar";
-	}
-
-
->>>>>>> dev
 	@RequestMapping("myaccount")
 
-	public String showMyAccount(Model model){
-<<<<<<< HEAD
+	public String showMyAccount(Model model) {
 
 		return "myaccount";
 
-=======
-		return "myaccount";
->>>>>>> dev
+
 	}
 
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> dev
 	@RequestMapping("/add-meal")
 
-		public String addMeal(String mealName, String mealDescription, String recipeName, String recipeDescription) {
+	public String addMeal(String mealName, String mealDescription, String recipeName, String recipeDescription) {
 
 		Recipe recipe = recipeRepo.findByName(recipeName);
 
-		if(recipe==null) {
+		if (recipe == null) {
 
 			recipe = new Recipe(recipeName, recipeDescription);
 
@@ -278,53 +134,26 @@ public class EatSmartController {
 
 		Meal newMeal = mealRepo.findByName(mealName);
 
+		if (newMeal == null) {
 
-<<<<<<< HEAD
-
-
-
-		if(newMeal==null) {
-
-														 //Object
-
-=======
-		if(newMeal==null) {
-														 //Object
->>>>>>> dev
-			newMeal = new Meal(mealName, mealDescription,recipe);
+			// Object
+			newMeal = new Meal(mealName, mealDescription, recipe);
 
 			mealRepo.save(newMeal);
 
 		}
 
-<<<<<<< HEAD
+		// page refresh, no spaces
 
-
-=======
->>>>>>> dev
-			//page refresh, no spaces
-
-		return"redirect:/meals";
-
-<<<<<<< HEAD
-
+		return "redirect:/meals";
 
 	}
 
-
-
-
-
-=======
-	}
-
-
->>>>>>> dev
 	@RequestMapping("/delete-meal")
 
 	public String deleteMealByName(String mealName) {
 
-		if(mealRepo.findByName(mealName) != null) {
+		if (mealRepo.findByName(mealName) != null) {
 
 			Meal deletedMeal = mealRepo.findByName(mealName);
 
@@ -332,38 +161,19 @@ public class EatSmartController {
 
 		}
 
-<<<<<<< HEAD
+		// page refresh, no spaces
 
-
-=======
->>>>>>> dev
-				//page refresh, no spaces
-
-				return"redirect:/meals";
-
-
-<<<<<<< HEAD
-
-
+		return "redirect:/meals";
 
 	}
 
-
-
-
-
-=======
-	}
-
-
->>>>>>> dev
 	@RequestMapping("/add-recipe")
 
 	public String addRecipe(String recipeName, String recipeDescription, String ingredientName) {
 
 		Recipe recipe = recipeRepo.findByName(recipeName);
 
-		if(recipe==null) {
+		if (recipe == null) {
 
 			recipe = new Recipe(recipeName, recipeDescription);
 
@@ -371,24 +181,14 @@ public class EatSmartController {
 
 		}
 
-<<<<<<< HEAD
+		return "redirect:/recipes";
 
-
-		return"redirect:/recipes";
-
-
-
-=======
-		return"redirect:/recipes";
-
->>>>>>> dev
 	}
 
-
-
+	@RequestMapping("/delete-recipe")
 	public String deleteRecipeByName(String recipeName) {
 
-		if(recipeRepo.findByName(recipeName) != null) {
+		if (recipeRepo.findByName(recipeName) != null) {
 
 			Recipe deletedRecipe = recipeRepo.findByName(recipeName);
 
@@ -396,80 +196,20 @@ public class EatSmartController {
 
 		}
 
-<<<<<<< HEAD
+		// page refresh, no spaces
 
-
-=======
->>>>>>> dev
-				//page refresh, no spaces
-
-				return"redirect:/recipes";
-
-<<<<<<< HEAD
-
+		return "redirect:/recipes";
 
 	}
 
-
-
-
-
-=======
-	}
-
-
->>>>>>> dev
 	@RequestMapping("/sorted-meals")
 
-	public String sortCourses(Model model ) {
+	public String sortCourses(Model model) {
 
 		model.addAttribute("meals", mealRepo.findAllByOrderByNameAsc());
 
 		return "meals"; // returning temp instead of endpoint
 
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> dev
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-=======
-}
->>>>>>> dev
