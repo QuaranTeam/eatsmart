@@ -1,14 +1,20 @@
 package com.eatSmart;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+
+import static java.lang.String.format;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+<<<<<<< HEAD
+=======
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+>>>>>>> dev
 
 
 @Entity
@@ -20,7 +26,7 @@ public class Recipe {
 	private String name;
 	private String description;
 	
-	@JsonIgnore
+	
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
 	private Collection<Meal> meals;
 
@@ -43,8 +49,16 @@ public class Recipe {
 		return ingredients;
 	}
 	
+	public Collection<String> getMealsUrls() {
+		Collection<String> urls = new ArrayList<>();
+			for(Meal t: meals) {
+				urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
+			}
+			return urls;
+		}
+	
 	//default constructor
-	public Recipe() {
+	public Recipe(String recipeName, String recipeDescription, Meal meal) {
 	}
 	
 	public Recipe(String name, String description, Ingredient...ingredients) {
@@ -73,10 +87,7 @@ public class Recipe {
 			return false;
 		return true;
 	}
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
+	
 	
 	
 }

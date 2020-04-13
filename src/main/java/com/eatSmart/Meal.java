@@ -66,8 +66,5 @@ public class Meal {
 			return false;
 		return true;
 	}
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
+	
 }

@@ -38,7 +38,6 @@ public class JPAMappingTest {
 //	@Resource IngredientRepository ingredientRepo;
 	
 	
-
 	@Test
 	public void shouldSaveandLoadRecipe() {
 		Recipe recipe = recipeRepo.save(new Recipe("name","description"));
@@ -49,7 +48,7 @@ public class JPAMappingTest {
 		
 		Optional<Recipe> result = recipeRepo.findById(recipeId);
 		recipe = result.get();
-		assertThat(recipe.getName(),is("name"));
+		assertThat(recipe.getRecipeName(),is("name"));
 		
 		
 	}
@@ -78,11 +77,10 @@ public class JPAMappingTest {
 		
 		Optional<Meal> result = mealRepo.findById(mealId);
 		meal = result.get();
-		assertThat(meal.getName(),is("name"));
+		assertThat(meal.getMealName(),is("name"));
 		
 		
 	}
-	
 	
 	
 	@Test
@@ -96,9 +94,7 @@ public class JPAMappingTest {
 		assertThat(mealId, is(greaterThan(0L)));
 	}
 	
-	
-	
-	
+
 	@Test
 	public void shouldEstablishMealToReviewRecipe(){
 		
@@ -119,8 +115,6 @@ public class JPAMappingTest {
 	}
 	
 	
-	
-	
 	@Test
 	public void shouldFindMealsForRecipe() {
 		Recipe recipeOne = recipeRepo.save(new Recipe("nameOne", "description"));
@@ -136,9 +130,6 @@ public class JPAMappingTest {
 		assertThat(mealForRecipe, containsInAnyOrder(meal));
 		
 	}
-	
-	
-	
 	
 	
 	@Test
