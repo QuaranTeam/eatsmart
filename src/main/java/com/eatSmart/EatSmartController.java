@@ -29,38 +29,54 @@ public class EatSmartController {
 
 	private RecipeRepository recipeRepo;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 	@Resource
 
 	private MealRepository mealRepo;
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> dev
 	@RequestMapping("/recipe")
 
 	public String findOneRecipe(@RequestParam(value="id")long id, Model model) throws RecipeNotFound {
 
 		Optional<Recipe> recipe = recipeRepo.findById(id);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 		if(recipe.isPresent()) {
 
 			model.addAttribute("recipeModel",recipe.get());
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 			return "recipe";
 
 		}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 	 	throw new RecipeNotFound();
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -71,6 +87,11 @@ public class EatSmartController {
 
 	@RequestMapping("/show-recipes")
 
+=======
+	}
+
+	@RequestMapping("/recipes")
+>>>>>>> dev
 	public String findAllRecipes(Model model) {
 
 		model.addAttribute("recipesModel", recipeRepo.findAll());
@@ -83,6 +104,7 @@ public class EatSmartController {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -91,22 +113,32 @@ public class EatSmartController {
 
 	@RequestMapping("/meal")
 
+=======
+	@RequestMapping("/meal")
+>>>>>>> dev
 	public String findOneMeal(@RequestParam(value="id")long id, Model model) throws RecipeNotFound {
 
 
 
 		Optional<Meal> meal = mealRepo.findById(id);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 		if(meal.isPresent()) {
 
 			model.addAttribute("mealModel",meal.get());
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 			return "meal";
 
 		}
 
+<<<<<<< HEAD
 
 
 	 	throw new RecipeNotFound();	
@@ -121,6 +153,14 @@ public class EatSmartController {
 
 	@RequestMapping("/show-meals")
 
+=======
+	 	throw new RecipeNotFound();	
+
+	}
+
+
+	@RequestMapping("/meals")
+>>>>>>> dev
 	public String findAllMeals(Model model) {
 
 		model.addAttribute("mealsModel", mealRepo.findAll());
@@ -131,13 +171,17 @@ public class EatSmartController {
 
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> dev
 	@RequestMapping({"/homepage", "", "/"})
 
 	public String showHomePage(){
+<<<<<<< HEAD
 
 		return "homepage";
 
@@ -147,25 +191,39 @@ public class EatSmartController {
 
 
 
+=======
+		return "homepage";
+	}
+
+
+>>>>>>> dev
 	@RequestMapping("/team-page")
 
 	public String showTeamPage(){
+<<<<<<< HEAD
 
 		return "team-page";
 
+=======
+		return "team-page";
+>>>>>>> dev
 	}
 
 
 
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> dev
 	@RequestMapping("/calendar")
 
 	public String showCalendar(){
+<<<<<<< HEAD
 
 		return "calendar";
 
@@ -175,22 +233,35 @@ public class EatSmartController {
 
 
 
+=======
+		return "calendar";
+	}
+
+
+>>>>>>> dev
 	@RequestMapping("myaccount")
 
 	public String showMyAccount(Model model){
+<<<<<<< HEAD
 
 		return "myaccount";
 
+=======
+		return "myaccount";
+>>>>>>> dev
 	}
 
 
 
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> dev
 	@RequestMapping("/add-meal")
 
 		public String addMeal(String mealName, String mealDescription, String recipeName, String recipeDescription) {
@@ -208,6 +279,7 @@ public class EatSmartController {
 		Meal newMeal = mealRepo.findByName(mealName);
 
 
+<<<<<<< HEAD
 
 
 
@@ -215,18 +287,26 @@ public class EatSmartController {
 
 														 //Object
 
+=======
+		if(newMeal==null) {
+														 //Object
+>>>>>>> dev
 			newMeal = new Meal(mealName, mealDescription,recipe);
 
 			mealRepo.save(newMeal);
 
 		}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 			//page refresh, no spaces
 
 		return"redirect:/meals";
 
+<<<<<<< HEAD
 
 
 	}
@@ -235,6 +315,11 @@ public class EatSmartController {
 
 
 
+=======
+	}
+
+
+>>>>>>> dev
 	@RequestMapping("/delete-meal")
 
 	public String deleteMealByName(String mealName) {
@@ -247,13 +332,17 @@ public class EatSmartController {
 
 		}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 				//page refresh, no spaces
 
 				return"redirect:/meals";
 
 
+<<<<<<< HEAD
 
 
 
@@ -263,6 +352,11 @@ public class EatSmartController {
 
 
 
+=======
+	}
+
+
+>>>>>>> dev
 	@RequestMapping("/add-recipe")
 
 	public String addRecipe(String recipeName, String recipeDescription, String ingredientName) {
@@ -277,12 +371,17 @@ public class EatSmartController {
 
 		}
 
+<<<<<<< HEAD
 
 
 		return"redirect:/recipes";
 
 
 
+=======
+		return"redirect:/recipes";
+
+>>>>>>> dev
 	}
 
 
@@ -297,12 +396,16 @@ public class EatSmartController {
 
 		}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 				//page refresh, no spaces
 
 				return"redirect:/recipes";
 
+<<<<<<< HEAD
 
 
 	}
@@ -311,6 +414,11 @@ public class EatSmartController {
 
 
 
+=======
+	}
+
+
+>>>>>>> dev
 	@RequestMapping("/sorted-meals")
 
 	public String sortCourses(Model model ) {
@@ -320,9 +428,12 @@ public class EatSmartController {
 		return "meals"; // returning temp instead of endpoint
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> dev
 	}
 
 
@@ -340,6 +451,7 @@ public class EatSmartController {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -358,3 +470,6 @@ public class EatSmartController {
 
 
 }
+=======
+}
+>>>>>>> dev
