@@ -14,4 +14,6 @@ public interface MealRepository extends CrudRepository<Meal, Long> {
 
 	Meal findAllByOrderByNameAsc();
 
+	Meal findByNameIgnoreCaseLike(String mealName);
+
 }

@@ -117,7 +117,7 @@ public class EatSmartControllerTest {
 	
 	@Test
 	public void shouldRemoveMealFromModelByName() {
-		String mealName = mealOne.getName();
+		String mealName = mealOne.getMealName();
 		when(mealRepo.findByName(mealName)).thenReturn(mealOne);
 		underTest.deleteMealByName(mealName);
 		verify(mealRepo).delete(mealOne);
@@ -132,9 +132,10 @@ public class EatSmartControllerTest {
 	public void shouldAddAdditionalRecipeToModel() {
 		String recipeName = "recipe name";
 		String recipeDescription = "recipe description";
+		String ingredientName = "ingredients";
 		Recipe newRecipe = recipeRepo.findByName(recipeName);
 		
-		underTest.addRecipe(recipeName,recipeDescription);
+		underTest.addRecipe(recipeName,recipeDescription,ingredientName);
 		
 		when(recipeRepo.save(newRecipe)).thenReturn(newRecipe);
 		
@@ -144,7 +145,7 @@ public class EatSmartControllerTest {
 	
 	@Test
 	public void shouldRemoveRecipeFromModelByName() {
-		String recipeName = recipeOne.getName();
+		String recipeName = recipeOne.getRecipeName();
 		when(recipeRepo.findByName(recipeName)).thenReturn(recipeOne);
 		underTest.deleteRecipeByName(recipeName);
 		verify(recipeRepo).delete(recipeOne);
