@@ -123,7 +123,7 @@ textarea {
     background-color: #ff9966;
     text-decoration: none;
     padding: 12px;
-    margin-right: 10px;
+    margin: 0px;
     width: 100%;
     border: none;
 }
@@ -137,6 +137,10 @@ textarea {
 #recipeID {
     width: 100%;
 
+}
+thead {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 
