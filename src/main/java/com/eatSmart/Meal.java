@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 @Entity
 public class Meal {
 	@Id
@@ -17,6 +18,11 @@ public class Meal {
 	
 	@ManyToMany
 	private Collection<Recipe> recipes;
+	
+	
+	@ManyToOne
+	private User user;
+	
 	//getters
 	public long getId() {
 		return id;
