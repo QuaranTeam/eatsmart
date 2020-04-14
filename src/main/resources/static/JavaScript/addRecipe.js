@@ -170,6 +170,8 @@
         static addIngredient(ingredient, recipe) {
             //TODO. AJAX call to controller - add the ingredient to recipe
 
+
+
         }
 
 
@@ -181,7 +183,21 @@
 
         static getIngredients(recipe) {
             //TODO. AJAX call to controller - get the ingredient stored for recipe
+            //kv    
+            let xhr = new XMLHttpRequest();
 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let response = JSON.parse(xhr.responseText);
+
+                    // call callback
+                    options.success(response);
+                }
+            };
+
+            xhr.open('GET', options.url, true);
+            xhr.send();
+            //
         }
 
     }
