@@ -40,17 +40,7 @@ public class LoginRegisterController {
 		    model.addAttribute("loginSucess", true);
 		    return "homepage";
 		 }
-	 
-
-	 public void loggedIn(Model model) {
-		Iterable<User> user = userRepo.findAll();
-	
-		if(user==null) {
-			model.addAttribute("userModel", true);
-		}
-		
-	 }
-	
+	 	
 	
 
 	@RequestMapping("/login-user")
