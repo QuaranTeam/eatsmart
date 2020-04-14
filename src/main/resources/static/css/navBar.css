@@ -19,13 +19,13 @@ nav p {
 }
 
 /* Right float for navigation options without switching order */
-nav ul {
+ul {
   float: right;
   padding-right: 50px;
 
 }
 
-nav ul li {
+ul li {
   float: left;
   list-style: none;
   position: relative;
@@ -47,7 +47,7 @@ nav ul li a:hover {
 
 }
  
-nav ul li ul {
+ul li ul {
   display: none;
   position: absolute;
   background-color: #333333;
