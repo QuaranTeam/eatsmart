@@ -1,8 +1,9 @@
     // Book Class: Represents a Recipe
     class Recipe {
-        constructor(title, description) {
+        constructor(title, description, id) {
             this.title = title;
             this.description = description;
+            this.id = id;
             //need ingredient collection here
             this.ingredients = [];
         }
@@ -147,11 +148,25 @@
             return recipes;
         }
 
-        static addRecipe(recipe) {
+        static addRecipe(recipe, callback) {
             //TODO: add ajax instad of local storage
-            const recipes = Store.getRecipes();
-            recipes.push(recipe);
-            localStorage.setItem("recipes", JSON.stringify(recipes));
+            // const recipes = Store.getRecipes();
+            // recipes.push(recipe);
+            // localStorage.setItem("recipes", JSON.stringify(recipes));
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    callback();
+                    //html changes -- how to show recipe is added      
+                }
+            };
+
+            xhr.open('POST', "/recipes", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(recipe));
+
         }
 
         static removeRecipe(item) {
@@ -169,8 +184,17 @@
 
         static addIngredient(ingredient, recipe) {
             //TODO. AJAX call to controller - add the ingredient to recipe
+            let xhr = new XMLHttpRequest();
 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    recipe.ingredients.push(ingredient); // push = add in js      
+                }
+            };
 
+            xhr.open('POST', "/recipes/" + recipe.id + "/ingredients", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(ingredient));
 
         }
 
@@ -183,21 +207,21 @@
 
         static getIngredients(recipe) {
             //TODO. AJAX call to controller - get the ingredient stored for recipe
-            //kv    
+
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText);
+                    let ingredients = JSON.parse(xhr.responseText);
 
-                    // call callback
-                    options.success(response);
+                    recipe.ingredients = ingredients; //sets ingredients to this recipe
+
                 }
             };
 
-            xhr.open('GET', options.url, true);
+            xhr.open("GET", "/recipes/" + recipe.id + "/ingredients", true);
             xhr.send();
-            //
+
         }
 
     }
@@ -248,13 +272,15 @@
             UI.addRecipeToList(recipe);
 
             // Add Recipe to store
-            Store.addRecipe(recipe);
+            Store.addRecipe(recipe, function () {
+                // Show success message
+                UI.showAlert("Recipe Added", "success");
 
-            // Show success message
-            UI.showAlert("Recipe Added", "success");
+                // Clear fields
+                UI.clearFields();  // now only works if this was successfully added to the server because it's a callback...?
+            });
 
-            // Clear fields
-            UI.clearFields();
+
         }
     });
 
