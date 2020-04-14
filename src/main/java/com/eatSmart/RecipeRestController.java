@@ -15,15 +15,33 @@ import java.util.Optional;
 public class RecipeRestController {
 
 	@Resource
+	private IngredientRepository ingredientRepo;
+	
+	@Resource
 	private RecipeRepository recipeRepo;
 	
 	@Resource
 	private MealRepository mealRepo;
 	
+	
 	@RequestMapping("")
 	public Iterable<Recipe> findAllRecipes() {
 		return recipeRepo.findAll();
 	}
+	
+
+	@RequestMapping("/{id}/ingredients")
+	public Iterable<Ingredient> findAllIngredients(@PathVariable long id) {
+		
+		Optional<Recipe> recipe = recipeRepo.findById(id);
+		
+		Collection<Ingredient> ingredients = recipe.get().getIngredients();
+				
+		return ingredients;
+	}
+	
+	
+	
 	
 	@RequestMapping("/{id}")
 	public Optional<Recipe> findOneRecipe(@PathVariable long id) {

@@ -1,427 +1,208 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>eatSmart Meals</title>
 
-
-
     <!--for production-->
-
     <link rel="stylesheet" href="/css/navBar.css">
-
     <link rel="stylesheet" href="/css/styles.css">
-
     <link rel="stylesheet" href="/css/meals.css">
-
     <link rel="stylesheet" href="/css/modal.css">
 
-
-
     <!--for styling-->
-
     <!-- <link rel="stylesheet" href="../static/css/navBar.css">
-
     <link rel="stylesheet" href="../static/css/styles.css">
-
     <link rel="stylesheet" href="../static/css/meals.css">
-
     <link rel="stylesheet" href="../static/css/modal.css"> -->
-
-
 
 </head>
 
-
-
 <body>
-
     <nav>
-
-        <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a>
-
-        </p>
+        <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
 
         <ul>
-
             <li><a href="/show-recipes">My Recipes</a></li>
-
             <li><a href="/show-meals">My Meals</a></li>
-
             <li><a href="/calendar">Calendar</a></li>
-
             <li><a href="/team-page">About Us</a></li>
-
-              <li><a href="/login">Logout</a></li>
-
-            </li>
-
+            <li><a href="/login">Logout</a></li>
         </ul>
 
     </nav>
 
-
-
     <div class="container">
-
-            <h1>Meals</h1>
-
-
-
-            <form id="meal-form"> <!--change to "meal-form"-->
-
-                <div id="meals-group">
-
-                    <div class="form-group">
-
-                        <label for="title">Meal Name</label>
-
-                        <input type="text" id="title" class="form-control" autocomplete="off"/>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="description">Description</label>
-
-                        <input type="text" id="description" class="form-control" />
-
-                    </div>
-
-                    <input type="button" id="next" value="Add Meal" class="btn btn-primary btn-block"/>
-
-                    <input type="button" id="grocery-button" value="Grocery List" class="btn btn-primary btn-block" />
-
+        <h1>Meals</h1>
+        <form id="meal-form">
+            <!--change to "meal-form"-->
+            <div id="meals-group">
+                <div class="form-group">
+                    <label for="title">Meal Name</label>
+                    <input type="text" id="title" class="form-control" autocomplete="off" />
                 </div>
 
-                <div class="form-group" id="recipes-group">
-
-                    <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
-
-                    <br />
-
-                    <label for="recipeItem">Recipes</label>
-
-                    <input type="text" list="items" id="recipeItem" class="form-control" />
-
-
-
-                    <input type="hidden" id="mealID" value="" />
-
-                    <br /><input type="button" id="addRecipe" value="Add Recipe"
-
-                        class="btn btn-primary btn-block" />
-
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" class="form-control" />
                 </div>
 
+                <input type="button" id="next" value="Add Meal" class="btn btn-primary btn-block" />
+                <input type="button" id="grocery-button" value="Grocery List" class="btn btn-primary btn-block" />
 
+            </div>
 
+            <div class="form-group" id="recipes-group">
+                <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
+                <br />
+                <label for="recipeItem">Recipes</label>
+                <input type="text" list="items" id="recipeItem" class="form-control" />
+                <input type="hidden" id="mealID" value="" />
 
+                <br /><input type="button" id="addRecipe" value="Add Recipe" class="btn btn-primary btn-block" />
+            </div>
+        </form>
 
             <!-- <ul>
-
-
-
                 <li class="collapsible" th:if="${mealsModel.size()!=0}" th:each="meal: ${mealsModel}">
-
                     <input class="mealId" name="id" type="hidden" th:value="${meal.id}" />
-
-
-
                     <a th:href="|/meal/${meal.id}|" th:text="${meal.name}">Meal name here</a>
-
                     <span class="close">&times;</span>
-
                 </li>
-
                 <div class="meal-content">
-
                     <p>Meal content here...</p>
-
                 </div>
-
-
-
                 <li class="collapsible">This is a dummy meal<span class="close">&times;</span>
-
-
-
                     <div class="meal-content">
-
                         <p>Meal content here...</p>
-
                     </div>
-
                 </li>
-
-
+                <li class="collapsible">This is another dummy meal<span class="close">&times;</span>
+                </li>
+                <div class="meal-content">
+                    <p>Meal content here...</p>
+                    <p>Meal content here...</p>
+                </div>
 
                 <li class="collapsible">This is another dummy meal<span class="close">&times;</span>
-
                 </li>
 
                 <div class="meal-content">
-
                     <p>Meal content here...</p>
-
-                    <p>Meal content here...</p>
-
                 </div>
-
-
-
-                <li class="collapsible">This is another dummy meal<span class="close">&times;</span>
-
-                </li>
-
-                <div class="meal-content">
-
-                    <p>Meal content here...</p>
-
-                </div>
-
             </ul> -->
 
-
-
             <!-- <div class="button-row">
-
                 <button id="mealModalButton" type="button" name="button">Add Meal</button>
-
                 <button id="groceryModalButton" type="button" name="button">Grocery List</button>
-
             </div> -->
 
+        
 
 
 
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Meal Name</th>
+                    <th>Description</th>
+                    <th>Recipes</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="meal-list"></tbody>
+        </table>
 
-    </form>
-
-
-
-    <table class="table-striped">
-
-        <thead>
-
-            <tr>
-
-                <th>Meal Name</th>
-
-                <th>Description</th>
-
-                <th>Recipes</th>
-
-                <th></th>
-
-            </tr>
-
-        </thead>
-
-        <tbody id="meal-list"></tbody>
-
-    </table>
-
-
-
-
-
-    <!--mealModal-->
-
-    <div id="myMealModal" class="modal">
-
-
-
-        <form method="POST">
-
-        <div class="modal-content">
-
-            <span class="close">&times;</span>
-
-            <h2>Add Meal</h2>
-
-            <br>
-
-            <label> Select Meal Name: </label>
-
-            <input type="text" name="mealName" />
-
-            <br>
-
-            <label> Select Recipe to add to Meal </label>
-
-            <input type="text" name="recipeName" />
-
-            <br>
-
-
-
+        <!--mealModal-->
+        <div id="myMealModal" class="modal">
+            <form method="POST">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Add Meal</h2>
+                    <br>
+                    <label> Select Meal Name: </label>
+                    <input type="text" name="mealName" />
+                    <br>
+                    <label> Select Recipe to add to Meal </label>
+                    <input type="text" name="recipeName" />
+                    <br>
+                </div>
+                <div class="save-button">
+                    <button type="button" name="button">Save Meal</button>
+                </div>
+            </form>
         </div>
 
-        <div class="save-button">
-
-            <button type="button" name="button">Save Meal</button>
-
-        </div>
-
-
-
-        </form>
-
-    </div>
-
-
-
-    <!--groceryModal-->
-
-    <div id="myGroceryModal" class="modal">
-
-
-
-        <form method="POST">
-
-        <div class="modal-content">
-
-            <span class="close">&times;</span>
-
-            <h2>My Grocery Listl</h2>
-
-            <ul>
-
-                <!--pull all Ingredients from Recipes that were saved to Meals and iterate thru them with a for each loop with thymeleaf-->
-
-                <li>Ingredient 1<span class="close">&times;</span></li>
-
-                <li>Ingredient 2<span class="close">&times;</span></li>
-
-                <li>Ingredient 3<span class="close">&times;</span></li>
-
-                <li>Ingredient 4<span class="close">&times;</span></li>
-
-            </ul>
-
-            <br>
-
-        </div>
-
-        <div class="print-button">
-
-            <button type="button" name="button">Print Grocery List</button>
-
-        </div>
-
-
-
-        </form>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <!--      <div class="container">
-
-          <div class="meals">
-
-              <h1>Meals</h1>
-
-              <ul class="meal-cards">
-
-                  <li th:if="${mealsModel.size() ==0}">No meals to show...Add one</li>
-
-                  <div th:each="meal: ${mealsModel}">
-
+        <!--groceryModal-->
+        <div id="myGroceryModal" class="modal">
+            <form method="POST">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>My Grocery Listl</h2>
                     <ul>
-
-                      <li >
-
-                        <a th:href="@{/meal(id=${meal.id})}" th:text="${meal.name}"></a>
-
-                      </li>
-
+                        <!--pull all Ingredients from Recipes that were saved to Meals and iterate thru them with a for each loop with thymeleaf-->
+                        <li>Ingredient 1<span class="close">&times;</span></li>
+                        <li>Ingredient 2<span class="close">&times;</span></li>
+                        <li>Ingredient 3<span class="close">&times;</span></li>
+                        <li>Ingredient 4<span class="close">&times;</span></li>
                     </ul>
+                    <br>
+                </div>
+                
+                <div class="print-button">
+                    <button type="button" name="button">Print Grocery List</button>
+                </div>
+            </form>
+        </div>
 
+        <!--      <div class="container">
+          <div class="meals">
+              <h1>Meals</h1>
+              <ul class="meal-cards">
+                  <li th:if="${mealsModel.size() ==0}">No meals to show...Add one</li>
+                  <div th:each="meal: ${mealsModel}">
+                    <ul>
+                     <li >
+                        <a th:href="@{/meal(id=${meal.id})}" th:text="${meal.name}"></a>
+                      </li>
+                    </ul>
                   </div>
-
                 </li>
-
       </div>
-
       <form method="POST">-->
 
+        <!--Match Controller-->
 
-
-    <!--Match Controller-->
-
-    <!--     <div>
-
+        <!--     <div>
                   <label> Enter a Meal Name: </label>
-
                   <input type="text" name="mealName" />
-
               </div>
-
               <div>
-
                   <label> Enter a Meal Description: </label>
-
                   <input type="text" name="mealDescription" />
-
               </div>
-
               <div>
-
               <button th:formaction="@{/add-meal}">Create Meal</button>
-
               </div>
-
           </form>
 
 -->
 
-</div>
+    </div>
 
     <footer>
-
         &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
-
     </footer>
-
-
 
 </body>
 
-
-
 <!--for production-->
-
 <script src="/JavaScript/meals.js"></script>
-
 <script src="/JavaScript/addMeal.js"></script>
 
-
-
 <!--for styling-->
-
 <!-- <script src="../static/JavaScript/meals.js"></script>
-
 <script src="../static/JavaScript/addMeal.js"></script> -->
-
-
 
 </html>
