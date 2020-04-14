@@ -26,7 +26,7 @@
       <li><a href="/show-meals">My Meals</a></li>
       <li><a href="/calendar">Calendar</a></li>
       <li><a href="/team-page">About Us</a></li>
-      <li><a href="/login">Login</a></li>
+      <li th:unless=${notLoggedIn}><a href="/login">Login</a></li> <li><a href="#">Logout</a></li>
 
 
     </ul>

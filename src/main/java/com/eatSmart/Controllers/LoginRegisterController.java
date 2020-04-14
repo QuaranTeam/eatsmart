@@ -42,14 +42,22 @@ public class LoginRegisterController {
 		 }
 	 
 
-	 public void loggedIn(Model model) {
-		Iterable<User> user = userRepo.findAll();
-	
-		if(user==null) {
-			model.addAttribute("userModel", true);
-		}
-		
+	 @GetMapping("/loggedIn")
+	  public void loggedIn(Model model) {
+	    if(userRepo.count()>=1) {
+	    	model.addAttribute("loggedIn", true);
+	    }
 	 }
+	 
+	 
+	 @GetMapping("/notLoggedIn")
+	  public void notLoggedin(Model model) {
+	    if(userRepo.count()<=0) {
+	    	model.addAttribute("notLoggedIn", true);
+	    }
+	 }
+	 
+	 
 	
 	
 
