@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
+
+body {
+    background: #CAEDDA;
+    font-family: 'Sen', sans-serif;
+}
+
+
+
+footer {
+    background: #CAEDDA;
+    color: #333;
+    padding-top: 0.5em;
+    height: 30px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+footer a{
+    text-decoration: none;   
+    color: #333;
+}
+
+
+footer a:hover {
+    font-weight: bolder;
+    color: #FF9966;
+}

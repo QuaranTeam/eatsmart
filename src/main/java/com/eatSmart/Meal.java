@@ -1,10 +1,13 @@
-package com.eatsmart;
+package com.eatSmart;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 @Entity
 public class Meal {
 	@Id
@@ -12,19 +15,25 @@ public class Meal {
 	private long id;
 	private String name;
 	private String description;
-	//need to make a Recipe class
+	
+	@ManyToMany
 	private Collection<Recipe> recipes;
+	
+	
+	@ManyToOne
+	private User user;
+	
 	//getters
 	public long getId() {
 		return id;
 	}
-	public String getName() {
+	public String getMealName() {
 		return name;
 	}
 	public String getDescription() {
 		return description;
 	}
-	//need to make a Recipe class
+
 	public Collection<Recipe> getRecipes(){
 		return recipes;
 	}
@@ -36,13 +45,12 @@ public class Meal {
 		this.description = description;
 		this.recipes = new HashSet<>(Arrays.asList(recipes));
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 	@Override
@@ -54,18 +62,9 @@ public class Meal {
 		if (getClass() != obj.getClass())
 			return false;
 		Meal other = (Meal) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
 		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
+	
 }
