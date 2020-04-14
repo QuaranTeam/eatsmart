@@ -143,6 +143,77 @@ thead {
     padding-bottom: 10px;
 }
 
+.alert{
+    justify-content: center;
+    text-align: center;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem
+}
+
+.alert-heading {
+    color: inherit
+}
+
+.alert-link {
+    font-weight: 700
+}
+
+.alert-dismissible {
+    padding-right: 4rem
+}
+
+
+.alert-success {
+    color: #125d28;
+    background-color: #d3f0db;
+    border-color: #c1e9cd
+}
+
+.alert-success hr {
+    border-top-color: #aee2be
+}
+
+.alert-success .alert-link {
+    color: #0a3216
+}
+
+.alert-info {
+    color: #1b3550;
+    background-color: #d6e0eb;
+    border-color: #c6d4e2
+}
+
+.alert-info hr {
+    border-top-color: #b5c7d9
+}
+
+.alert-info .alert-link {
+    color: #0e1c2a
+}
+
+.alert-warning {
+    color: #7f7813;
+    background-color: #fdfad3;
+    border-color: #fcf8c2
+}
+
+.alert-warning hr {
+    border-top-color: #fbf5aa
+}
+
+
+.alert-danger {
+    color: #7f3f00;
+    background-color: #fde4cc;
+    border-color: #fcdab8
+}
+
 
 .collapsible div {
     margin: auto;
