@@ -60,7 +60,7 @@
 
             <li><a href="/team-page">About Us</a></li>
 
-              <li><a href="/login">Logout</a></li>
+            <li><a href="/login">Logout</a></li>
 
             </li>
 
@@ -72,55 +72,54 @@
 
     <div class="container">
 
-            <h1>Meals</h1>
+        <h1>Meals</h1>
 
 
 
-            <form id="meal-form"> <!--change to "meal-form"-->
+        <form id="meal-form">
+            <!--change to "meal-form"-->
 
-                <div id="meals-group">
+            <div id="meals-group">
 
-                    <div class="form-group">
+                <div class="form-group">
 
-                        <label for="title">Meal Name</label>
+                    <label for="title">Meal Name</label>
 
-                        <input type="text" id="title" class="form-control" autocomplete="off"/>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="description">Description</label>
-
-                        <input type="text" id="description" class="form-control" />
-
-                    </div>
-
-                    <input type="button" id="next" value="Add Meal" class="btn btn-primary btn-block"/>
-
-                    <input type="button" id="grocery-button" value="Grocery List" class="btn btn-primary btn-block" />
+                    <input type="text" id="title" class="form-control" autocomplete="off" />
 
                 </div>
 
-                <div class="form-group" id="recipes-group">
+                <div class="form-group">
 
-                    <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
+                    <label for="description">Description</label>
 
-                    <br />
-
-                    <label for="recipeItem">Recipes</label>
-
-                    <input type="text" list="items" id="recipeItem" class="form-control" />
-
-
-
-                    <input type="hidden" id="mealID" value="" />
-
-                    <br /><input type="button" id="addRecipe" value="Add Recipe"
-
-                        class="btn btn-primary btn-block" />
+                    <input type="text" id="description" class="form-control" />
 
                 </div>
+
+                <input type="button" id="next" value="Add Meal" class="btn btn-primary btn-block" />
+
+                <input type="button" id="grocery-button" value="Grocery List" class="btn btn-primary btn-block" />
+
+            </div>
+
+            <div class="form-group" id="recipes-group">
+
+                <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
+
+                <br />
+
+                <label for="recipeItem">Recipes</label>
+
+                <input type="text" list="items" id="recipeItem" class="form-control" />
+
+
+
+                <input type="hidden" id="mealID" value="" />
+
+                <br /><input type="button" id="addRecipe" value="Add Recipe" class="btn btn-primary btn-block" />
+
+            </div>
 
 
 
@@ -204,125 +203,128 @@
 
 
 
-    </form>
-
-
-
-    <table class="table-striped">
-
-        <thead>
-
-            <tr>
-
-                <th>Meal Name</th>
-
-                <th>Description</th>
-
-                <th>Recipes</th>
-
-                <th></th>
-
-            </tr>
-
-        </thead>
-
-        <tbody id="meal-list"></tbody>
-
-    </table>
-
-
-
-
-
-    <!--mealModal-->
-
-    <div id="myMealModal" class="modal">
-
-
-
-        <form method="POST">
-
-        <div class="modal-content">
-
-            <span class="close">&times;</span>
-
-            <h2>Add Meal</h2>
-
-            <br>
-
-            <label> Select Meal Name: </label>
-
-            <input type="text" name="mealName" />
-
-            <br>
-
-            <label> Select Recipe to add to Meal </label>
-
-            <input type="text" name="recipeName" />
-
-            <br>
-
-
-
-        </div>
-
-        <div class="save-button">
-
-            <button type="button" name="button">Save Meal</button>
-
-        </div>
-
-
-
         </form>
 
-    </div>
+
+
+        <table class="table-striped">
+
+            <thead>
+
+                <tr>
+
+                    <th>Meal Name</th>
+
+                    <th>Description</th>
+
+                    <th>Recipes</th>
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="meal-list"></tbody>
+
+        </table>
 
 
 
-    <!--groceryModal-->
-
-    <div id="myGroceryModal" class="modal">
 
 
+        <!--mealModal-->
 
-        <form method="POST">
+        <div id="myMealModal" class="modal">
 
-        <div class="modal-content">
 
-            <span class="close">&times;</span>
 
-            <h2>My Grocery Listl</h2>
+            <form method="POST">
 
-            <ul>
+                <div class="modal-content">
 
-                <!--pull all Ingredients from Recipes that were saved to Meals and iterate thru them with a for each loop with thymeleaf-->
+                    <span class="close">&times;</span>
 
-                <li>Ingredient 1<span class="close">&times;</span></li>
+                    <h2>Add Meal</h2>
 
-                <li>Ingredient 2<span class="close">&times;</span></li>
+                    <br>
 
-                <li>Ingredient 3<span class="close">&times;</span></li>
+                    <label> Select Meal Name: </label>
 
-                <li>Ingredient 4<span class="close">&times;</span></li>
+                    <input type="text" name="mealName" />
 
-            </ul>
+                    <br>
 
-            <br>
+                    <label> Select Recipe to add to Meal </label>
+
+                    <input type="text" name="recipeName" />
+
+                    <br>
+
+
+
+                </div>
+
+                <div class="save-button">
+
+                    <button type="button" name="button">Save Meal</button>
+
+                </div>
+
+
+
+            </form>
 
         </div>
 
-        <div class="print-button">
 
-            <button type="button" name="button">Print Grocery List</button>
+
+        <!--groceryModal-->
+
+        <div id="myGroceryModal" class="modal">
+
+
+
+            <form method="POST">
+
+                <div class="modal-content">
+
+                    <span class="close">&times;</span>
+
+                    <h2>My Grocery Listl</h2>
+
+                    <ul>
+
+                        <!--pull all Ingredients from Recipes that were saved to Meals and iterate thru them with a for each loop with thymeleaf-->
+
+                        <li>Ingredient 1<span class="close">&times;</span></li>
+
+                        <li>Ingredient 2<span class="close">&times;</span></li>
+
+                        <li>Ingredient 3<span class="close">&times;</span></li>
+
+                        <li>Ingredient 4<span class="close">&times;</span></li>
+
+                    </ul>
+
+                    <br>
+
+                </div>
+
+                <div class="print-button">
+
+                    <button type="button" name="button">Print Grocery List</button>
+
+                </div>
+
+
+
+            </form>
 
         </div>
 
 
 
-        </form>
-
-    </div>
 
 
 
@@ -331,10 +333,7 @@
 
 
 
-
-
-
-    <!--      <div class="container">
+        <!--      <div class="container">
 
           <div class="meals">
 
@@ -366,9 +365,9 @@
 
 
 
-    <!--Match Controller-->
+        <!--Match Controller-->
 
-    <!--     <div>
+        <!--     <div>
 
                   <label> Enter a Meal Name: </label>
 
@@ -394,7 +393,7 @@
 
 -->
 
-</div>
+    </div>
 
     <footer>
 
