@@ -40,25 +40,7 @@ public class LoginRegisterController {
 		    model.addAttribute("loginSucess", true);
 		    return "homepage";
 		 }
-	 
-
-	 @GetMapping("/loggedIn")
-	  public void loggedIn(Model model) {
-	    if(userRepo.count()>=1) {
-	    	model.addAttribute("loggedIn", true);
-	    }
-	 }
-	 
-	 
-	 @GetMapping("/notLoggedIn")
-	  public void notLoggedin(Model model) {
-	    if(userRepo.count()<=0) {
-	    	model.addAttribute("notLoggedIn", true);
-	    }
-	 }
-	 
-	 
-	
+	 	
 	
 
 	@RequestMapping("/login-user")
