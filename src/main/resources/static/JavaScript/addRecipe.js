@@ -138,7 +138,7 @@
     class Store {
         static getRecipes() {
             //TODO: add ajax instad of local storage
-            // let recipes;
+            let recipes;
             // if (localStorage.getItem("recipes") === null) {
             //     recipes = [];
             // } else {
