@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+/* @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
 
 $device-width: 54vh;
 $device-height: 96vh;
@@ -138,7 +138,7 @@ $colors: (
       &.-december {
         @extend %active-month;
       }
-  }
+  } */
   
   .cal-app {
     background: linear-gradient(shadows(3, true));
@@ -147,7 +147,7 @@ $colors: (
   .cal-scene.-calendar:before {
     box-shadow: shadows(3);
   }
-}
+/* }
 
 [id="nov-week-2"]:target ~ .cal-device {
   .cal-month {
@@ -165,7 +165,7 @@ $colors: (
         @extend %active-month;
       }
   }
-  
+   */
   .cal-scene.-calendar:before {
     box-shadow: shadows(4);
   }
@@ -173,12 +173,12 @@ $colors: (
   .cal-app {
     background: linear-gradient(shadows(4, true));
   }
-}
+/* }
 
 [id="schedule"]:target ~ .cal-device {
   .cal-bar .-schedule {
     opacity: 1;
-  }
+  } */
   
   .cal-bar .-calendar {
     opacity: 0;
@@ -189,7 +189,7 @@ $colors: (
     z-index: 2;
   }
   
-  %schedule-text {
+  /* %schedule-text {
     transform: translateX(0);
   }
   
@@ -197,12 +197,13 @@ $colors: (
     .cal-item:nth-child(#{$i}) %schedule-text {
       transition-delay: 0.06s * ($i - 1);
     }
-  }
+  } */
   
   .cal-scene.-calendar {
-    &, * {
+    /* &,  */
+    * {
       transition-delay: $duration;
-    }
+    /* } */
   }
 }
 
@@ -263,7 +264,7 @@ $colors: (
   left: 0;
   overflow: hidden;
   
-  &.-calendar {
+  /* &.-calendar {
     &:before {
       content: '';
       display: block;
@@ -275,12 +276,12 @@ $colors: (
       box-shadow: shadows();
       transition: box-shadow $duration $easing;
     }
-  }
-  
+  } */
+/*   
   &.-schedule {
     z-index: -1;
     opacity: 0;
-  }
+  } */
 }
 
 %inactive-month {
