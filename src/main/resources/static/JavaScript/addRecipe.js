@@ -138,14 +138,36 @@
     class Store {
         static getRecipes() {
             //TODO: add ajax instad of local storage
-            let recipes;
-            if (localStorage.getItem("recipes") === null) {
-                recipes = [];
-            } else {
-                recipes = JSON.parse(localStorage.getItem("recipes"));
-            }
+            // let recipes;
+            // if (localStorage.getItem("recipes") === null) {
+            //     recipes = [];
+            // } else {
+            //     recipes = JSON.parse(localStorage.getItem("recipes"));
+            // }
 
-            return recipes;
+            // return recipes;
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let recipes = JSON.parse(xhr.responseText);
+
+                    console.log(recipes);
+
+                    recipes = [];
+
+                } else {
+                        recipes = getItem("recipes")); //????  Get from RecipeRepo???
+                    }
+        
+                
+            };
+
+            xhr.open("GET", "/recipes/" + recipe.id + "/ingredients", true);
+            xhr.send();
+
+
         }
 
         static addRecipe(recipe, callback) {
