@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import courses.models.Course;
-import courses.models.Topic;
-
 import java.util.Collection;
 import java.util.Optional;
 

@@ -208,7 +208,7 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     //recipe.ingredients.push(ingredient); // push = add in js      
-                    console.log("Ingredient was added");
+                    console.log("Recipe was removed");
                     callback();
                 }
             };
