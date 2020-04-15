@@ -52,12 +52,14 @@ public class RecipeRestController {
 	public Ingredient addIngredient(@PathVariable String name, @RequestBody String ingredientName) {
 
 		Ingredient ingredient = new Ingredient(ingredientName, 1);
-
+		ingredientRepo.save(ingredient);
+		
 		Recipe recipe = recipeRepo.findByName(name);
 
 		recipe.getIngredients().add(ingredient);
+		ingredient.addRecipe(recipe);
 		recipeRepo.save(recipe);
-
+		
 		return ingredient;
 
 	}

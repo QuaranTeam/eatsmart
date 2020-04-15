@@ -220,7 +220,7 @@
 
             xhr.open('POST', "/recipes/" + recipeName + "/ingredients", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(ingredient));
+            xhr.send(ingredient);   //was already a string...don't need to stringify
 
         }
 

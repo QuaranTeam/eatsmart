@@ -1,6 +1,7 @@
 package com.eatSmart;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -18,10 +19,11 @@ public class Ingredient {
 	private long id;
 	private String name;
 	private int amount;
-
+	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "ingredients")
-	private Collection <Recipe> recipe;
+	private Collection <Recipe> recipe = new ArrayList<Recipe>();
+	
 
 	public String getIngredientName() {
 		return name;
@@ -30,6 +32,11 @@ public class Ingredient {
 		return amount;
 	}
 
+	public void addRecipe(Recipe recipe) {
+		this.recipe.add(recipe);
+	}
+	
+	
 	public Ingredient() {
 
 	}
