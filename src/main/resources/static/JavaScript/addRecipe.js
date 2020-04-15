@@ -1,3 +1,5 @@
+    let recipes = []; //lets us use the variable recipes throughout the whole page
+
     // Book Class: Represents a Recipe
     class Recipe {
         constructor(title, description, id) {
@@ -13,9 +15,12 @@
     class UI {
         static displayRecipes() {
             UI.hideIngredients();
-            const recipes = Store.getRecipes();
+            Store.getRecipes(function(results) {                                          // took aout recipes becasue it's global now
+                
+                results.forEach((recipe) => UI.addRecipeToList(recipe));                  //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
+                
+            }); 
 
-            recipes.forEach((recipe) => UI.addRecipeToList(recipe));
         }
 
         static addRecipeToList(recipe) {
@@ -136,38 +141,32 @@
 
     // Store Class: Handles Storage
     class Store {
-        static getRecipes() {
+        static getRecipes(callback) {
             //TODO: add ajax instad of local storage
-            let recipes;
+            // let recipes;
             // if (localStorage.getItem("recipes") === null) {
             //     recipes = [];
             // } else {
             //     recipes = JSON.parse(localStorage.getItem("recipes"));
             // }
-
             // return recipes;
 
+            // let recipes;  ---> done globally at the top
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    let recipes = JSON.parse(xhr.responseText);
+                    recipes = JSON.parse(xhr.responseText);
 
                     console.log(recipes);
+                    // recipes = [];
+                    callback(recipes);  // calls back to line 18
 
-                    recipes = [];
+                };
 
-                } else {
-                        recipes = getItem("recipes"); //????  Get from RecipeRepo???
-                    }
-        
-                
-            };
-
-            xhr.open("GET", "/recipes/" + recipe.id + "/ingredients", true);
-            xhr.send();
-
-
+                xhr.open("GET", "/recipes", true);
+                xhr.send();
+            }
         }
 
         static addRecipe(recipe, callback) {
@@ -299,7 +298,7 @@
                 UI.showAlert("Recipe Added", "success");
 
                 // Clear fields
-                UI.clearFields();  // now only works if this was successfully added to the server because it's a callback...?
+                UI.clearFields(); // now only works if this was successfully added to the server because it's a callback...?
             });
 
 
