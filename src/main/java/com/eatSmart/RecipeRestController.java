@@ -80,7 +80,7 @@ public class RecipeRestController {
 	
 	
 	@RequestMapping(path = "/remove/{recipeName}", method = RequestMethod.POST)
-	public void deleteRecipeByName(@PathVariable String recipeName, Model model) {
+	public void deleteRecipeByName(@PathVariable String recipeName) {
 
 		Recipe recipeToRemove = recipeRepo.findByName(recipeName);
 	
