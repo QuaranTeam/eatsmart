@@ -1,37 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
 
 body {
-  /* background-color: #CAEDDA; */
   background: url(../images/five-30.jpg) no-repeat center center fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
   overflow: scroll;
-}
-
-h2 {
-font-size: 48px;
-margin-top: 1em;
-margin-bottom: 1em;
-text-align: center;
-color: #333333;
 
 }
+
+
+
+/* Feature sections */
+
+/* .lower-half {
+    background-color: ;
+} */
+
+
+/* Feature Boxes */
+
+.feature-boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: space-between;
+}
+
+.feature-boxes .feature {
+    background: #CAEDDA;
+    margin: auto;
+    margin-top: 5em;
+    margin-bottom: 125px;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    line-height: 20px;
+    color: #333333;
+    position: relative;
+}
+
 td.hasMeal {
   color: #FF9966;
   font-weight: bolder;
-}
 
-
-
-.feature table {
-  width: 40%;
-  font-size: 25px;
-  text-align: center;
-  margin-left: 5%;
-  color: #333333;
-  
 }
 .feature table td {
   cursor: pointer;
@@ -40,4 +53,79 @@ td.hasMeal {
 .feature table td:hover {
   color: #12cb67;
   
+}
+
+.feature table {
+  width: 40%;
+  height: 30%;
+  font-size: 25px;
+  text-align: center;
+  margin-left: 10%;
+  margin-top: 0%;
+  color: #333333;
+}
+
+/* text */
+
+th{
+  font-size: 28px;
+  position: center;
+  
+}
+p {
+  font-size: larger;
+ 
+}
+
+.feature h2 {
+    text-align: center;
+    padding: 10px;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 48px;
+}
+
+.feature h3 {
+    color: #333;
+    font-size: 20px;
+
+    
+}
+h2 {
+  font-size: 38px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #333333;
+}  
+
+
+.feature span {
+    float: right;
+    color: #12CB67;
+}
+.feature span:hover {
+    font-weight: bolder;
+    color: #FF9966;
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 735px) {
+    .container {
+        width: 80%;
+    }
+
+    button {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    section {
+        width: 100%;
+    }
+
 }
