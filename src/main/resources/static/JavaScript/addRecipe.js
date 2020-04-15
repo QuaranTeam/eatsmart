@@ -177,7 +177,7 @@
 
             let xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function () {   
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     callback();
                     //html changes -- how to show recipe is added      
@@ -207,7 +207,7 @@
             localStorage.setItem("recipes", JSON.stringify(recipes));
         }
 
-        static addIngredient(ingredient, recipeName) {
+        static addIngredient(ingredient, recipeName, callback) {
             //TODO. AJAX call to controller - add the ingredient to recipe
             let xhr = new XMLHttpRequest();
 
@@ -215,6 +215,7 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     //recipe.ingredients.push(ingredient); // push = add in js      
                     console.log("Ingredient was added");
+                    callback();
                 }
             };
 
