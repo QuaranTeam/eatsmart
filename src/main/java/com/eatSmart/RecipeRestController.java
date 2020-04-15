@@ -54,6 +54,13 @@ public class RecipeRestController {
 		Ingredient ingredient = new Ingredient(ingredientName, 1);
 		ingredientRepo.save(ingredient);
 		
+//		Ingredient ingredient = ingredientRepo.findByName(ingredientName); //look for an existing ingredient
+//		 if(ingredient == null) {
+//				Ingredient newIngredient = new Ingredient(ingredientName, 1);  //if it's not there, make a new one
+//				ingredientRepo.save(newIngredient);
+//		 }
+//			
+		
 		Recipe recipe = recipeRepo.findByName(name);
 
 		recipe.getIngredients().add(ingredient);
