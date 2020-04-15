@@ -129,9 +129,13 @@ textarea {
 }
 
 #killRecipe {
-    background-color: #ff9966;
+    background-color: none;
     text-decoration: none;
-    padding: 12px;
+    padding: 0px;
+    position: relative;
+    background-color: transparent;
+    color: #333333;
+
 }
 
 #recipeID {
