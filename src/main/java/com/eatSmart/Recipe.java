@@ -45,23 +45,23 @@ public class Recipe {
 	public void setRecipeName(String name) {
 		this.name = name;
 	}
-		
+
 	public void setRecipeDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
+
 	public Collection<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
 	public Collection<String> getMealsUrls() {
 		Collection<String> urls = new ArrayList<>();
-		for (Meal t : meals) {
-			urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
+		if (meals != null) {
+			for (Meal t : meals) {
+				urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
+			}
 		}
-		return urls;
+		return urls;  //iff null, returns an empty collection
 	}
 
 	// default constructor
