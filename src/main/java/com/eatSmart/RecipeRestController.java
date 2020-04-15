@@ -83,30 +83,12 @@ public class RecipeRestController {
 	
 	
 	@RequestMapping(path = "/remove/{recipeName}", method = RequestMethod.POST)
-	public String deleteRecipeByName(@PathVariable String name, Model model) {
+	public void deleteRecipeByName(@PathVariable String recipeName, Model model) {
 
-		Optional<Recipe> recipeToRemoveResult = recipeRepo.findByName(name);
-		Recipe recipeToRemove = recipeToRemoveResult.get();
-		
-		//from EatSmart controller
-//		if (recipeRepo.findByName(name) != null) {
-//			Recipe deletedRecipe = recipeRepo.findByName(name);
-//			recipeRepo.delete(deletedRecipe);
-//		}
-		for (Meal meal : recipeToRemove.getMeals()) {
-			meal.removeRecipe(recipeToRemove);
-			mealRepo.save(meal);
-		}
-
+		Recipe recipeToRemove = recipeRepo.findByName(recipeName);
+	
 		recipeRepo.delete(recipeToRemove);
 
-		model.addAttribute("topicsModel", topicRepo.findAll());
-		return "partials/topics-list-removed"; 
-	}
-		
-		
-		// page refresh, no spaces
-		return "redirect:/recipes"; 
 
 	}
 	

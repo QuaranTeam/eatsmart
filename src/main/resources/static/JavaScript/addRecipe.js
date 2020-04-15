@@ -192,7 +192,7 @@
             }));
         }
 
-        static removeRecipe(item) {
+        static removeRecipe(recipeName, callback) {
             //TODO: add ajax instad of local storage
             const recipes = Store.getRecipes();
             // recipes.forEach((recipe, index) => {
@@ -201,25 +201,25 @@
             //     }
             // });
             // localStorage.setItem("recipes", JSON.stringify(recipes));
-            
-            recipes.addEventListener('click', function (event) {
-
-                if (event.target.classList.contains("delete")) {
-                    let recipeName = event.target.previousElementSibling.previousElementSibling.value;
-                    console.log(recipeName);   //becasue controller is finding by name
-                    removeRecipe(recipeName);
-                }
-            })
 
             //removing a recipe
-            function removeRecipe(name) {
-                xhr.open('POST', '/recipes/remove/' + name, true);
-                xhr.send();
-            }
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    console.log("Ingredient was added");
+                    callback();
+                }
+            };
+
+            xhr.open('POST', '/recipes/remove/' + recipeName, true);
+            xhr.send();
+
         }
 
 
-        
+
         static addIngredient(ingredient, recipeName, callback) {
             //TODO. AJAX call to controller - add the ingredient to recipe
             let xhr = new XMLHttpRequest();
@@ -334,16 +334,19 @@
         titleFromRow = row.getElementsByTagName("td")[0].textContent;
 
         if (e.target.id == "killRecipe") {
-            // Remove Recipe from UI
-            UI.deleteRecipe(e.target);
-
+           
             // Remove Recipe from store
-            Store.removeRecipe(titleFromRow);
+            Store.removeRecipe(titleFromRow, function () {
+                // Show success message
+                UI.showAlert("Recipe Removed", "success");
+                // remove Recipe from UI
+                UI.deleteRecipe(e.target);
+            });
+
             //TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
 
+
             
-            // Show success message
-            UI.showAlert("Recipe Removed", "success");
         } else {
             //add ingredients
             UI.showIngredientsHideRecipes();
