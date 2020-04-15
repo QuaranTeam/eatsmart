@@ -2,8 +2,8 @@
 
     // Book Class: Represents a Recipe
     class Recipe {
-        constructor(title, description, id) {
-            this.title = title;
+        constructor(name, description, id) {
+            this.name = name;
             this.description = description;
             this.id = id;
             //need ingredient collection here
@@ -15,11 +15,11 @@
     class UI {
         static displayRecipes() {
             UI.hideIngredients();
-            Store.getRecipes(function(results) {                                          // took aout recipes becasue it's global now
-                
-                results.forEach((recipe) => UI.addRecipeToList(recipe));                  //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
-                
-            }); 
+            Store.getRecipes(function (results) { // took aout recipes becasue it's global now
+
+                results.forEach((recipe) => UI.addRecipeToList(recipe)); //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
+
+            });
 
         }
 
@@ -29,7 +29,7 @@
             const row = document.createElement("tr");
 
             row.innerHTML = `
-      <td>${recipe.title}</td>
+      <td>${recipe.name}</td>
       <td>${recipe.description}</td>
       <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></button><ul id="ingredientsContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
@@ -160,7 +160,7 @@
 
                     console.log(recipes);
                     // recipes = [];
-                    callback(recipes);  // calls back to line 18
+                    callback(recipes); // calls back to line 18
 
                 };
 
@@ -186,7 +186,11 @@
 
             xhr.open('POST', "/recipes", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(recipe));
+            //xhr.send(JSON.stringify(recipe));
+            xhr.send(JSON.stringify({      //object literal  - matches naming in Java getters and setters in Recipe.java
+                recipeName: recipe.name,
+                recipeDescription: recipe.description
+            }));
 
         }
 
@@ -195,7 +199,7 @@
             const recipes = Store.getRecipes();
 
             recipes.forEach((recipe, index) => {
-                if (recipe.title === item) {
+                if (recipe.name === item) {
                     recipes.splice(index, 1); //starting position and then delete count
                 }
             });
@@ -203,17 +207,18 @@
             localStorage.setItem("recipes", JSON.stringify(recipes));
         }
 
-        static addIngredient(ingredient, recipe) {
+        static addIngredient(ingredient, recipeName) {
             //TODO. AJAX call to controller - add the ingredient to recipe
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    recipe.ingredients.push(ingredient); // push = add in js      
+                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    console.log("Ingredient was added");
                 }
             };
 
-            xhr.open('POST', "/recipes/" + recipe.id + "/ingredients", true);
+            xhr.open('POST', "/recipes/" + recipeName + "/ingredients", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify(ingredient));
 
@@ -256,22 +261,25 @@
         .addEventListener("click", UI.showRecipesHideIngredients);
 
     // Event: Add an Ingredient
-    document.querySelector("#addIngredient").addEventListener("click", (e) => {
-        const ingredientItem = document.querySelector("#ingredientItem").value;
+    document.querySelector("#addIngredient").addEventListener("click", (e) => {    // callback for addEventListener
+
+        const ingredientItem = document.querySelector("#ingredientItem").value; // pulls values from the UI fields -- retrieves
         const recipeID = UI.getRecipeID();
         const recipeNode = UI.getRecipeNodeFromID(recipeID);
 
-        // Add Ingredient to UI
-        UI.addIngredientToList(ingredientItem, recipeNode);
-
         // Add Ingredient to store
-        Store.addIngredient(ingredientItem);
+        Store.addIngredient(ingredientItem, recipeID, function () { //saves to API
 
-        // Show success message
-        UI.showAlert("Ingredient Added", "success");
+            // Add Ingredient to UI
+            UI.addIngredientToList(ingredientItem, recipeNode);
 
-        // Clear fields
-        UI.clearFields();
+            // Show success message
+            UI.showAlert("Ingredient Added", "success");
+
+            // Clear fields
+            UI.clearFields();
+
+        });
     });
 
     // Event: Add a Recipe
@@ -289,13 +297,14 @@
         } else {
             // Instatiate recipe
             const recipe = new Recipe(title, description);
-            // Add Recipe to UI
-            UI.addRecipeToList(recipe);
 
             // Add Recipe to store
             Store.addRecipe(recipe, function () {
                 // Show success message
                 UI.showAlert("Recipe Added", "success");
+
+                // Add Recipe to UI
+                UI.addRecipeToList(recipe); // was outside -- moved inside here so it happens after the recipe is sent to server
 
                 // Clear fields
                 UI.clearFields(); // now only works if this was successfully added to the server because it's a callback...?
