@@ -59,8 +59,7 @@ public class RecipeRestController {
 //				Ingredient newIngredient = new Ingredient(ingredientName, 1);  //if it's not there, make a new one
 //				ingredientRepo.save(newIngredient);
 //		 }
-//			
-		
+//		
 		Recipe recipe = recipeRepo.findByName(name);
 
 		recipe.getIngredients().add(ingredient);

@@ -61,7 +61,7 @@ public class Recipe {
 				urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
 			}
 		}
-		return urls;  //iff null, returns an empty collection
+		return urls;  //if null, returns an empty collection
 	}
 
 	// default constructor
