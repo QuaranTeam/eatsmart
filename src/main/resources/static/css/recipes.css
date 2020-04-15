@@ -104,6 +104,7 @@ textarea {
 
 #addIngredients.btn:hover, #killRecipe.btn:hover {
     background: #12CB67;
+
 }
 
 .button-row {
@@ -131,7 +132,7 @@ textarea {
 #killRecipe {
     background-color: none;
     text-decoration: none;
-    padding: 0px;
+    padding: 10px;
     position: relative;
     background-color: transparent;
     color: #333333;
