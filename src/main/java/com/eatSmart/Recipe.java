@@ -64,6 +64,12 @@ public class Recipe {
 		return urls;  //if null, returns an empty collection
 	}
 
+//	public String getMeals() {
+//		// TODO Auto-generated method stub
+//		return meals;
+//	}
+
+	
 	// default constructor
 	public Recipe() {
 
@@ -100,4 +106,5 @@ public class Recipe {
 		return true;
 	}
 
+	
 }

@@ -176,7 +176,7 @@
             // localStorage.setItem("recipes", JSON.stringify(recipes));
 
             let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {   
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     callback();
                     //html changes -- how to show recipe is added      
@@ -186,26 +186,40 @@
             xhr.open('POST', "/recipes", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             //xhr.send(JSON.stringify(recipe));
-            xhr.send(JSON.stringify({      //object literal  - matches naming in Java getters and setters in Recipe.java
+            xhr.send(JSON.stringify({ //object literal  - matches naming in Java getters and setters in Recipe.java
                 recipeName: recipe.name,
                 recipeDescription: recipe.description
             }));
-
         }
 
         static removeRecipe(item) {
             //TODO: add ajax instad of local storage
             const recipes = Store.getRecipes();
+            // recipes.forEach((recipe, index) => {
+            //     if (recipe.name === item) {
+            //         recipes.splice(index, 1); //starting position and then delete count
+            //     }
+            // });
+            // localStorage.setItem("recipes", JSON.stringify(recipes));
+            
+            recipes.addEventListener('click', function (event) {
 
-            recipes.forEach((recipe, index) => {
-                if (recipe.name === item) {
-                    recipes.splice(index, 1); //starting position and then delete count
+                if (event.target.classList.contains("delete")) {
+                    let recipeName = event.target.previousElementSibling.previousElementSibling.value;
+                    console.log(recipeName);   //becasue controller is finding by name
+                    removeRecipe(recipeName);
                 }
-            });
+            })
 
-            localStorage.setItem("recipes", JSON.stringify(recipes));
+            //removing a recipe
+            function removeRecipe(name) {
+                xhr.open('POST', '/recipes/remove/' + name, true);
+                xhr.send();
+            }
         }
 
+
+        
         static addIngredient(ingredient, recipeName, callback) {
             //TODO. AJAX call to controller - add the ingredient to recipe
             let xhr = new XMLHttpRequest();
@@ -220,7 +234,7 @@
 
             xhr.open('POST', "/recipes/" + recipeName + "/ingredients", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(ingredient);   //was already a string...don't need to stringify
+            xhr.send(ingredient); //was already a string...don't need to stringify
 
         }
 
@@ -261,7 +275,7 @@
         .addEventListener("click", UI.showRecipesHideIngredients);
 
     // Event: Add an Ingredient
-    document.querySelector("#addIngredient").addEventListener("click", (e) => {    // callback for addEventListener
+    document.querySelector("#addIngredient").addEventListener("click", (e) => { // callback for addEventListener
 
         const ingredientItem = document.querySelector("#ingredientItem").value; // pulls values from the UI fields -- retrieves
         const recipeID = UI.getRecipeID();
@@ -324,10 +338,10 @@
             UI.deleteRecipe(e.target);
 
             // Remove Recipe from store
-
             Store.removeRecipe(titleFromRow);
             //TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
 
+            
             // Show success message
             UI.showAlert("Recipe Removed", "success");
         } else {

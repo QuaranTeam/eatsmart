@@ -2,12 +2,16 @@ package com.eatSmart;
 
 import javax.annotation.Resource;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import courses.models.Course;
+import courses.models.Topic;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -75,6 +79,40 @@ public class RecipeRestController {
 		return recipeRepo.findById(id);
 	}
 
+	
+	
+	
+	@RequestMapping(path = "/remove/{recipeName}", method = RequestMethod.POST)
+	public String deleteRecipeByName(@PathVariable String name, Model model) {
+
+		Optional<Recipe> recipeToRemoveResult = recipeRepo.findByName(name);
+		Recipe recipeToRemove = recipeToRemoveResult.get();
+		
+		//from EatSmart controller
+//		if (recipeRepo.findByName(name) != null) {
+//			Recipe deletedRecipe = recipeRepo.findByName(name);
+//			recipeRepo.delete(deletedRecipe);
+//		}
+		for (Meal meal : recipeToRemove.getMeals()) {
+			meal.removeRecipe(recipeToRemove);
+			mealRepo.save(meal);
+		}
+
+		recipeRepo.delete(recipeToRemove);
+
+		model.addAttribute("topicsModel", topicRepo.findAll());
+		return "partials/topics-list-removed"; 
+	}
+		
+		
+		// page refresh, no spaces
+		return "redirect:/recipes"; 
+
+	}
+	
+	
+	
+	
 	@RequestMapping("/meals/{mealName}")
 	public Collection<Recipe> findAllRecipesByMeal(@PathVariable(value = "mealName") String mealName) {
 		Meal meal = mealRepo.findByNameIgnoreCaseLike(mealName);
