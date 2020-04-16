@@ -157,6 +157,19 @@ thead {
     border-radius: 0.25rem
 }
 
+.modal-close {
+    float: right;
+    color: #12CB67;
+}
+.modal-close:hover {
+    font-weight: bolder;
+    color: #FF9966;
+}
+
+.close{
+    float: right;
+}
+
 
 .collapsible div {
     margin: auto;
