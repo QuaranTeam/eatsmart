@@ -11,24 +11,15 @@ body {
 }
 
 
-
-/* Feature sections */
-
-/* .lower-half {
-    background-color: ;
-} */
-
-
-/* Feature Boxes */
-
 .feature-boxes {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: space-between;
+    margin-right: 6%;
 }
 
-.feature-boxes .feature {
+.feature-boxes .calendar {
     background: #CAEDDA;
     margin: auto;
     margin-top: 5em;
@@ -36,9 +27,21 @@ body {
     width: 500px;
     height: 300px;
     padding: 10px;
-    line-height: 20px;
+    line-height: 25px;
     color: #333333;
-    position: relative;
+    /* position: relative; */
+}
+.feature-boxes .meal {
+  background: #CAEDDA;
+  margin-top: 5em;
+  margin-bottom: 125px;
+  line-height: 10px;
+  width: 500px;
+  height: 300px;
+  padding: 10px;
+  line-height: 20px;
+  color: #333333;
+  /* position: relative; */
 }
 
 td.hasMeal {
@@ -46,16 +49,16 @@ td.hasMeal {
   font-weight: bolder;
 
 }
-.feature table td {
+.calendar table td {
   cursor: pointer;
 }
 
-.feature table td:hover {
+.calendar table td:hover {
   color: #12cb67;
   
 }
 
-.feature table {
+.calendar table {
   width: 40%;
   height: 30%;
   font-size: 25px;
@@ -72,25 +75,31 @@ th{
   position: center;
   
 }
-p {
-  font-size: larger;
+.meal p {
+  font-size: 15px;
+  margin: 5px;
  
 }
 
-.feature h2 {
+.meal h2 {
     text-align: center;
     padding: 10px;
     color: #333;
     margin-bottom: 30px;
-    font-size: 48px;
+    font-size: 38px;
 }
 
-.feature h3 {
+.meal h3 {
     color: #333;
-    font-size: 20px;
-
-    
+    font-size: 30px;
+    color: #FF9966;
+    margin: 5px;
 }
+.meal h4 {
+  font-size: 20px;
+  margin: 5px;
+}
+
 h2 {
   font-size: 38px;
   margin-top: 1em;
@@ -100,13 +109,14 @@ h2 {
 }  
 
 
-.feature span {
+.meal span {
     float: right;
     color: #12CB67;
 }
-.feature span:hover {
+.meal span:hover {
     font-weight: bolder;
     color: #FF9966;
+    
 }
 
 
