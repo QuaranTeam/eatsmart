@@ -1,6 +1,8 @@
+let meals = [];
+
 class Meal {
      constructor(title, description) {
-         this.title = title;
+         this.name = name;
          this.description = description;
          //need ingredient collection here
          this.recipes = [];  //instead of ingredients
@@ -28,7 +30,7 @@ class Meal {
          row.innerHTML = `
    <td>${meal.title}</td>
    <td>${meal.description}</td>
-   <td><input type="button" id="addRecipes" class="btn btn-success btn-block" value="Add Recipes"></button><ul id="recipesContainer"></ul></td>
+   <td><input type="button" id="addRecipes" class="btn btn-success btn-block" value="Add Recipes"></input><ul id="recipesContainer"></ul></td>
    <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
  `;
          list.appendChild(row);
@@ -217,7 +219,7 @@ class Meal {
          xhr.onreadystatechange = function () {
              if (xhr.readyState === 4 && xhr.status === 200) {
                  //recipe.ingredients.push(ingredient); // push = add in js
-                 console.log("Ingredient was added");
+                 console.log("Recipe was added");
                  callback();
              }
          };
