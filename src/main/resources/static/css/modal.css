@@ -3,11 +3,12 @@
 .modal textarea {
     min-width: 50%;
     min-height: 50%;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .modal h2 {
     text-align: center;
+    padding-bottom: 15px;
 }
 
 
@@ -30,13 +31,13 @@
     /* Full height */
     background-color: #CAEDDA;
     /* Fallback color */
-    overflow: scroll;
+    /* overflow: scroll; */
     /* positioning of modal box */
     margin-top: 5%;
     margin-left: 25%;
     /* modal box size */
     width: 50%;
-    height: 80%;
+    height: fit-content;
     border: center;
     
 
@@ -50,7 +51,7 @@
     width: 80%;
     height: 70%;
     cursor: pointer;
-    overflow: scroll;
+    /* overflow: scroll; */
     background-color:#CAEDDA;
     margin: 5%;
     padding: 10px;
@@ -60,15 +61,17 @@
 
 /* The Close Button */
 .close {
-    color: #333;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    display: hidden;
+    /* color: #12CB67;
+    /* float: right; */
+    /* justify: right; */
+    /* font-size: 28px; */
+    /* font-weight: bold; */
 }
 
 .close:hover,
 .close:focus {
-    color: #12CB67;
+    color:#FF9966;
     text-decoration: none;
     cursor: pointer;
 }

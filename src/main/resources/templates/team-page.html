@@ -11,16 +11,19 @@
 
 <body>
 
-  <nav>
-    <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
-
+  <nav class="topnav" id="myTopnav">
+    <p><a href="/homepage"><img id="logo" src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190"
+          height="42"></a></p>
     <ul>
       <li><a href="/show-recipes">My Recipes</a></li>
       <li><a href="/show-meals">My Meals</a></li>
       <li><a href="/calendar">Calendar</a></li>
       <li><a href="/team-page">About Us</a></li>
-        <li><a href="/login">Logout</a></li>
+      <li><a href="/login">Logout</a></li>
+      <li><img id="user-image" src="/images/seven-square.jpg" alt="user image"></li>
     </ul>
+    <a href="javascript:void(0);" class="icon" onclick="myNavBarFunction()">&#9776;</a>
+
   </nav>
 
   <div class="container">
@@ -92,6 +95,7 @@
   <footer>
     <div>&copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a></div>
   </footer>
+  <script src="/JavaScript/navBar.js"></script>
 
 </body>
 
