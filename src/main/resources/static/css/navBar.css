@@ -86,34 +86,6 @@ nav ul li ul li a:hover {
 /**/
 
 /* ****  NAV BAR  **** */
-/* 
-.topnav {
-  z-index: 9999;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  background-color: #333;
-  color: white;
-  overflow: hidden;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-} */
-
-/* .topnav a:hover {
-  background-color: palevioletred;
-  font-weight: bold;
-  color: white;
-} */
-
 .topnav .icon {
   display: none;
 }
@@ -125,12 +97,12 @@ nav ul li ul li a:hover {
       display: none;
   }
 
-  .topnav a.icon {
+  nav .topnav a.icon {
       float: right;
       display: block;
       color: white;
   }
-} */
+} 
 
 @media screen and (max-width: 600px) {
   .topnav.responsive {
@@ -150,27 +122,8 @@ nav ul li ul li a:hover {
       color: white;
 
   }
-
- .topnav.responsive
-
-  /*.dropdown */
-  /* {
-      float: none;
-  }
-
-  .topnav.responsive */
-
-  /*.dropdown-content*/
-  /* {
+.dropdown-content
+   {
       position: relative;
   }
-
-  .topnav.responsive */
-
-  /*.dropdown .dropbtn*/
-  /* {
-      display: block;
-      width: 100%;
-      text-align: left;
-  }
-} */
+}
