@@ -1,45 +1,146 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    
+    <!-- for production -->
     <link rel="stylesheet" href="/css/navBar.css">
      <link rel="stylesheet" href="/css/styles.css">
-    <title>Calendar</title>
-  </head>
-  <body>
+     <link rel="stylesheet" href="/css/calendar.css">
+
+  <!-- for styling -->
+  <!-- <link rel="stylesheet" href="../static/css/navBar.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="../static/css/calendar.css"> -->
+
+
+
+   <title>Calendar</title>
+</head>
+
+<body>
   <nav>
-       <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
+    <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a></p>
 
 
-        <ul>
-            <li><a href="/show-recipes">My Recipes</a>
-                <!-- <ul>
+    <ul>
+      <li><a href="/show-recipes">My Recipes</a>
+         <!-- <ul>
                     <li><a href="#">Add Recipes</a></li>
                     <li><a href="#">View Recipes</a></li>
-                </ul> -->
-            </li>
-            <li><a href="/show-meals">My Meals</a>
-                <!-- <ul>
+                </ul>  -->
+      </li>
+      <li><a href="/show-meals">My Meals</a>
+         <!-- <ul>
                     <li><a href="#">Add Meal</a></li>
                     <li><a href="#">View Meals</a></li>
                 </ul> -->
-            </li>
-            <li><a href="/calendar">Calendar</a></li>
-            <li><a href="/team-page">About Us</a></li>
-              <li><a href="/login">Logout</a></li>
-                <!-- <ul>
+      </li>
+      <li><a href="/calendar">Calendar</a></li>
+      <li><a href="/team-page">About Us</a></li>
+      <li><a href="/login">Logout</a></li>
+      <!-- <ul>
                     <li><a href="#">Sign In</a></li>
                     <li><a href="#">My Account</a></li>
                 </ul> -->
-            </li>
-        </ul>
-    </nav>
+      </li>
+    </ul>
+  </nav>
 
-    <footer>
-      &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
-    </footer>
+  <div class="feature-boxes">
 
+  <section class="calendar">
+    
+    <!-- Place holder. subject to change once integrated with CSS and JavaScript -->
+    <h2>April</h2>
+    <table>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td class="hasMeal">6</td>
+        <td class="hasMeal">7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td class="hasMeal">15</td>
+        <td>16</td>
+        <td class="hasMeal">17</td>
+        <td class="hasMeal">18</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>20</td>
+        <td class="hasMeal">21</td>
+        <td class="hasMeal">22</td>
+        <td class="hasMeal">23</td>
+        <td>24</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+      </tr>
+    </table>
 
+  </section>
 
-  </body>
+  <!-- <div class="feature-boxes"> -->
+
+    <section class="meal">
+      <!-- subject to change once integrated with spring -->
+      <h2>Upcoming Meals</h2>
+      <h3>April 22, 2020</h3>
+
+      <a href="/show-meals"><span>Go To Meals</span></a>
+      <h4>Breakfast:</h4>
+      <!--Could also be called Meal 1 or Meal{id} for now-->
+      <p>Yogurt with Granola</p>
+      <!--individual meal name here - pull from recipes?-->
+
+      <h4>Lunch:</h4>
+      <p>Veggie Flatbread</p>
+
+      <h4>Dinner:</h4>
+      <p>Salmon and Mixed Vegetables</p>
+    </section>
+    
+  </div>
+  <!-- </div> -->
+
+  <footer>
+    &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
+  </footer>
+
+  
+
+</body>
+
 </html>
