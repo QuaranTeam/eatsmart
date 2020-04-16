@@ -1,4 +1,4 @@
-package com.eatSmart;
+package com.eatSmart.Controllers;
 
 import java.util.Optional;
 import javax.annotation.Resource;
@@ -6,6 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.eatSmart.Meal;
+import com.eatSmart.MealRepository;
+import com.eatSmart.Recipe;
+import com.eatSmart.RecipeNotFound;
+import com.eatSmart.RecipeRepository;
 
 @Controller
 
@@ -19,7 +25,8 @@ public class EatSmartController {
 
 	private MealRepository mealRepo;
 
-
+	
+	
 
 	@RequestMapping("/show-recipes")
 
@@ -35,7 +42,7 @@ public class EatSmartController {
 	@RequestMapping("/show-meals")
 	
 	public String findAllMeals(Model model) {
-		
+		model.addAttribute("recipesModel", recipeRepo.findAll());
 		model.addAttribute("mealsModel", mealRepo.findAll());
 		
 		return ("meals");
@@ -43,24 +50,24 @@ public class EatSmartController {
 	}
 	
 	
-	@RequestMapping("/recipe")
-	
-	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
-		
-		Optional<Recipe> recipe = recipeRepo.findById(id);
-		
-		if (recipe.isPresent()) {
-			
-			model.addAttribute("recipeModel", recipe.get());
-			
-			return "recipe";
-			
-		}
-		
-		throw new RecipeNotFound();
-		
-	}
-	
+//	@RequestMapping("/recipe")
+//	
+//	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
+//		
+//		Optional<Recipe> recipe = recipeRepo.findById(id);
+//		
+//		if (recipe.isPresent()) {
+//			
+//			model.addAttribute("recipeModel", recipe.get());
+//			
+//			return "recipe";
+//			
+//		}
+//		
+//		throw new RecipeNotFound();
+//		
+//	}
+//	
 	
 	@RequestMapping("/meal")
 

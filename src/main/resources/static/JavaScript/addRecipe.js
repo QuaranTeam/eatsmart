@@ -31,7 +31,7 @@
             row.innerHTML = `
       <td>${recipe.name}</td>
       <td>${recipe.description}</td>
-      <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></button><ul id="ingredientsContainer"></ul></td>
+      <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></input><ul id="ingredientsContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
     `;
             list.appendChild(row);
@@ -179,7 +179,7 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     callback();
-                    //html changes -- how to show recipe is added      
+                    //html changes -- how to show recipe is added
                 }
             };
 
@@ -207,7 +207,7 @@
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    //recipe.ingredients.push(ingredient); // push = add in js
                     console.log("Recipe was removed");
                     callback();
                 }
@@ -226,7 +226,7 @@
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    //recipe.ingredients.push(ingredient); // push = add in js
                     console.log("Ingredient was added");
                     callback();
                 }
@@ -334,7 +334,7 @@
         titleFromRow = row.getElementsByTagName("td")[0].textContent;
 
         if (e.target.id == "killRecipe") {
-           
+
             // Remove Recipe from store
             Store.removeRecipe(titleFromRow, function () {
                 // Show success message
@@ -346,7 +346,7 @@
             //TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
 
 
-            
+
         } else {
             //add ingredients
             UI.showIngredientsHideRecipes();

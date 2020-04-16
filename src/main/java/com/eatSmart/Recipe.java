@@ -29,6 +29,7 @@ public class Recipe {
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
 
+
 	// getters
 	public long getId() {
 		return id;
@@ -84,6 +85,14 @@ public class Recipe {
 		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
 	}
 
+	
+	public void addMeal(Meal meals) {
+		this.meals.add(meals);
+	}
+	
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
