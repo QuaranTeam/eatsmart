@@ -1,7 +1,7 @@
 let meals = [];
 
 class Meal {
-     constructor(title, description, id) {
+     constructor(name, description, id) {
          this.name = name;
          this.description = description;
          this.id = id;
@@ -75,9 +75,9 @@ class Meal {
      }
 
      static clearFields() {
-         document.querySelector("#title").value = "";
+         document.querySelector("#name").value = "";
          document.querySelector("#description").value = "";
-         document.querySelector("#recipeItem").value = "";
+         // document.querySelector("#recipeItem").value = "";
      }
 
      static hideRecipes() {
@@ -287,19 +287,22 @@ class Meal {
 
  // Event: Add a Meal
  document.querySelector("#next").addEventListener("click", (e) => {
+   console.log("click");
+
      // Prevent actual submit
 
      e.preventDefault();
      // Get form values
-     const title = document.querySelector("#title").value;
+     const name = document.querySelector("#name").value;
+     console.log("name " + name);
      const description = document.querySelector("#description").value;
-
+     console.log("description " + description);
      // Validate
-     if (title === "" || description === "") {
+     if (name === "" || description === "") {
          UI.showAlert("Please fill in all fields", "danger");
      } else {
          // Instatiate meal
-         const meal = new Meal(title, description);
+         const meal = new Meal(name, description);
          // Add Meal to UI
          Store.addMeal(meal, function () {
              // Show success message
