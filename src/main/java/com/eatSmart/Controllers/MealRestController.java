@@ -23,20 +23,20 @@ public class MealRestController {
 	@Resource
 	private RecipeRepository recipeRepo;
 
-	@Resource
-	private MealRepository mealsRepo;
+	@Resource 
+	private MealRepository mealRepo;
 
 
 
 	@RequestMapping("")
 	public Iterable<Meal> findAllMeals() {
-		return mealsRepo.findAll();
+		return mealRepo.findAll();
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "")
 	@ResponseBody
 	public Meal addMeal(@RequestBody Meal meals) {
-		mealsRepo.save(meals);
+		mealRepo.save(meals);
 		
 		return meals;
 	}
@@ -44,30 +44,23 @@ public class MealRestController {
 	@RequestMapping("/{id}/recipes")
 	public Iterable<Recipe> findAllRecipes(@PathVariable long id) {
 
-		Optional<Meal> meals = mealsRepo.findById(id);
+		Optional<Meal> meals = mealRepo.findById(id);
 
 		Collection<Recipe> recipes = meals.get().getRecipes();
 
 		return recipes;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{name}/recipes")
-	public Recipe addMeal(@PathVariable String name, @RequestBody String recipeName, String recipeDescription) {
+	@RequestMapping(method = RequestMethod.POST, value = "/{name}/recipe")
+	public Recipe addRecipe(@PathVariable String name, @RequestBody String recipeName) {
 
-		Recipe recipe = new Recipe(recipeName, recipeDescription);
-		recipeRepo.save(recipe);
+		Recipe recipe = recipeRepo.findByName(recipeName);
 		
-//		Recipe recipe = recipeRepo.findByName(recipeName); //look for an existing recipe
-//		 if(recipe == null) {
-//				Recipe newRecipe = new Recipe(recipeName, 1);  //if it's not there, make a new one
-//				recipeRepo.save(newRecipe);
-//		 }
-//		
-		Meal meals = mealsRepo.findByName(name);
+		Meal meals = mealRepo.findByName(name);
 
 		meals.getRecipes().add(recipe);
 		recipe.addMeal(meals);
-		mealsRepo.save(meals);
+		mealRepo.save(meals);
 		
 		return recipe;
 
@@ -75,7 +68,7 @@ public class MealRestController {
 
 	@RequestMapping("/{id}")
 	public Optional<Meal> findOneMeal(@PathVariable long id) {
-		return mealsRepo.findById(id);
+		return mealRepo.findById(id);
 	}
 
 	
@@ -84,9 +77,9 @@ public class MealRestController {
 	@RequestMapping(path = "/remove/{mealsName}", method = RequestMethod.POST)
 	public void deleteMealByName(@PathVariable String mealsName) {
 
-		Meal mealsToRemove = mealsRepo.findByName(mealsName);
+		Meal mealsToRemove = mealRepo.findByName(mealsName);
 	
-		mealsRepo.delete(mealsToRemove);
+		mealRepo.delete(mealsToRemove);
 
 
 	}
@@ -95,8 +88,8 @@ public class MealRestController {
 	
 	
 	@RequestMapping("/recipes/{recipeName}")
-	public Collection<Meal> findAllMealsByRecip(@PathVariable(value = "recipeName") String recipeName) {
+	public Collection<Meal> findAllMealsByRecipe(@PathVariable(value = "recipeName") String recipeName) {
 		Recipe recipe = recipeRepo.findByNameIgnoreCaseLike(recipeName);
-		return mealsRepo.findByRecipesContains(recipe);
+		return mealRepo.findByRecipesContains(recipe);
 	}
 }

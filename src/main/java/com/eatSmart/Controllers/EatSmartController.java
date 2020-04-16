@@ -28,9 +28,6 @@ public class EatSmartController {
 	
 	
 
-
-
-
 	@RequestMapping("/show-recipes")
 
 	public String findAllRecipes(Model model) {
@@ -53,24 +50,24 @@ public class EatSmartController {
 	}
 	
 	
-	@RequestMapping("/recipe")
-	
-	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
-		
-		Optional<Recipe> recipe = recipeRepo.findById(id);
-		
-		if (recipe.isPresent()) {
-			
-			model.addAttribute("recipeModel", recipe.get());
-			
-			return "recipe";
-			
-		}
-		
-		throw new RecipeNotFound();
-		
-	}
-	
+//	@RequestMapping("/recipe")
+//	
+//	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) throws RecipeNotFound {
+//		
+//		Optional<Recipe> recipe = recipeRepo.findById(id);
+//		
+//		if (recipe.isPresent()) {
+//			
+//			model.addAttribute("recipeModel", recipe.get());
+//			
+//			return "recipe";
+//			
+//		}
+//		
+//		throw new RecipeNotFound();
+//		
+//	}
+//	
 	
 	@RequestMapping("/meal")
 
