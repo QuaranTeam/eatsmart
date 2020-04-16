@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" /> -->
+
+    <!--for production-->
+    <link rel="stylesheet" href="/css/navBar.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/recipes.css">
+    <link rel="stylesheet" href="/css/modal.css">
+
+    <!-- For Styling -->
+    <!-- <link rel="stylesheet" href="../static/css/navBar.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/recipes.css">
+    <link rel="stylesheet" href="../static/css/modal.css">  -->
+
+    <title>eatSmart Add Recipe</title>
+</head>
+
+<body>
+    <nav class="topnav" id="myTopnav">
+        <p><a href="/homepage"><img id="logo" src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190"
+                    height="42"></a></p>
+        <ul>
+            <li><a href="/show-recipes">My Recipes</a></li>
+            <li><a href="/show-meals">My Meals</a></li>
+            <li><a href="/calendar">Calendar</a></li>
+            <li><a href="/team-page">About Us</a></li>
+            <li><a href="/login">Logout</a></li>
+            <li><img id="user-image" src="/images/seven-square.jpg" alt="user image"></li>
+        </ul>
+        <a href="javascript:void(0);" class="icon" onclick="myNavBarFunction()">&#9776;</a>
+
+    </nav>
+    <div class="container">
+        <h1 class="display-4 text-center">
+            <i class="fas fa-book-open text-primary"></i>Add
+            <span class="text-primary">Recipe</span>
+        </h1>
+        <form id="recipe-form">
+            <div id="recipes-group">
+                <div class="form-group">
+                    <label for="title">Recipe Name</label>
+                    <input type="text" id="title" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" class="form-control" />
+                </div>
+                <input type="button" id="next" value="Add Recipe" class="btn btn-primary btn-block" />
+            </div>
+            <div class="form-group" id="ingredients-group">
+                <input type="button" id="show-recipes-button" value="Back to Recipes" class="btn-sm" />
+                <br />
+                <label for="ingredientItem">Ingredients</label>
+                <input type="text" list="items" id="ingredientItem" class="form-control" />
+
+                <datalist id="items">
+                    <option value="Almonds"> </option>
+                    <option value="Apples"> </option>
+                    <option value="Applesauce"> </option>
+                    <option value="Asparagus"> </option>
+                    <option value="Avocados"> </option>
+                    <option value="Bacon"> </option>
+                    <option value="Bagels"> </option>
+                    <option value="Baked beans"> </option>
+                    <option value="Baking items"> </option>
+                    <option value="Baking powder"> </option>
+                    <option value="Baking soda"> </option>
+                    <option value="Bananas"> </option>
+                    <option value="Basil"> </option>
+                    <option value="BBQ sauce"> </option>
+                    <option value="Beef"> </option>
+                    <option value="Beer"> </option>
+                    <option value="Berries"> </option>
+                    <option value="Black beans"> </option>
+                    <option value="Black pepper"> </option>
+                    <option value="Bleu cheese"> </option>
+                    <option value="Bouillon cubes"> </option>
+                    <option value="Bratwurst"> </option>
+                    <option value="Bread"> </option>
+                    <option value="Bread crumbs"> </option>
+                    <option value="Broccoli"> </option>
+                    <option value="Buns"> </option>
+                    <option value="Burritos"> </option>
+                    <option value="Butter"> </option>
+                    <option value="Canned chicken"> </option>
+                    <option value="Canned corn"> </option>
+                    <option value="Canned Fruit"> </option>
+                    <option value="Canned green beans"> </option>
+                    <option value="Canned tomatoes"> </option>
+                    <option value="Canned Tuna"> </option>
+                    <option value="Cantelope"> </option>
+                    <option value="Carrots"> </option>
+                    <option value="Catfish"> </option>
+                    <option value="Cauliflower"> </option>
+                    <option value="Celery"> </option>
+                    <option value="Cereal"> </option>
+                    <option value="Champagne"> </option>
+                    <option value="Cheddar"> </option>
+                    <option value="Cherries"> </option>
+                    <option value="Chicken"> </option>
+                    <option value="Chickpeas"> </option>
+                    <option value="Chili"> </option>
+                    <option value="Chip dip"> </option>
+                    <option value="Chocolate chips"> </option>
+                    <option value="Cilantro"> </option>
+                    <option value="Cinnamon"> </option>
+                    <option value="Club soda"> </option>
+                    <option value="Cocoa"> </option>
+                    <option value="Coffee"> </option>
+                    <option value="Cookies"> </option>
+                    <option value="Corn"> </option>
+                    <option value="Corn chips"> </option>
+                    <option value="Cottage cheese"> </option>
+                    <option value="Cottage cheese"> </option>
+                    <option value="Crab"> </option>
+                    <option value="Crackers"> </option>
+                    <option value="Cream cheese"> </option>
+                    <option value="Croissants"> </option>
+                    <option value="Cucumbers"> </option>
+                    <option value="Dried fruit"> </option>
+                    <option value="Egg whites"> </option>
+                    <option value="Eggs"> </option>
+                    <option value="English muffins"> </option>
+                    <option value="Feta"> </option>
+                    <option value="Fish sticks"> </option>
+                    <option value="Flour"> </option>
+                    <option value="Fries"> </option>
+                    <option value="Frozen"> </option>
+                    <option value="Fruit juice"> </option>
+                    <option value="Garlic"> </option>
+                    <option value="Gin"> </option>
+                    <option value="Ginger"> </option>
+                    <option value="Goat cheese"> </option>
+                    <option value="Granola bars"> </option>
+                    <option value="Granola mix"> </option>
+                    <option value="Grapefruit"> </option>
+                    <option value="Grapes"> </option>
+                    <option value="Gravy"> </option>
+                    <option value="Ground beef"> </option>
+                    <option value="Half & half"> </option>
+                    <option value="Ham"> </option>
+                    <option value="Honey"> </option>
+                    <option value="Hot dogs"> </option>
+                    <option value="Hot sauce"> </option>
+                    <option value="Hummus"> </option>
+                    <option value="Ice cream"> </option>
+                    <option value="Instant potatoes"> </option>
+                    <option value="Jam"> </option>
+                    <option value="Jelly"> </option>
+                    <option value="Juice"> </option>
+                    <option value="Juice concentrate"> </option>
+                    <option value="Ketchup"> </option>
+                    <option value="Kidney beans"> </option>
+                    <option value="Kiwis"> </option>
+                    <option value="Lemon juice"> </option>
+                    <option value="Lemons"> </option>
+                    <option value="Lettuce"> </option>
+                    <option value="Lime juice"> </option>
+                    <option value="Limes"> </option>
+                    <option value="Lobster"> </option>
+                    <option value="Margarine"> </option>
+                    <option value="Mayonnaise"> </option>
+                    <option value="Milk"> </option>
+                    <option value="Mint"> </option>
+                    <option value="Mixed nuts"> </option>
+                    <option value="Mixers"> </option>
+                    <option value="Mozzarella"> </option>
+                    <option value="Mushrooms"> </option>
+                    <option value="Mussels"> </option>
+                    <option value="Mustard"> </option>
+                    <option value="Navy beans"> </option>
+                    <option value="Nectarines"> </option>
+                    <option value="Oatmeal"> </option>
+                    <option value="Olive oil"> </option>
+                    <option value="Olives"> </option>
+                    <option value="Onions"> </option>
+                    <option value="Oranges"> </option>
+                    <option value="Oregano"> </option>
+                    <option value="Oysters"> </option>
+                    <option value="Paprika"> </option>
+                    <option value="Parmesan"> </option>
+                    <option value="Parsley"> </option>
+                    <option value="Pasta"> </option>
+                    <option value="Pasta sauce"> </option>
+                    <option value="Peaches"> </option>
+                    <option value="Peanut butter"> </option>
+                    <option value="Peanuts"> </option>
+                    <option value="Pears"> </option>
+                    <option value="Peppers"> </option>
+                    <option value="Pickles"> </option>
+                    <option value="Pinto beans"> </option>
+                    <option value="Pita Bread"> </option>
+                    <option value="Plums"> </option>
+                    <option value="Popcorn"> </option>
+                    <option value="Popsicles"> </option>
+                    <option value="Pork"> </option>
+                    <option value="Potato chips"> </option>
+                    <option value="Potatoes"> </option>
+                    <option value="Preserves"> </option>
+                    <option value="Pretzels"> </option>
+                    <option value="Provolone"> </option>
+                    <option value="Red pepper"> </option>
+                    <option value="Red wine"> </option>
+                    <option value="Relish"> </option>
+                    <option value="Rice"> </option>
+                    <option value="Ricotta"> </option>
+                    <option value="Rolls"> </option>
+                    <option value="Rum"> </option>
+                    <option value="Saké"> </option>
+                    <option value="Salad dressing"> </option>
+                    <option value="Salad Greens"> </option>
+                    <option value="Salmon"> </option>
+                    <option value="Salsa"> </option>
+                    <option value="Salt"> </option>
+                    <option value="Sausage"> </option>
+                    <option value="Seafood"> </option>
+                    <option value="Shortening"> </option>
+                    <option value="Shrimp"> </option>
+                    <option value="Soda pop"> </option>
+                    <option value="Sorbet"> </option>
+                    <option value="Sour cream"> </option>
+                    <option value="Soy sauce"> </option>
+                    <option value="Spice mix"> </option>
+                    <option value="Spices"> </option>
+                    <option value="Spinach"> </option>
+                    <option value="Squash"> </option>
+                    <option value="Steak"> </option>
+                    <option value="Steak sauce"> </option>
+                    <option value="Sugar"> </option>
+                    <option value="Sugar substitute"> </option>
+                    <option value="Swiss cheese"> </option>
+                    <option value="Syrup"> </option>
+                    <option value="Tater tots"> </option>
+                    <option value="Tea"> </option>
+                    <option value="Tilapia"> </option>
+                    <option value="Tofu"> </option>
+                    <option value="Tomatoes"> </option>
+                    <option value="Tonic Water"> </option>
+                    <option value="Tortillas"> </option>
+                    <option value="Trail mix"> </option>
+                    <option value="Tuna"> </option>
+                    <option value="Turkey"> </option>
+                    <option value="Vanilla extract"> </option>
+                    <option value="Vegetable oil"> </option>
+                    <option value="Veggie burgers"> </option>
+                    <option value="Vinegar"> </option>
+                    <option value="Vodka"> </option>
+                    <option value="Watermelon"> </option>
+                    <option value="Whipped cream"> </option>
+                    <option value="Whiskey"> </option>
+                    <option value="White wine"> </option>
+                    <option value="Worcestershire sauce"> </option>
+                    <option value="Yeast"> </option>
+                    <option value="Yogurt"> </option>
+                    <option value="Zucchini"> </option>
+                </datalist>
+                <input type="hidden" id="recipeID" value="" />
+                <br /><input type="button" id="addIngredient" value="Add Ingredient"
+                    class="btn btn-primary btn-block" />
+                <!-- <div class="button-row">
+                <button id="myRecipe" type="button">Create a Recipe</button>
+                <a href="/show-meals">
+                    <button type="button" name="button">Go to meals</button>
+                </a>
+            </div> -->
+            </div>
+        </form>
+
+        <!-- modal -->
+        <!-- <div id="myModal" class="modal">
+
+            <form method="POST">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create a Recipe</h2>
+                    <br>
+                    <label> Enter a Recipe Name: </label>
+                    <input type="text" name="recipeName" />
+                    <br>
+                    <label> Enter a Ingredient: </label>
+                    <input type="text" name="ingredient" />
+                    <br>
+                    <label> Enter an Amount: </label>
+                    <input type="text" name="ingredientAmount" />
+                    <br>
+                    <ul>
+                        <li>Ingredients will pop into here</li>
+                    </ul>
+                    <br>
+                    <label> Enter a Recipe Description: </label>
+                    <br>
+                    <textarea type="text" name="description" placeholder="write a description..."></textarea>
+
+                </div>
+                <div class="save-button">
+                    <button type="button" name="button">Save Recipe</button>
+                </div>
+
+            </form>
+        </div> -->
+
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Description</th>
+                    <th>Ingredients</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="recipe-list"></tbody>
+        </table>
+    </div>
+    <footer>
+        &copy2020 WeCanCodeIt - <a href="/team-page">Contact Us</a>
+    </footer>
+    <!-- for production -->
+    <script src="/JavaScript/addRecipe.js"></script>
+    <script src="/JavaScript/navBar.js"></script>
+
+    <!--for styling -->
+    <!-- <script src="../static/JavaScript/addRecipe.js"></script> -->
+
+</body>
+
+</html>
