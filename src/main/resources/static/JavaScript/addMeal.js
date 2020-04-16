@@ -4,6 +4,7 @@ class Meal {
      constructor(title, description) {
          this.name = name;
          this.description = description;
+         this.id = id;
          //need ingredient collection here
          this.recipes = [];  //instead of ingredients
      }
