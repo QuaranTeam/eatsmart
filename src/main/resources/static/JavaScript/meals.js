@@ -39,7 +39,7 @@ function createModal(divId, btnId) {
   var btn = document.getElementById(btnId);
 
   // Get the <span> element that closes the modal
-  var span = modal.getElementsByClassName("close")[0];
+  var span = modal.getElementsByClassName("modal-close")[0];
 
   // When the user clicks on the button, open the modal
   btn.onclick = function () {
@@ -61,4 +61,4 @@ function createModal(divId, btnId) {
 
 // createModal("myMealModal", "mealModalButton");
 
-// createModal("myGroceryModal", "groceryModalButton");
+ createModal("myGroceryModal", "grocery-button");

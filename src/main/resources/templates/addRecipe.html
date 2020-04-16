@@ -23,24 +23,20 @@
 </head>
 
 <body>
-    <nav>
-        <p><a href="/homepage"><img src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190" height="42"></a>
-        </p>
-
-
+    <nav class="topnav" id="myTopnav">
+        <p><a href="/homepage"><img id="logo" src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190"
+              height="42"></a></p>
         <ul>
-            <li><a href="/show-recipes">My Recipes</a></li>
-            <li><a href="/show-meals">My Meals</a></li>
-            <li><a href="/calendar">Calendar</a></li>
-            <li><a href="/team-page">About Us</a></li>
-            <li><a href="/login">Login</a>
-                <ul>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">My Account</a></li>
-                </ul>
-            </li>
+          <li><a href="/show-recipes">My Recipes</a></li>
+          <li><a href="/show-meals">My Meals</a></li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/team-page">About Us</a></li>
+          <li><a href="/login">Logout</a></li>
+          <li><img id="user-image" src="/images/seven-square.jpg" alt="user image"></li>
         </ul>
-    </nav>
+        <a href="javascript:void(0);" class="icon" onclick="myNavBarFunction()">&#9776;</a>
+    
+      </nav>
     
     <div class="container">
         <h1 class="display-4 text-center">
@@ -289,5 +285,7 @@
     </footer>
 </body>
 <script src="../static/JavaScript/addRecipe.js"></script>
+<script src="/JavaScript/navBar.js"></script>
+
 <!-- <script src="/JavaScript/addRecipe.js"></script> -->
 </html>

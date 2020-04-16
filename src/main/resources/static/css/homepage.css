@@ -73,7 +73,7 @@ h1 {
     margin: auto;
     margin-bottom: 125px;
     width: 40%;
-    height: 300px;
+    height: 250px;
     padding: 20px;
     line-height: 20px;
     color: #333333;
@@ -93,6 +93,7 @@ h1 {
 .feature h3 {
     color: #333;
     font-size: 16px;
+   
     
 }
 
@@ -124,4 +125,10 @@ h1 {
         width: 100%;
     }
 
+}
+
+td.hasMeal {
+    color: #FF9966;
+    font-weight: bolder;
+        
 }
