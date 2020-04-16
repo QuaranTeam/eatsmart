@@ -1,7 +1,7 @@
 let meals = [];
 
 class Meal {
-     constructor(title, description) {
+     constructor(title, description, id) {
          this.name = name;
          this.description = description;
          this.id = id;
