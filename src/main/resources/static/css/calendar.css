@@ -1,3 +1,146 @@
+<<<<<<< HEAD
+@import url('https://fonts.googleapis.com/css?family=Alegreya:900|Sen&display=swap');
+
+body {
+  background: url(../images/five-30.jpg) no-repeat center center fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  overflow: scroll;
+
+}
+
+
+.feature-boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: space-between;
+    margin-right: 6%;
+}
+
+.feature-boxes .calendar {
+    background: #CAEDDA;
+    margin: auto;
+    margin-top: 5em;
+    margin-bottom: 125px;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    line-height: 25px;
+    color: #333333;
+    /* position: relative; */
+}
+.feature-boxes .meal {
+  background: #CAEDDA;
+  margin-top: 5em;
+  margin-bottom: 125px;
+  line-height: 10px;
+  width: 500px;
+  height: 300px;
+  padding: 10px;
+  line-height: 20px;
+  color: #333333;
+  /* position: relative; */
+}
+
+td.hasMeal {
+  color: #FF9966;
+  font-weight: bolder;
+
+}
+.calendar table td {
+  cursor: pointer;
+}
+
+.calendar table td:hover {
+  color: #12cb67;
+  
+}
+
+.calendar table {
+  width: 40%;
+  height: 30%;
+  font-size: 25px;
+  text-align: center;
+  margin-left: 10%;
+  margin-top: 0%;
+  color: #333333;
+}
+
+/* text */
+
+th{
+  font-size: 28px;
+  position: center;
+  
+}
+.meal p {
+  font-size: 15px;
+  margin: 5px;
+ 
+}
+
+.meal h2 {
+    text-align: center;
+    padding: 10px;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 38px;
+}
+
+.meal h3 {
+    color: #333;
+    font-size: 30px;
+    color: #FF9966;
+    margin: 5px;
+}
+.meal h4 {
+  font-size: 20px;
+  margin: 5px;
+}
+
+h2 {
+  font-size: 38px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #333333;
+}  
+
+
+.meal span {
+    float: right;
+    color: #12CB67;
+}
+.meal span:hover {
+    font-weight: bolder;
+    color: #FF9966;
+    
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 735px) {
+    .container {
+        width: 80%;
+    }
+
+    button {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+}
+=======
 /* @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
 
 $device-width: 54vh;
@@ -674,3 +817,4 @@ html, body {
 %cf:after {
     clear: both;
 }
+>>>>>>> dev
