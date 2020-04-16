@@ -12,4 +12,6 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	Object findAllByOrderByNameAsc();
 
+	Recipe findByNameIgnoreCaseLike(String recipeName);
+
 }

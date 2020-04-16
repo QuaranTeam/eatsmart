@@ -1,3 +1,6 @@
+let meals = [];
+
+
 
 // Meal Class: Represents a Meal instead of Recipe
     class Meal {
@@ -26,7 +29,7 @@
             row.innerHTML = `
       <td>${meal.title}</td>
       <td>${meal.description}</td>
-      <td><input type="button" id="addRecipes" class="btn btn-success btn-block" value="Add Recipes"></button><ul id="recipesContainer"></ul></td>
+      <td><input type="button" id="addRecipes" class="btn btn-success btn-block" value="Add Recipes"></input><ul id="recipesContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
     `;
             list.appendChild(row);
@@ -49,7 +52,7 @@
             recipesContainer.appendChild(listEl);
         }
 
-        
+
         static deleteMeal(el) {
             if (el.classList.contains("delete")) {
                 el.parentElement.parentElement.remove();

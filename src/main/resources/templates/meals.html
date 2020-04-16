@@ -57,7 +57,16 @@
                 <input type="button" id="show-meals-button" value="Back to Meals" class="btn-sm" />
                 <br />
                 <label for="recipeItem">Recipes</label>
-                <input type="text" list="items" id="recipeItem" class="form-control" />
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="0">Select Recipe</option>
+                    <option th:each="recipe : ${recipesModel}" th:value="${recipe.id}" th:text="${recipe.RecipeName}"></option>
+                  </select>
+                </div>
+
+
+
+
                 <input type="hidden" id="mealID" value="" />
 
                 <br /><input type="button" id="addRecipe" value="Add Recipe" class="btn btn-primary btn-block" />
@@ -98,7 +107,7 @@
                 <button id="groceryModalButton" type="button" name="button">Grocery List</button>
             </div> -->
 
-        
+
 
 
 
@@ -149,7 +158,7 @@
                     </ul>
                     <br>
                 </div>
-                
+
                 <div class="print-button">
                     <button type="button" name="button">Print Grocery List</button>
                 </div>
@@ -198,7 +207,7 @@
     <!--for production-->
     <script src="/JavaScript/meals.js"></script>
     <script src="/JavaScript/addMeal.js"></script>
-    
+
     <!--for styling-->
     <!-- <script src="../static/JavaScript/meals.js"></script>
     <script src="../static/JavaScript/addMeal.js"></script> -->

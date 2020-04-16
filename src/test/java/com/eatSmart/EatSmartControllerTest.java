@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
+import com.eatSmart.Controllers.EatSmartController;
+
 
 public class EatSmartControllerTest {
 	

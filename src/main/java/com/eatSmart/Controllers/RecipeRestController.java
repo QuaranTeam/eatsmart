@@ -1,4 +1,4 @@
-package com.eatSmart;
+package com.eatSmart.Controllers;
 
 import javax.annotation.Resource;
 
@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.eatSmart.Ingredient;
+import com.eatSmart.IngredientRepository;
+import com.eatSmart.Meal;
+import com.eatSmart.MealRepository;
+import com.eatSmart.Recipe;
+import com.eatSmart.RecipeRepository;
 
 import java.util.Collection;
 import java.util.Optional;
