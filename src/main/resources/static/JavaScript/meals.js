@@ -61,4 +61,4 @@ function createModal(divId, btnId) {
 
 // createModal("myMealModal", "mealModalButton");
 
-// createModal("myGroceryModal", "groceryModalButton");
+ createModal("myGroceryModal", "grocery-button");
