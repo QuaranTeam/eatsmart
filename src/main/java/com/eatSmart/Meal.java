@@ -37,6 +37,12 @@ public class Meal {
 	public Collection<Recipe> getRecipes(){
 		return recipes;
 	}
+	
+	public void removeRecipe(Recipe recipeToRemove) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	//default constructor
 	public Meal() {
 	}

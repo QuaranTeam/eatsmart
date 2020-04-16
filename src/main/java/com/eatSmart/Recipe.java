@@ -1,4 +1,5 @@
 package com.eatSmart;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,10 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 @Entity
 public class Recipe {
@@ -24,43 +22,63 @@ public class Recipe {
 	private long id;
 	private String name;
 	private String description;
-	
-	
+
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
 	private Collection<Meal> meals;
 
-	
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
-		
-	//getters
+
+	// getters
 	public long getId() {
 		return id;
 	}
+
 	public String getRecipeName() {
 		return name;
 	}
+
 	public String getRecipeDescription() {
 		return description;
 	}
-	
-	public Collection<Ingredient> getIngredients(){
+
+	public void setRecipeName(String name) {
+		this.name = name;
+	}
+
+	public void setRecipeDescription(String description) {
+		this.description = description;
+	}
+
+	public Collection<Ingredient> getIngredients() {
 		return ingredients;
 	}
-	
+
 	public Collection<String> getMealsUrls() {
 		Collection<String> urls = new ArrayList<>();
-			for(Meal t: meals) {
+		if (meals != null) {
+			for (Meal t : meals) {
 				urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
 			}
-			return urls;
 		}
+		return urls;  //if null, returns an empty collection
+	}
+
+//	public String getMeals() {
+//		// TODO Auto-generated method stub
+//		return meals;
+//	}
+
 	
-	//default constructor
+	// default constructor
+	public Recipe() {
+
+	}
+
 	public Recipe(String recipeName, String recipeDescription, Meal meal) {
 	}
-	
-	public Recipe(String name, String description, Ingredient...ingredients) {
+
+	public Recipe(String name, String description, Ingredient... ingredients) {
 		this.name = name;
 		this.description = description;
 		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
@@ -73,6 +91,7 @@ public class Recipe {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -86,7 +105,6 @@ public class Recipe {
 			return false;
 		return true;
 	}
-	
-	
+
 	
 }

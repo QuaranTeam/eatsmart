@@ -1,7 +1,9 @@
+    let recipes = []; //lets us use the variable recipes throughout the whole page
+
     // Book Class: Represents a Recipe
     class Recipe {
-        constructor(title, description, id) {
-            this.title = title;
+        constructor(name, description, id) {
+            this.name = name;
             this.description = description;
             this.id = id;
             //need ingredient collection here
@@ -13,9 +15,12 @@
     class UI {
         static displayRecipes() {
             UI.hideIngredients();
-            const recipes = Store.getRecipes();
+            Store.getRecipes(function (results) { // took aout recipes becasue it's global now
 
-            recipes.forEach((recipe) => UI.addRecipeToList(recipe));
+                results.forEach((recipe) => UI.addRecipeToList(recipe)); //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
+
+            });
+
         }
 
         static addRecipeToList(recipe) {
@@ -24,7 +29,7 @@
             const row = document.createElement("tr");
 
             row.innerHTML = `
-      <td>${recipe.title}</td>
+      <td>${recipe.name}</td>
       <td>${recipe.description}</td>
       <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></button><ul id="ingredientsContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
@@ -136,38 +141,32 @@
 
     // Store Class: Handles Storage
     class Store {
-        static getRecipes() {
+        static getRecipes(callback) {
             //TODO: add ajax instad of local storage
-            let recipes;
+            // let recipes;
             // if (localStorage.getItem("recipes") === null) {
             //     recipes = [];
             // } else {
             //     recipes = JSON.parse(localStorage.getItem("recipes"));
             // }
-
             // return recipes;
 
+            // let recipes;  ---> done globally at the top
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    let recipes = JSON.parse(xhr.responseText);
+                    recipes = JSON.parse(xhr.responseText);
 
                     console.log(recipes);
+                    // recipes = [];
+                    callback(recipes); // calls back to line 18
 
-                    recipes = [];
+                };
 
-                } else {
-                        recipes = getItem("recipes"); //????  Get from RecipeRepo???
-                    }
-        
-                
-            };
-
-            xhr.open("GET", "/recipes/" + recipe.id + "/ingredients", true);
-            xhr.send();
-
-
+                xhr.open("GET", "/recipes", true);
+                xhr.send();
+            }
         }
 
         static addRecipe(recipe, callback) {
@@ -177,7 +176,6 @@
             // localStorage.setItem("recipes", JSON.stringify(recipes));
 
             let xhr = new XMLHttpRequest();
-
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     callback();
@@ -187,36 +185,56 @@
 
             xhr.open('POST', "/recipes", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(recipe));
-
+            //xhr.send(JSON.stringify(recipe));
+            xhr.send(JSON.stringify({ //object literal  - matches naming in Java getters and setters in Recipe.java
+                recipeName: recipe.name,
+                recipeDescription: recipe.description
+            }));
         }
 
-        static removeRecipe(item) {
+        static removeRecipe(recipeName, callback) {
             //TODO: add ajax instad of local storage
             const recipes = Store.getRecipes();
+            // recipes.forEach((recipe, index) => {
+            //     if (recipe.name === item) {
+            //         recipes.splice(index, 1); //starting position and then delete count
+            //     }
+            // });
+            // localStorage.setItem("recipes", JSON.stringify(recipes));
 
-            recipes.forEach((recipe, index) => {
-                if (recipe.title === item) {
-                    recipes.splice(index, 1); //starting position and then delete count
+            //removing a recipe
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    console.log("Recipe was removed");
+                    callback();
                 }
-            });
+            };
 
-            localStorage.setItem("recipes", JSON.stringify(recipes));
+            xhr.open('POST', '/recipes/remove/' + recipeName, true);
+            xhr.send();
+
         }
 
-        static addIngredient(ingredient, recipe) {
+
+
+        static addIngredient(ingredient, recipeName, callback) {
             //TODO. AJAX call to controller - add the ingredient to recipe
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    recipe.ingredients.push(ingredient); // push = add in js      
+                    //recipe.ingredients.push(ingredient); // push = add in js      
+                    console.log("Ingredient was added");
+                    callback();
                 }
             };
 
-            xhr.open('POST', "/recipes/" + recipe.id + "/ingredients", true);
+            xhr.open('POST', "/recipes/" + recipeName + "/ingredients", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(ingredient));
+            xhr.send(ingredient); //was already a string...don't need to stringify
 
         }
 
@@ -257,22 +275,25 @@
         .addEventListener("click", UI.showRecipesHideIngredients);
 
     // Event: Add an Ingredient
-    document.querySelector("#addIngredient").addEventListener("click", (e) => {
-        const ingredientItem = document.querySelector("#ingredientItem").value;
+    document.querySelector("#addIngredient").addEventListener("click", (e) => { // callback for addEventListener
+
+        const ingredientItem = document.querySelector("#ingredientItem").value; // pulls values from the UI fields -- retrieves
         const recipeID = UI.getRecipeID();
         const recipeNode = UI.getRecipeNodeFromID(recipeID);
 
-        // Add Ingredient to UI
-        UI.addIngredientToList(ingredientItem, recipeNode);
-
         // Add Ingredient to store
-        Store.addIngredient(ingredientItem);
+        Store.addIngredient(ingredientItem, recipeID, function () { //saves to API
 
-        // Show success message
-        UI.showAlert("Ingredient Added", "success");
+            // Add Ingredient to UI
+            UI.addIngredientToList(ingredientItem, recipeNode);
 
-        // Clear fields
-        UI.clearFields();
+            // Show success message
+            UI.showAlert("Ingredient Added", "success");
+
+            // Clear fields
+            UI.clearFields();
+
+        });
     });
 
     // Event: Add a Recipe
@@ -290,16 +311,17 @@
         } else {
             // Instatiate recipe
             const recipe = new Recipe(title, description);
-            // Add Recipe to UI
-            UI.addRecipeToList(recipe);
 
             // Add Recipe to store
             Store.addRecipe(recipe, function () {
                 // Show success message
                 UI.showAlert("Recipe Added", "success");
 
+                // Add Recipe to UI
+                UI.addRecipeToList(recipe); // was outside -- moved inside here so it happens after the recipe is sent to server
+
                 // Clear fields
-                UI.clearFields();  // now only works if this was successfully added to the server because it's a callback...?
+                UI.clearFields(); // now only works if this was successfully added to the server because it's a callback...?
             });
 
 
@@ -312,16 +334,19 @@
         titleFromRow = row.getElementsByTagName("td")[0].textContent;
 
         if (e.target.id == "killRecipe") {
-            // Remove Recipe from UI
-            UI.deleteRecipe(e.target);
-
+           
             // Remove Recipe from store
+            Store.removeRecipe(titleFromRow, function () {
+                // Show success message
+                UI.showAlert("Recipe Removed", "success");
+                // remove Recipe from UI
+                UI.deleteRecipe(e.target);
+            });
 
-            Store.removeRecipe(titleFromRow);
             //TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
 
-            // Show success message
-            UI.showAlert("Recipe Removed", "success");
+
+            
         } else {
             //add ingredients
             UI.showIngredientsHideRecipes();
