@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<<<<<<< mealsAjax
   <nav class="topnav" id="myTopnav">
           <p><a href="/homepage"><img id="logo" src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190"
                 height="42"></a></p>
@@ -34,6 +35,22 @@
           <a href="javascript:void(0);" class="icon" onclick="myNavBarFunction()">&#9776;</a>
         </nav>
 
+=======
+    <nav class="topnav" id="myTopnav">
+        <p><a href="/homepage"><img id="logo" src="/images/eatSmart-logo-03.png" alt="eatSmart-Home" width="190"
+              height="42"></a></p>
+        <ul>
+          <li><a href="/show-recipes">My Recipes</a></li>
+          <li><a href="/show-meals">My Meals</a></li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/team-page">About Us</a></li>
+          <li><a href="/login">Logout</a></li>
+          <li><img id="user-image" src="/images/seven-square.jpg" alt="user image"></li>
+        </ul>
+        <a href="javascript:void(0);" class="icon" onclick="myNavBarFunction()">&#9776;</a>
+
+      </nav>
+>>>>>>> dev
     <div class="container">
         <h1>Meals</h1>
         <form id="meal-form">
@@ -148,21 +165,43 @@
         <div id="myGroceryModal" class="modal">
             <form method="POST">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>My Grocery Listl</h2>
+                    <span class="modal-close">close</span>
+                    <h2>My Grocery List</h2>
                     <ul>
                         <!--pull all Ingredients from Recipes that were saved to Meals and iterate thru them with a for each loop with thymeleaf-->
-                        <li>Ingredient 1<span class="close">&times;</span></li>
-                        <li>Ingredient 2<span class="close">&times;</span></li>
-                        <li>Ingredient 3<span class="close">&times;</span></li>
-                        <li>Ingredient 4<span class="close">&times;</span></li>
+                        <li>Almonds<span class="close">&times;</span></li>
+                        <li>Apples<span class="close">&times;</span></li>
+                        <li>Asparagus<span class="close">&times;</span></li>
+                        <li>Avocados<span class="close">&times;</span></li>
+                        <li>Bacon<span class="close">&times;</span></li>
+                        <li>Basil<span class="close">&times;</span></li>
+                        <li>Blueberries<span class="close">&times;</span></li>
+                        <li>Broccoli<span class="close">&times;</span></li>
+                        <li>Carrots<span class="close">&times;</span></li>
+                        <li>Cauliflower<span class="close">&times;</span></li>
+                        <li>Feta<span class="close">&times;</span></li>
+                        <li>Flour<span class="close">&times;</span></li>
+                        <li>Eggs<span class="close">&times;</span></li>
+                        <li>Granola<span class="close">&times;</span></li>
+                        <li>Kale<span class="close">&times;</span></li>
+                        <li>Mushrooms<span class="close">&times;</span></li>
+                        <li>Onions<span class="close">&times;</span></li>
+                        <li>Salmon<span class="close">&times;</span></li>
+                        <li>Yogurt<span class="close">&times;</span></li>
+                        <li>Zucchini<span class="close">&times;</span></li>
+
                     </ul>
                     <br>
                 </div>
+<<<<<<< mealsAjax
 
                 <div class="print-button">
+=======
+
+                <!-- <div class="print-button">
+>>>>>>> dev
                     <button type="button" name="button">Print Grocery List</button>
-                </div>
+                </div> -->
             </form>
         </div>
 
@@ -209,6 +248,10 @@
       <script src="/JavaScript/navBar.js"></script>
     <script src="/JavaScript/meals.js"></script>
     <script src="/JavaScript/addMeal.js"></script>
+<<<<<<< mealsAjax
+=======
+    <script src="/JavaScript/navBar.js"></script>
+>>>>>>> dev
 
     <!--for styling-->
     <!-- <script src="../static/JavaScript/meals.js"></script>
