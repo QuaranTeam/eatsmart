@@ -129,9 +129,12 @@ textarea {
 }
 
 #killMeal {
-    background-color: #ff9966;
+    background-color: none;
     text-decoration: none;
-    padding: 12px;
+    padding: 10px;
+    position: relative;
+    background-color: transparent;
+    color: #333333;
 }
 
 
