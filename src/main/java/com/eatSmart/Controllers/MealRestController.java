@@ -2,6 +2,7 @@ package com.eatSmart.Controllers;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,17 +29,16 @@ public class MealRestController {
 
 
 
-	@RequestMapping("")
+	@GetMapping(value ="/findAllMeals")
 	public Iterable<Meal> findAllMeals() {
 		return mealRepo.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "")
+	@RequestMapping(method = RequestMethod.POST, value = "/addMeal")
 	@ResponseBody
 	public Meal addMeal(@RequestBody Meal meals) {
-		mealRepo.save(meals);
-		
-		return meals;
+		Meal myMeal = mealRepo.save(meals);
+		return myMeal; 
 	}
 
 	@RequestMapping("/{id}/recipes")
@@ -55,13 +55,11 @@ public class MealRestController {
 	public Recipe addRecipe(@PathVariable String name, @RequestBody String recipeName) {
 
 		Recipe recipe = recipeRepo.findByName(recipeName);
-		
 		Meal meals = mealRepo.findByName(name);
 
 		meals.getRecipes().add(recipe);
 		recipe.addMeal(meals);
 		mealRepo.save(meals);
-		
 		return recipe;
 
 	}
@@ -75,13 +73,16 @@ public class MealRestController {
 	
 	
 	@RequestMapping(path = "/remove/{mealsName}", method = RequestMethod.POST)
-	public void deleteMealByName(@PathVariable String mealsName) {
+	public String deleteMealByName(@PathVariable String mealsName) {
 
 		Meal mealsToRemove = mealRepo.findByName(mealsName);
-	
-		mealRepo.delete(mealsToRemove);
-
-
+		if(mealsToRemove != null) {
+			mealRepo.delete(mealsToRemove);
+			return "Heya!" + mealsToRemove.toString();
+		}
+		else {
+			return "Yikes! mealsToRemove isn't found. " + mealsName;
+		}
 	}
 	
 	

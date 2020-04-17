@@ -1,4 +1,6 @@
 package com.eatSmart;
+
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -13,6 +15,7 @@ public class Meal {
 	@Id
 	@GeneratedValue
 	private long id;
+	
 	private String name;
 	private String description;
 	
@@ -28,7 +31,7 @@ public class Meal {
 		return id;
 	}
 	public String getMealName() {
-		return name;
+		return getName();
 	}
 	public String getDescription() {
 		return description;
@@ -47,7 +50,7 @@ public class Meal {
 	public Meal() {
 	}
 	public Meal(String name, String description, Recipe... recipes) {
-		this.name = name;
+		this.setName(name);
 		this.description = description;
 		this.recipes = new HashSet<>(Arrays.asList(recipes));
 	}
@@ -71,6 +74,12 @@ public class Meal {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
