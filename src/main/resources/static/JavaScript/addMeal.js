@@ -15,7 +15,17 @@ class UI {
   static displayMeals() {
     console.log("In displayMeals");
     UI.hideRecipes();
-    Store.getMeals();
+    Store.getMeals(function (results) {
+      results = JSON.parse(results);
+        console.log("RESULTS callback from getMeals -->");
+      console.log(results);
+       console.log(typeof results[0]);
+      //results.forEach((meal) => UI.addRecipeToList(meal)); //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
+      for(let key in results){
+          UI.addMealToList(results[key]);
+      }
+      
+    });
   }
 
   static addMealToList(meal) {
@@ -130,30 +140,20 @@ class UI {
 // Store Class: Handles Storage
 class Store {
   static getMeals(callback) {
-    //TODO: add ajax instad of local storage
-    //     let meals;
-    //     if (localStorage.getItem("meals") === null) {
-    //         meals = [];
-    //     } else {
-    //         meals = JSON.parse(localStorage.getItem("meals"));
-    //     }
-    //
-    //     return meals;
-    // }
-    console.log("In get meals");
-    let xhr = new XMLHttpRequest();
+   let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        recipes = JSON.parse(xhr.responseText);
-
-        // recipes = [];
-        callback(); // calls back to line 18
+        console.log(xhr.response);
+        console.log(xhr.responseText);
+        //recipes = JSON.parse(xhr.responseText);
+        //console.log(recipes);
+        callback(xhr.response); // calls back to line 18
       }
-
-      xhr.open("GET", "/meals", true);
-      xhr.send();
     };
+
+    xhr.open("GET", "/meals/findAllMeals", true);
+    xhr.send();
     console.log("After get meals.");
   }
 
@@ -174,14 +174,7 @@ class Store {
 
     xhr.open("POST", "/meals/addMeal", true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    //xhr.send(JSON.stringify(recipe));
-    xhr.send(
-      JSON.stringify({
-        //object literal  - matches naming in Java getters and setters in Recipe.java
-        recipeName: meal.name,
-        recipeDescription: meal.description,
-      })
-    );
+    xhr.send(JSON.stringify(meal));
   }
 
   static removeMeal(mealName, callback) {

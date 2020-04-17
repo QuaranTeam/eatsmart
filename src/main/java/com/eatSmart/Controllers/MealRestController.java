@@ -2,6 +2,7 @@ package com.eatSmart.Controllers;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,20 +29,16 @@ public class MealRestController {
 
 
 
-	@RequestMapping("")
+	@GetMapping(value ="/findAllMeals")
 	public Iterable<Meal> findAllMeals() {
 		return mealRepo.findAll();
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addMeal")
 	@ResponseBody
-	public String addMeal(@RequestBody Meal meals) {
-		mealRepo.save(meals);
-		
-		return meals.getId() + " " + meals.getDescription() + " " + meals.getName();
-		
-		//return meals; //meals;
-		
+	public Meal addMeal(@RequestBody Meal meals) {
+		Meal myMeal = mealRepo.save(meals);
+		return myMeal; 
 	}
 
 	@RequestMapping("/{id}/recipes")
