@@ -15,9 +15,7 @@ class UI {
   static displayMeals() {
     console.log("In displayMeals");
     UI.hideRecipes();
-    Store.getMeals(function (results) {
-      meals.forEach((meal) => UI.addMealToList(meal));
-    });
+    Store.getMeals();
   }
 
   static addMealToList(meal) {
@@ -131,7 +129,7 @@ class UI {
 
 // Store Class: Handles Storage
 class Store {
-  static getMeals() {
+  static getMeals(callback) {
     //TODO: add ajax instad of local storage
     //     let meals;
     //     if (localStorage.getItem("meals") === null) {
@@ -149,12 +147,11 @@ class Store {
       if (xhr.readyState === 4 && xhr.status === 200) {
         recipes = JSON.parse(xhr.responseText);
 
-        console.log(meals);
         // recipes = [];
-        callback(meals); // calls back to line 18
+        callback(); // calls back to line 18
       }
 
-      xhr.open("GET", "/recipes", true);
+      xhr.open("GET", "/meals", true);
       xhr.send();
     };
     console.log("After get meals.");
@@ -165,12 +162,17 @@ class Store {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log("YAY!!! after added meal.");
         callback();
         //html changes -- how to show recipe is added
+      } else {
+        console.log("ready state is - " + xhr.readyState);
+        console.log("status code is - " + xhr.status);
+        console.log("status code is - " + xhr.statusText);
       }
     };
 
-    xhr.open("POST", "/meals", true);
+    xhr.open("POST", "/meals/addMeal", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     //xhr.send(JSON.stringify(recipe));
     xhr.send(
@@ -185,19 +187,24 @@ class Store {
   static removeMeal(mealName, callback) {
     const meals = Store.getMeals();
 
-    //removing a recipe
+    //removing a meal
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         //recipe.ingredients.push(ingredient); // push = add in js
-        console.log("Recipe was removed");
+        console.log("Meal was removed");
         callback();
       }
     };
 
     xhr.open("POST", "/meals/remove/" + mealName, true);
-    xhr.send();
+    xhr.send(
+      JSON.stringify({
+        //object literal  - matches naming in Java getters and setters in Recipe.java
+        mealsName: mealName,
+      })
+    );
   }
 
   static addRecipe(recipe, mealName, callback) {
@@ -213,7 +220,7 @@ class Store {
       }
     };
 
-    xhr.open("POST", "/meals/" + mealName + "/recipes", true);
+    xhr.open("POST", "/meals/" + 1 + "/recipes", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(recipe); //was already a string...don't need to stringify
   }
@@ -252,21 +259,20 @@ document.querySelector("#addRecipe").addEventListener("click", (e) => {
   console.log("In add Receipe event.");
   const recipeItem = document.querySelector("#recipeItem").value;
   console.log("recipe item = " + recipeItem);
-  
+
   const mealID = UI.getMealID();
   console.log("mealID= " + mealID);
-  
+
   const mealNode = UI.getMealNodeFromID(mealID);
   console.log("node is ");
   console.log(mealNode);
-  
 
   Store.addRecipe(recipeItem, mealID, function () {
-    console.log("hmmmm");
+    console.log("In add Recipe");
     //saves to API
 
     // Add Ingredient to UI
-    UI.addIngredientToList(recipeItem, mealNode);
+    UI.addRecipeToList(recipeItem, mealNode);
 
     // Show success message
     UI.showAlert("Recipe Added", "success");
@@ -293,7 +299,7 @@ document.querySelector("#next").addEventListener("click", (e) => {
     UI.showAlert("Please fill in all fields", "danger");
   } else {
     // Instatiate meal
-    const meal = new Meal(name, description, name);
+    const meal = new Meal(name, description);
     // Add Meal to UI
     Store.addMeal(meal, function () {
       // Show success message

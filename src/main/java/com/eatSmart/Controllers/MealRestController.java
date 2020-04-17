@@ -33,12 +33,15 @@ public class MealRestController {
 		return mealRepo.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "")
+	@RequestMapping(method = RequestMethod.POST, value = "/addMeal")
 	@ResponseBody
-	public Meal addMeal(@RequestBody Meal meals) {
+	public String addMeal(@RequestBody Meal meals) {
 		mealRepo.save(meals);
 		
-		return meals;
+		return meals.getId() + " " + meals.getDescription() + " " + meals.getName();
+		
+		//return meals; //meals;
+		
 	}
 
 	@RequestMapping("/{id}/recipes")
@@ -73,13 +76,16 @@ public class MealRestController {
 	
 	
 	@RequestMapping(path = "/remove/{mealsName}", method = RequestMethod.POST)
-	public void deleteMealByName(@PathVariable String mealsName) {
+	public String deleteMealByName(@PathVariable String mealsName) {
 
 		Meal mealsToRemove = mealRepo.findByName(mealsName);
-	
-		mealRepo.delete(mealsToRemove);
-
-
+		if(mealsToRemove != null) {
+			mealRepo.delete(mealsToRemove);
+			return "Heya!" + mealsToRemove.toString();
+		}
+		else {
+			return "Yikes! mealsToRemove isn't found. " + mealsName;
+		}
 	}
 	
 	
