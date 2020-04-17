@@ -55,13 +55,11 @@ public class MealRestController {
 	public Recipe addRecipe(@PathVariable String name, @RequestBody String recipeName) {
 
 		Recipe recipe = recipeRepo.findByName(recipeName);
-		
 		Meal meals = mealRepo.findByName(name);
 
 		meals.getRecipes().add(recipe);
 		recipe.addMeal(meals);
 		mealRepo.save(meals);
-		
 		return recipe;
 
 	}
