@@ -13,21 +13,32 @@ class Meal {
 // UI Class: Handle UI Tasks
 class UI {
   static displayMeals() {
-    console.log("In displayMeals");
     UI.hideRecipes();
     Store.getMeals(function (results) {
       results = JSON.parse(results);
-        console.log("RESULTS callback from getMeals -->");
-      console.log(results);
-       console.log(typeof results[0]);
-      //results.forEach((meal) => UI.addRecipeToList(meal)); //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
-      for(let key in results){
-          UI.addMealToList(results[key]);
+      for (let key in results) {
+        UI.addMealToList(results[key]);
       }
-      
     });
   }
 
+  static getAllRecipes() {
+    Store.getAllRecipes(function (results) {
+      console.log("callback from getAllRecipes.");
+      for (let key in results) {
+        console.log(results[key]);
+        UI.addRecipeToDropdown(results[key]);
+      }
+    });
+  }
+
+  static addRecipeToDropdown(recipe) {
+    const list = document.querySelector("#items");
+    const recipeOption = document.createElement("option");
+    recipeOption.text = recipe.id;
+    recipeOption.value = recipe.name;
+    list.appendChild(recipeOption);
+  }
   static addMealToList(meal) {
     const list = document.querySelector("#meal-list");
 
@@ -40,8 +51,7 @@ class UI {
    <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
  `;
     list.appendChild(row);
-  }  // mimic where we add meals to show recipes inide each meal on load? 
-
+  } // mimic where we add meals to show recipes inide each meal on load?
 
   static addRecipeToList(recipe, mealNode) {
     //was ingredient
@@ -142,7 +152,7 @@ class UI {
 // Store Class: Handles Storage
 class Store {
   static getMeals(callback) {
-   let xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -202,6 +212,20 @@ class Store {
     );
   }
 
+  static getAllRecipes(callback) {
+    console.log("Here in getAllRecipes.");
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let recipes = JSON.parse(xhr.responseText);
+        callback(recipes);
+      }
+    };
+    xhr.open("GET", "/recipes/findAllRecipes", true);
+    xhr.send();
+  }
+
   static addRecipe(recipe, mealName, callback) {
     //TODO. AJAX call to controller - add the ingredient to recipe
     console.log("Here in addRecipe -- " + recipe);
@@ -242,7 +266,11 @@ class Store {
 }
 
 // Event: Display Meals
-document.addEventListener("DOMContentLoaded", UI.displayMeals);
+document.addEventListener("DOMContentLoaded", (e) => {
+  UI.displayMeals();
+  UI.getAllRecipes();
+  console.log("In DOM LOADED.");
+});
 
 //Event: Back to Meals (from recipes)
 document
