@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Recipe {
-
 	@Id
 	@GeneratedValue
 	private long id;
@@ -29,14 +28,18 @@ public class Recipe {
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
 
-
 	// getters
 	public long getId() {
 		return id;
 	}
 
-	public String getRecipeName() {
+	public String getName() { //copied from Meal
 		return name;
+	}
+		
+	public String getRecipeName() {
+		// was return name;
+		return getName();
 	}
 
 	public String getRecipeDescription() {
@@ -46,13 +49,19 @@ public class Recipe {
 	public void setRecipeName(String name) {
 		this.name = name;
 	}
-
+	public void setName(String name) {  //copied from Meal
+		this.name = name;
+	}
 	public void setRecipeDescription(String description) {
 		this.description = description;
 	}
 
 	public Collection<Ingredient> getIngredients() {
 		return ingredients;
+	}
+
+	public void removeIngredient(Ingredient ingredientToRemove) {
+		// copied from Meal class
 	}
 
 	public Collection<String> getMealsUrls() {
@@ -62,37 +71,26 @@ public class Recipe {
 				urls.add(format("/recipes/%d/meals/%s", this.getId(), t.getMealName()));
 			}
 		}
-		return urls;  //if null, returns an empty collection
+		return urls; // if null, returns an empty collection
 	}
 
-//	public String getMeals() {
-//		// TODO Auto-generated method stub
-//		return meals;
-//	}
-
-	
 	// default constructor
 	public Recipe() {
-
 	}
 
 	public Recipe(String recipeName, String recipeDescription, Meal meal) {
 	}
 
 	public Recipe(String name, String description, Ingredient... ingredients) {
-		this.name = name;
+		this.setName(name);
 		this.description = description;
 		this.ingredients = new HashSet<>(Arrays.asList(ingredients));
 	}
 
-	
 	public void addMeal(Meal meals) {
 		this.meals.add(meals);
 	}
-	
-	
-	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,5 +113,4 @@ public class Recipe {
 		return true;
 	}
 
-	
 }

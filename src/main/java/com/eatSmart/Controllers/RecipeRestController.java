@@ -2,7 +2,7 @@ package com.eatSmart.Controllers;
 
 import javax.annotation.Resource;
 
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,17 +33,18 @@ public class RecipeRestController {
 	@Resource
 	private MealRepository mealRepo;
 
-	@RequestMapping("")
+	// @RequestMapping("")
+
+	@GetMapping(value = "/findAllRecipes")
 	public Iterable<Recipe> findAllRecipes() {
 		return recipeRepo.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "")
+	@RequestMapping(method = RequestMethod.POST, value = "/addRecipe")
 	@ResponseBody
 	public Recipe addRecipe(@RequestBody Recipe recipe) {
-		recipeRepo.save(recipe);
-		
-		return recipe;
+		Recipe myRecipe = recipeRepo.save(recipe);
+		return myRecipe;
 	}
 
 	@RequestMapping("/{id}/ingredients")
@@ -56,24 +57,16 @@ public class RecipeRestController {
 		return ingredients;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{name}/ingredients")
+	@RequestMapping(method = RequestMethod.POST, value = "/{name}/ingredient")
 	public Ingredient addIngredient(@PathVariable String name, @RequestBody String ingredientName) {
 
-		Ingredient ingredient = new Ingredient(ingredientName, 1);
-		ingredientRepo.save(ingredient);
-		
-//		Ingredient ingredient = ingredientRepo.findByName(ingredientName); //look for an existing ingredient
-//		 if(ingredient == null) {
-//				Ingredient newIngredient = new Ingredient(ingredientName, 1);  //if it's not there, make a new one
-//				ingredientRepo.save(newIngredient);
-//		 }
-//		
+		Ingredient ingredient = ingredientRepo.findByName(ingredientName);
 		Recipe recipe = recipeRepo.findByName(name);
 
 		recipe.getIngredients().add(ingredient);
 		ingredient.addRecipe(recipe);
 		recipeRepo.save(recipe);
-		
+
 		return ingredient;
 
 	}
@@ -83,22 +76,18 @@ public class RecipeRestController {
 		return recipeRepo.findById(id);
 	}
 
-	
-	
-	
 	@RequestMapping(path = "/remove/{recipeName}", method = RequestMethod.POST)
-	public void deleteRecipeByName(@PathVariable String recipeName) {
+	public String deleteRecipeByName(@PathVariable String recipeName) {
 
 		Recipe recipeToRemove = recipeRepo.findByName(recipeName);
-	
-		recipeRepo.delete(recipeToRemove);
-
-
+		if (recipeToRemove != null) {
+			recipeRepo.delete(recipeToRemove);
+			return "This recipe was deleted: " + recipeToRemove.toString();
+		} else {
+			return "Oh no! This recipe was not found: " + recipeName;
+		}
 	}
-	
-	
-	
-	
+
 	@RequestMapping("/meals/{mealName}")
 	public Collection<Recipe> findAllRecipesByMeal(@PathVariable(value = "mealName") String mealName) {
 		Meal meal = mealRepo.findByNameIgnoreCaseLike(mealName);
