@@ -57,10 +57,16 @@ public class RecipeRestController {
 		return ingredients;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{name}/ingredient")
+	@RequestMapping(method = RequestMethod.POST, value = "/{name}/ingredients")
 	public Ingredient addIngredient(@PathVariable String name, @RequestBody String ingredientName) {
 
 		Ingredient ingredient = ingredientRepo.findByName(ingredientName);
+		
+		if(ingredient == null) {
+			ingredient = new Ingredient(ingredientName, 1);
+			ingredientRepo.save(ingredient);
+		}
+				
 		Recipe recipe = recipeRepo.findByName(name);
 
 		recipe.getIngredients().add(ingredient);

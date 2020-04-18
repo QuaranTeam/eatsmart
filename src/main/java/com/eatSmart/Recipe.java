@@ -23,7 +23,7 @@ public class Recipe {
 	private String description;
 
 	@ManyToMany(mappedBy = "recipes") // Because recipes can be in multiple meals?
-	private Collection<Meal> meals;
+	private Collection<Meal> meals = new ArrayList<Meal>();
 
 	@ManyToMany
 	private Collection<Ingredient> ingredients;
@@ -78,6 +78,11 @@ public class Recipe {
 	public Recipe() {
 	}
 
+	public Recipe(String name) {
+		this.setName(name);
+	}
+
+	
 	public Recipe(String recipeName, String recipeDescription, Meal meal) {
 	}
 

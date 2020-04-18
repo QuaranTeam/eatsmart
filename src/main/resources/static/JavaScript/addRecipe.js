@@ -41,6 +41,7 @@ class UI {
     `;
         list.appendChild(row);
     }
+    
     static addIngredientToList(ingredient, recipeNode) {
 
         console.log("Ingredient added to Recipe list");
@@ -212,7 +213,7 @@ class Store {
             }
         };
 
-        xhr.open("POST", "/recipes/" + 1 + "/ingredients", true);
+        xhr.open("POST", "/recipes/" + recipeName + "/ingredients", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(ingredient);
     }

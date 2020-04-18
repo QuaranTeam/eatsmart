@@ -40,7 +40,9 @@ class UI {
    <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
  `;
     list.appendChild(row);
-  }
+  }  // mimic where we add meals to show recipes inide each meal on load? 
+
+
   static addRecipeToList(recipe, mealNode) {
     //was ingredient
     console.log("Recipe added to meal list");
@@ -75,7 +77,7 @@ class UI {
   static clearFields() {
     document.querySelector("#title").value = "";
     document.querySelector("#description").value = "";
-    // document.querySelector("#recipeItem").value = "";
+    document.querySelector("#recipeItem").value = "";
   }
 
   static hideRecipes() {
@@ -213,7 +215,7 @@ class Store {
       }
     };
 
-    xhr.open("POST", "/meals/" + 1 + "/recipes", true);
+    xhr.open("POST", "/meals/" + mealName + "/recipes", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(recipe); //was already a string...don't need to stringify
   }
