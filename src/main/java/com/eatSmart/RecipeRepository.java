@@ -6,12 +6,15 @@ import java.util.Collection;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
+	Collection<Recipe> findByMealsContains(Meal meal);
+
+	Collection<Recipe> findByMealsId(long mealId);
+		
 	Recipe findByName(String recipeName);
 
-	Collection<Recipe> findByMealsContains(Meal meal);
+	Recipe findByNameIgnoreCaseLike(String recipeName);
 
 	Object findAllByOrderByNameAsc();
 
-	Recipe findByNameIgnoreCaseLike(String recipeName);
 
 }
