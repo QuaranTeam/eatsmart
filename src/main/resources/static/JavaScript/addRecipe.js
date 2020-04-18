@@ -75,7 +75,7 @@ class UI {
     static clearFields() {
         document.querySelector("#title").value = "";
         document.querySelector("#description").value = "";
-        // document.querySelector("#ingredientItem").value = "";
+        document.querySelector("#ingredientItem").value = "";
     }
 
     static hideIngredients() {
@@ -194,37 +194,36 @@ class Store {
         xhr.open("POST", "/recipes/remove/" + recipeName, true);
         xhr.send(
             JSON.stringify({
-                //object literal  - matches naming in Java getters and setters in Recipe.java
+
                 recipeName: recipeName,
             })
         );
-
     }
 
-
-    static addIngredient(ingredient, recipeName, callback) { // TODO. AJAX call to controller - add the ingredient to recipe
+    static addIngredient(ingredient, recipeName, callback) {
+        //AJAX call to controller - add the ingredient to recipe
         let xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) { // recipe.ingredients.push(ingredient); // push = add in js
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                //recipe.ingredients.push(ingredient); // push = add in js
                 console.log("Ingredient was added");
                 callback();
             }
         };
 
-        xhr.open('POST', "/recipes/" + recipeName + "/ingredients", true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(ingredient); // was already a string...don't need to stringify
-
+        xhr.open("POST", "/recipes/" + 1 + "/ingredients", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(ingredient);
     }
 
 
-    static removeIngredient(ingredient, recipe) { // TODO. AJAX call to controller - remove the ingredient from recipe
-
+    static removeIngredient(ingredient, recipe) {
+        // TODO. AJAX call to controller - remove the ingredient from recipe
     }
 
-
-    static getIngredients(recipe) { // TODO. AJAX call to controller - get the ingredient stored for recipe
+    static getIngredients(recipe) {
+        // AJAX call to controller - get the ingredient stored for recipe
 
         let xhr = new XMLHttpRequest();
 
@@ -232,33 +231,37 @@ class Store {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 let ingredients = JSON.parse(xhr.responseText);
 
-                recipe.ingredients = ingredients; // sets ingredients to this recipe
-
+                recipe.ingredients = ingredients; //sets ingredients to this recipe
             }
         };
-
-        xhr.open("GET", "/recipes/" + recipe.id + "/ingredients", true);
+        xhr.open("GET", "/recipes/" + meal.id + "/ingredients", true);
         xhr.send();
-
     }
-
 }
+
 // Event: Display Recipes
 document.addEventListener("DOMContentLoaded", UI.displayRecipes);
 
-
-// Event: Back to Recipes (from ingredients)
-document.querySelector("#show-recipes-button").addEventListener("click", UI.showRecipesHideIngredients);
+//Event: Back to Recipes (from ingredients)
+document
+    .querySelector("#show-recipes-button")
+    .addEventListener("click", UI.showRecipesHideIngredients);
 
 // Event: Add an Ingredient
-document.querySelector("#addIngredient").addEventListener("click", (e) => { // callback for addEventListener
+document.querySelector("#addIngredient").addEventListener("click", (e) => {
+    console.log("In add Ingredient event.");
+    const ingredientItem = document.querySelector("#ingredientItem").value;
+    console.log("ingredinet item = " + ingredientItem);
 
-    const ingredientItem = document.querySelector("#ingredientItem").value; // pulls values from the UI fields -- retrieves
     const recipeID = UI.getRecipeID();
-    const recipeNode = UI.getRecipeNodeFromID(recipeID);
+    console.log("recipeID = " + recipeID);
 
-    // Add Ingredient to store
+    const recipeNode = UI.getRecipeNodeFromID(recipeID);
+    console.log("node is ");
+    console.log(recipeNode);
+
     Store.addIngredient(ingredientItem, recipeID, function () {
+        console.log("In add Ingredient");
         // saves to API
 
         // Add Ingredient to UI
@@ -269,7 +272,6 @@ document.querySelector("#addIngredient").addEventListener("click", (e) => { // c
 
         // Clear fields
         UI.clearFields();
-
     });
 });
 
@@ -310,20 +312,21 @@ document.querySelector("#recipe-list").addEventListener("click", (e) => {
     row = e.target.parentElement.parentElement;
     titleFromRow = row.getElementsByTagName("td")[0].textContent;
 
-    if (e.target.id == "killRecipe") { // Remove Recipe from store
-        Store.removeRecipe(titleFromRow, function () { // Show success message
-            UI.showAlert("Recipe Removed", "success");
-            // remove Recipe from UI
-            UI.deleteRecipe(e.target);
-        });
+    if (e.target.id == "killRecipe") {
+        // Remove Meal from UI
+        UI.deleteRecipe(e.target);
+    
+        // Remove Recipe from store
+    
+        Store.removeRecipe(titleFromRow);
+        // removeRecipe also removes the ingredinets and the join between recipes and ingredinets
 
-        // TODO make sure removeRecipe also removes the ingredients and the join between recipes and ingredients
-
-
-    } else { // add ingredients
+        // Show success message
+        UI.showAlert("Recipe Removed", "success");
+      } else {
+        //add recipes
         UI.showIngredientsHideRecipes();
-        // update the form's hidden field so we know which row was passed in...
+        //update the form's hidden field so we know which row was passed in...
         document.getElementById("recipeID").value = titleFromRow;
-
-    }
-});
+      }
+    });
