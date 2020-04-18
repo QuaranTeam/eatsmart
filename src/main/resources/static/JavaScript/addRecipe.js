@@ -35,7 +35,7 @@ class UI {
         console.log(recipe);
         row.innerHTML = `
       <td>${recipe.name}</td>
-      <td>${recipe.description}</td>
+      <td>${recipe.description || recipe.recipeDescription || ""}</td>
       <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></input><ul id="ingredientsContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
     `;
