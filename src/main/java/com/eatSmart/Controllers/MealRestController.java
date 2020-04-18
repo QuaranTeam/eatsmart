@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eatSmart.Recipe;
 import com.eatSmart.RecipeRepository;
+import com.eatSmart.Ingredient;
 import com.eatSmart.Meal;
 import com.eatSmart.MealRepository;
 import java.util.Collection;
@@ -51,10 +52,16 @@ public class MealRestController {
 		return recipes;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{name}/recipe")
+	@RequestMapping(method = RequestMethod.POST, value = "/{name}/recipes")
 	public Recipe addRecipe(@PathVariable String name, @RequestBody String recipeName) {
 
 		Recipe recipe = recipeRepo.findByName(recipeName);
+		
+		if(recipe == null) {
+			recipe = new Recipe(recipeName);
+			recipeRepo.save(recipe);
+		}
+		
 		Meal meals = mealRepo.findByName(name);
 
 		meals.getRecipes().add(recipe);
