@@ -80,19 +80,14 @@ public class MealRestController {
 	
 	
 	@RequestMapping(path = "/remove/{mealsName}", method = RequestMethod.POST)
-	public String deleteMealByName(@PathVariable String mealsName) {
+	public void deleteMealByName(@PathVariable String mealsName) {
 
 		Meal mealsToRemove = mealRepo.findByName(mealsName);
 		if(mealsToRemove != null) {
 			mealRepo.delete(mealsToRemove);
-			return "Heya!" + mealsToRemove.toString();
 		}
-		else {
-			return "Yikes! mealsToRemove isn't found. " + mealsName;
-		}
+		
 	}
-	
-	
 	
 	
 	@RequestMapping("/recipes/{recipeName}")

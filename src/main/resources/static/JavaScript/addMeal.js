@@ -13,26 +13,41 @@ class Meal {
 // UI Class: Handle UI Tasks
 class UI {
   static displayMeals() {
-    console.log("In displayMeals");
     UI.hideRecipes();
     Store.getMeals(function (results) {
       results = JSON.parse(results);
-        console.log("RESULTS callback from getMeals -->");
-      console.log(results);
-       console.log(typeof results[0]);
-      //results.forEach((meal) => UI.addRecipeToList(meal)); //runs after getRecipes -- cahanged "recipes" to "resuts" so it doesn't affect global recipes
-      for(let key in results){
-          UI.addMealToList(results[key]);
+      for (let key in results) {
+        const row = UI.addMealToList(results[key]);
+        UI.displayRecipes(results[key].recipes,row);
+        //Store.getRecipes(results[key], displayRecipes);
       }
-      
+    });
+  }
+  static displayRecipes(recipes,mealNode){
+    //get mealNode from mealName
+    for (let key in recipes) {
+      UI.addRecipeToList(recipes[key].name,mealNode);
+    }
+  }
+  static getAllRecipes() {
+    Store.getAllRecipes(function (results) {
+      for (let key in results) {
+        UI.addRecipeToDropdown(results[key]);
+      }
     });
   }
 
+  static addRecipeToDropdown(recipe) {
+    const list = document.querySelector("#items");
+    const recipeOption = document.createElement("option");
+    recipeOption.text = recipe.id;
+    recipeOption.value = recipe.name;
+    list.appendChild(recipeOption);
+  }
   static addMealToList(meal) {
     const list = document.querySelector("#meal-list");
 
     const row = document.createElement("tr");
-    console.log(meal);
     row.innerHTML = `
    <td>${meal.name}</td>
    <td>${meal.description}</td>
@@ -40,13 +55,11 @@ class UI {
    <td><a href="#" class="btn btn-danger btn-sm delete" id="killMeal">X</a></td>
  `;
     list.appendChild(row);
-  }  // mimic where we add meals to show recipes inide each meal on load? 
-
+    return row;
+  } // mimic where we add meals to show recipes inide each meal on load?
 
   static addRecipeToList(recipe, mealNode) {
     //was ingredient
-    console.log("Recipe added to meal list");
-
     const listEl = document.createElement("li");
 
     listEl.innerText = recipe;
@@ -124,12 +137,13 @@ class UI {
 
   static getMealNodeFromID(mealID) {
     //traverse "meal-list" -> children in a loop. look for text contents of 1st child
-
+//TO DO -- consider changing this to getMealNodeFromMealName
+//OR updating all to look for it by id
     const mealList = document.getElementById("meal-list").childNodes;
     var matchedNode;
     for (var i = 0; i < mealList.length; i++) {
       if (mealList[i].firstChild.nextSibling.textContent == mealID) {
-        console.log("Match found!  " + mealID);
+      
         matchedNode = mealList[i];
         break;
       }
@@ -142,21 +156,16 @@ class UI {
 // Store Class: Handles Storage
 class Store {
   static getMeals(callback) {
-   let xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.response);
-        console.log(xhr.responseText);
-        //recipes = JSON.parse(xhr.responseText);
-        //console.log(recipes);
         callback(xhr.response); // calls back to line 18
       }
     };
 
     xhr.open("GET", "/meals/findAllMeals", true);
     xhr.send();
-    console.log("After get meals.");
   }
 
   static addMeal(meal, callback) {
@@ -164,13 +173,7 @@ class Store {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log("YAY!!! after added meal.");
         callback();
-        //html changes -- how to show recipe is added
-      } else {
-        console.log("ready state is - " + xhr.readyState);
-        console.log("status code is - " + xhr.status);
-        console.log("status code is - " + xhr.statusText);
       }
     };
 
@@ -188,7 +191,6 @@ class Store {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         //recipe.ingredients.push(ingredient); // push = add in js
-        console.log("Meal was removed");
         callback();
       }
     };
@@ -202,47 +204,48 @@ class Store {
     );
   }
 
-  static addRecipe(recipe, mealName, callback) {
-    //TODO. AJAX call to controller - add the ingredient to recipe
-    console.log("Here in addRecipe -- " + recipe);
+  static getAllRecipes(callback) {
+ 
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
+        let recipes = JSON.parse(xhr.responseText);
+        callback(recipes);
+      }
+    };
+    xhr.open("GET", "/recipes/findAllRecipes", true);
+    xhr.send();
+  }
+
+  static addRecipe(recipeName, mealID, callback) {
+    //TODO Add recipe to meal object
+   let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
         //recipe.ingredients.push(ingredient); // push = add in js
-        console.log("Recipe was added");
+        let recipe = JSON.parse(xhr.responseText);
         callback();
       }
     };
 
-    xhr.open("POST", "/meals/" + mealName + "/recipes", true);
+    xhr.open("POST", "/meals/" + mealID + "/recipes", true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(recipe); //was already a string...don't need to stringify
+    xhr.send(recipeName); //was already a string...don't need to stringify
   }
 
   static removeRecipe(recipe, meal) {
     //TODO. AJAX call to controller - remove the ingredient from recipe
   }
 
-  static getRecipes(meal) {
-    //TODO. AJAX call to controller - get the ingredient stored for recipe
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        let recipes = JSON.parse(xhr.responseText);
-
-        meal.recipes = recipes; //sets ingredients to this recipe
-      }
-    };
-    xhr.open("GET", "/meals/" + meal.id + "/recipes", true);
-    xhr.send();
-  }
 }
 
 // Event: Display Meals
-document.addEventListener("DOMContentLoaded", UI.displayMeals);
+document.addEventListener("DOMContentLoaded", (e) => {
+  UI.displayMeals();
+  UI.getAllRecipes();
+});
 
 //Event: Back to Meals (from recipes)
 document
@@ -251,19 +254,12 @@ document
 
 // Event: Add an Recipe
 document.querySelector("#addRecipe").addEventListener("click", (e) => {
-  console.log("In add Receipe event.");
   const recipeItem = document.querySelector("#recipeItem").value;
-  console.log("recipe item = " + recipeItem);
-
   const mealID = UI.getMealID();
-  console.log("mealID= " + mealID);
-
   const mealNode = UI.getMealNodeFromID(mealID);
-  console.log("node is ");
-  console.log(mealNode);
 
   Store.addRecipe(recipeItem, mealID, function () {
-    console.log("In add Recipe");
+ 
     //saves to API
 
     // Add Ingredient to UI
@@ -279,16 +275,11 @@ document.querySelector("#addRecipe").addEventListener("click", (e) => {
 
 // Event: Add a Meal
 document.querySelector("#next").addEventListener("click", (e) => {
-  console.log("click");
-
   // Prevent actual submit
-
-  e.preventDefault();
+ e.preventDefault();
   // Get form values
   const name = document.querySelector("#title").value;
-  console.log("name " + name);
   const description = document.querySelector("#description").value;
-  console.log("description " + description);
   // Validate
   if (name === "" || description === "") {
     UI.showAlert("Please fill in all fields", "danger");
@@ -321,8 +312,6 @@ document.querySelector("#meal-list").addEventListener("click", (e) => {
     // Remove Meal from store
 
     Store.removeMeal(titleFromRow);
-    //TODO make sure removeMeal also removes the recipes and the join between meals and recipes
-
     // Show success message
     UI.showAlert("Meal Removed", "success");
   } else {
