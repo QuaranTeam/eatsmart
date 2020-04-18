@@ -174,13 +174,7 @@ class Store {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log("YAY!!! after added meal.");
         callback();
-        //html changes -- how to show recipe is added
-      } else {
-        console.log("ready state is - " + xhr.readyState);
-        console.log("status code is - " + xhr.status);
-        console.log("status code is - " + xhr.statusText);
       }
     };
 
@@ -226,22 +220,24 @@ class Store {
     xhr.send();
   }
 
-  static addRecipe(recipe, mealName, callback) {
-    //TODO. AJAX call to controller - add the ingredient to recipe
-    console.log("Here in addRecipe -- " + recipe);
+  static addRecipe(recipeName, mealID, callback) {
+    //TODO Add recipe to meal object
+    console.log("Here in addRecipe -- " + recipeName);
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         //recipe.ingredients.push(ingredient); // push = add in js
+        let recipe = JSON.parse(xhr.responseText);
         console.log("Recipe was added");
+        console.log(recipe);
         callback();
       }
     };
 
-    xhr.open("POST", "/meals/" + mealName + "/recipes", true);
+    xhr.open("POST", "/meals/" + mealID + "/recipes", true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(recipe); //was already a string...don't need to stringify
+    xhr.send(recipeName); //was already a string...don't need to stringify
   }
 
   static removeRecipe(recipe, meal) {
@@ -256,7 +252,6 @@ class Store {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         let recipes = JSON.parse(xhr.responseText);
-
         meal.recipes = recipes; //sets ingredients to this recipe
       }
     };
@@ -279,16 +274,9 @@ document
 
 // Event: Add an Recipe
 document.querySelector("#addRecipe").addEventListener("click", (e) => {
-  console.log("In add Receipe event.");
   const recipeItem = document.querySelector("#recipeItem").value;
-  console.log("recipe item = " + recipeItem);
-
   const mealID = UI.getMealID();
-  console.log("mealID= " + mealID);
-
   const mealNode = UI.getMealNodeFromID(mealID);
-  console.log("node is ");
-  console.log(mealNode);
 
   Store.addRecipe(recipeItem, mealID, function () {
     console.log("In add Recipe");
