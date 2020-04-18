@@ -22,7 +22,7 @@ class UI {
             console.log(typeof results[0]);
 
             for (let key in results) {
-                UI.addRecieToList(results[key]);
+                UI.addRecipeToList(results[key]);
             }
 
         });
