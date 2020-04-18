@@ -22,11 +22,20 @@ class UI {
             console.log(typeof results[0]);
 
             for (let key in results) {
-                UI.addRecipeToList(results[key]);
+                const row =  UI.addRecipeToList(results[key]);
+                UI.displayIngredients(results[key].ingredients,row);
             }
 
         });
     }
+    static displayIngredients(ingredients,recipeNode){
+        //get mealNode from mealName
+        for (let key in ingredients) {
+          UI.addIngredientToList(ingredients[key].ingredientName,recipeNode);
+        }
+      }
+
+
 
     static addRecipeToList(recipe) {
         const list = document.querySelector("#recipe-list");
@@ -40,6 +49,7 @@ class UI {
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
     `;
         list.appendChild(row);
+        return row;
     }
     
     static addIngredientToList(ingredient, recipeNode) {

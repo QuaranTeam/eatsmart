@@ -40,7 +40,7 @@ class UI {
   static addRecipeToDropdown(recipe) {
     const list = document.querySelector("#items");
     const recipeOption = document.createElement("option");
-    recipeOption.text = recipe.id;
+    // recipeOption.text = recipe.id;
     recipeOption.value = recipe.name;
     list.appendChild(recipeOption);
   }
