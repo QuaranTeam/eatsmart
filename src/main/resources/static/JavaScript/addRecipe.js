@@ -22,11 +22,20 @@ class UI {
             console.log(typeof results[0]);
 
             for (let key in results) {
-                UI.addRecipeToList(results[key]);
+                const row =  UI.addRecipeToList(results[key]);
+                UI.displayIngredients(results[key].ingredients,row);
             }
 
         });
     }
+    static displayIngredients(ingredients,recipeNode){
+        //get mealNode from mealName
+        for (let key in ingredients) {
+          UI.addIngredientToList(ingredients[key].ingredientName,recipeNode);
+        }
+      }
+
+
 
     static addRecipeToList(recipe) {
         const list = document.querySelector("#recipe-list");
@@ -35,11 +44,12 @@ class UI {
         console.log(recipe);
         row.innerHTML = `
       <td>${recipe.name}</td>
-      <td>${recipe.description}</td>
+      <td>${recipe.description || recipe.recipeDescription || ""}</td>
       <td><input type="button" id="addIngredients" class="btn btn-success btn-block" value="Add Ingredient"></input><ul id="ingredientsContainer"></ul></td>
       <td><a href="#" class="btn btn-danger btn-sm delete" id="killRecipe">X</a></td>
     `;
         list.appendChild(row);
+        return row;
     }
     
     static addIngredientToList(ingredient, recipeNode) {

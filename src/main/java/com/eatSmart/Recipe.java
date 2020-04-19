@@ -43,6 +43,10 @@ public class Recipe {
 	}
 
 	public String getRecipeDescription() {
+		return getDescription();
+	}
+	
+	public String getDescription() { //copied from Meal
 		return description;
 	}
 
@@ -55,7 +59,10 @@ public class Recipe {
 	public void setRecipeDescription(String description) {
 		this.description = description;
 	}
-
+	public void setDescription(String description) {  //copied from Meal
+		this.description = description;
+	}
+	
 	public Collection<Ingredient> getIngredients() {
 		return ingredients;
 	}
